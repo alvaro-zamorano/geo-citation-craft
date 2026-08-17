@@ -124,6 +124,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       line_items: lineItems,
       customer_email: guestEmail || undefined,
       metadata: productMeta,
+      // La auditoria empezaba con un email nuestro preguntando "que web quieres
+      // que audite?". Ese ida y vuelta enfriaba la entrega y costaba un dia. El
+      // dominio se pide ahora en la propia pantalla de pago y viaja en la sesion.
+      custom_fields:
+        productType === "curso-auditoria"
+          ? [
+              {
+                key: "dominio",
+                label: { type: "custom" as const, custom: "Dominio que quieres que audite" },
+                type: "text" as const,
+                optional: false,
+              },
+            ]
+          : undefined,
       success_url: successUrl,
       cancel_url: "https://esgeo.ai/curso",
       billing_address_collection: "auto",
