@@ -27,7 +27,7 @@ import { useGeoMetadata } from '@/hooks/useGeoMetadata';
  */
 const CheckoutPage = () => {
   const { helmet: socialHelmet } = useGeoMetadata({
-    title: 'Comprar el curso GEO completo — 47 €, pago único | esGEO',
+    title: 'Comprar el curso GEO completo: 47 €, pago único | esGEO',
     description:
       'Curso GEO completo (F1-F5) por 47 €, pago único. 5 PDFs con 142 páginas al instante en tu email. Factura disponible. Pago seguro vía Stripe: no guardamos tu tarjeta.',
     canonicalUrl: 'https://www.esgeo.ai/checkout',
@@ -37,7 +37,7 @@ const CheckoutPage = () => {
     <div className="min-h-screen bg-background flex flex-col">
       {socialHelmet}
       <Helmet>
-        <title>Comprar el curso GEO completo — 47 €, pago único | esGEO</title>
+        <title>Comprar el curso GEO completo: 47 €, pago único | esGEO</title>
         <meta
           name="description"
           content="Curso GEO completo (F1-F5) por 47 €, pago único. 5 PDFs con 142 páginas al instante en tu email. Factura disponible. Pago seguro vía Stripe: no guardamos tu tarjeta."
@@ -60,10 +60,10 @@ const CheckoutPage = () => {
 
           <div className="text-center mb-10">
             <Badge variant="outline" className="mb-4 text-accent border-accent">
-              Pago único · Sin suscripción
+              Pago único · sin suscripción
             </Badge>
             <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              Curso GEO completo — 47 €, pago único
+              Curso GEO completo: 47 €, pago único
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-speakable="true">
               Los cinco módulos del método F1-F5 en PDF, con checklists aplicables y el caso real
@@ -80,14 +80,14 @@ const CheckoutPage = () => {
                 <li className="flex items-start gap-3">
                   <FileText className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                   <span>
-                    <strong>5 PDFs (142 páginas)</strong> — los módulos F1 a F5 del método GEO,
+                    <strong>5 PDFs (142 páginas)</strong>: los módulos F1 a F5 del método GEO,
                     al instante en tu email tras el pago.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                   <span>
-                    <strong>Entrega inmediata</strong> — el enlace de descarga llega a tu correo
+                    <strong>Entrega inmediata</strong>: el enlace de descarga llega a tu correo
                     en cuanto Stripe confirma el pago. Los PDFs son tuyos para siempre, con
                     actualizaciones incluidas.
                   </span>
@@ -95,7 +95,7 @@ const CheckoutPage = () => {
                 <li className="flex items-start gap-3">
                   <Receipt className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                   <span>
-                    <strong>Factura para tu empresa (NIF/CIF)</strong> — introduce tu NIF/CIF en
+                    <strong>Factura para tu empresa (NIF/CIF)</strong>: introduce tu NIF/CIF en
                     el propio pago y la factura te llega automáticamente. También puedes pedirla
                     escribiendo a {SUPPORT_EMAIL}.
                   </span>
@@ -103,7 +103,7 @@ const CheckoutPage = () => {
                 <li className="flex items-start gap-3">
                   <Lock className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                   <span>
-                    <strong>Pago vía Stripe</strong> — no guardamos tu tarjeta. El pago se procesa
+                    <strong>Pago vía Stripe</strong>: no guardamos tu tarjeta. El pago se procesa
                     íntegramente en la pasarela segura de Stripe.
                   </span>
                 </li>
@@ -122,7 +122,7 @@ const CheckoutPage = () => {
                   source="checkout-page"
                   className="btn-glow cta-pulse bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-6 text-lg rounded-xl"
                 >
-                  Comprar el curso — 47 €
+                  Comprar el curso: 47 €
                 </BuyButton>
                 <p className="text-xs text-muted-foreground mt-3">
                   Pago seguro con tarjeta, PayPal o Link a través de Stripe · Factura para tu
@@ -159,7 +159,7 @@ const CheckoutPage = () => {
                   <CheckCircle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                   <div>
                     <span className="font-semibold text-foreground">
-                      {m.id.toUpperCase()} — {m.title}
+                      {m.id.toUpperCase()}. {m.title}
                     </span>
                     <p className="text-sm text-muted-foreground">{m.description}</p>
                   </div>
