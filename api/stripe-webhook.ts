@@ -113,6 +113,9 @@ function buildOwnerNotification(session: Stripe.Checkout.Session, productType: s
   const country = session.customer_details?.address?.country || "—";
   const sessionId = session.id;
   const when = new Date((session.created || Date.now() / 1000) * 1000).toISOString().replace("T", " ").slice(0, 19);
+  // El dominio llega desde el custom_field del checkout. Si la compra es anterior
+  // a ese cambio, no viene: se marca y se pregunta como antes.
+  const dominio = (session.custom_fields || []).find((f) => f.key === "dominio")?.text?.value || "";
 
   // F2-5: el product type SIEMPRE visible en la notificación. Para curso-auditoria hay
   // trabajo manual pendiente (auditoría HABLA + plan de acción): el subject lo grita.
@@ -123,9 +126,12 @@ function buildOwnerNotification(session: Stripe.Checkout.Session, productType: s
   const manualDeliveryNote = productType === "curso-auditoria"
     ? `
 
-⚠️ ACCIÓN REQUERIDA: este tier incluye auditoría HABLA comentada
-(vídeo/PDF) + plan de acción priorizado. Escribe al cliente para
-confirmar el dominio y entrégala manualmente.`
+⚠️ ACCIÓN REQUERIDA: auditoría HABLA comentada (vídeo/PDF) + plan de
+acción priorizado. Entrega manual.
+
+Dominio: ${dominio || "NO LO DIO — hay que preguntárselo"}${dominio ? `
+Escaneo listo para abrir:
+https://www.esgeo.ai/api/scan?url=${encodeURIComponent(dominio)}&email=${encodeURIComponent(customerEmail)}&limit=10&from=compra-197` : ""}`
     : "";
 
   const text = `Nueva venta en esgeo.ai
@@ -145,7 +151,7 @@ Stripe:    https://dashboard.stripe.com/payments/${sessionId}`;
 <html><head><meta charset="utf-8"></head>
 <body style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#1f2937;line-height:1.55;font-size:15px;max-width:560px;margin:24px auto;padding:0 20px;">
 <h2 style="margin:0 0 16px 0;color:#16a34a;">💰 Nueva venta — €${amount}</h2>
-${productType === "curso-auditoria" ? `<p style="background:#fef3c7;border:1px solid #f59e0b;padding:10px 14px;border-radius:6px;"><strong>⚠️ ACCIÓN REQUERIDA:</strong> este tier incluye auditoría HABLA comentada (vídeo/PDF) + plan de acción priorizado. Escribe al cliente para confirmar el dominio y entrégala manualmente.</p>` : ""}
+${productType === "curso-auditoria" ? `<p style="background:#fef3c7;border:1px solid #f59e0b;padding:10px 14px;border-radius:6px;"><strong>⚠️ ACCIÓN REQUERIDA:</strong> auditoría HABLA comentada (vídeo/PDF) + plan de acción priorizado. Entrega manual.<br><br><strong>Dominio:</strong> ${dominio || "<em>no lo dio — hay que preguntárselo</em>"}${dominio ? `<br><a href="https://www.esgeo.ai/api/scan?url=${encodeURIComponent(dominio)}&amp;email=${encodeURIComponent(customerEmail)}&amp;limit=10&amp;from=compra-197">Abrir el escaneo de las 10 páginas</a>` : ""}</p>` : ""}
 <table style="width:100%;border-collapse:collapse;font-size:14px;">
 <tr><td style="padding:6px 0;color:#6b7280;width:90px;">Cliente</td><td style="padding:6px 0;"><strong>${customerEmail}</strong></td></tr>
 <tr><td style="padding:6px 0;color:#6b7280;">País</td><td style="padding:6px 0;">${country}</td></tr>
