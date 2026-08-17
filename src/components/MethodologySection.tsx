@@ -89,7 +89,7 @@ const MethodologySection = () => {
               source="metodologia-home"
               className="btn-glow cta-pulse bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-6 text-lg rounded-xl"
             >
-              Comprar el curso — 47 €
+              Comprar el curso: 47 €
             </BuyButton>
             <GuaranteeNote compact className="mt-4" />
             <div className="flex flex-wrap justify-center gap-4 mt-4 text-xs text-muted-foreground">
