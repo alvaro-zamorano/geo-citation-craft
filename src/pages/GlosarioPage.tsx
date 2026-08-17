@@ -13,10 +13,10 @@ import { useGeoMetadata } from "@/hooks/useGeoMetadata";
 import { GLOSSARY_TERMS } from "@/data/glossary";
 
 const GlosarioPage = () => {
-  // F1-7: metas sociales (og:/twitter:) — se renderiza ANTES del <Helmet> propio
+  // F1-7: metas sociales (og:/twitter:) se renderizan ANTES del <Helmet> propio
   // para que los valores especificos de la pagina ganen en los tags duplicados.
   const { helmet: socialHelmet } = useGeoMetadata({
-    title: "Glosario GEO | Términos y Definiciones | esGEO",
+    title: "Glosario GEO | Términos y definiciones | esGEO",
     description: "Glosario completo de términos de Generative Engine Optimization (GEO). Definiciones autoritativas para optimización de contenido para IA generativa.",
     canonicalUrl: "https://www.esgeo.ai/glosario",
   });
@@ -32,7 +32,7 @@ const GlosarioPage = () => {
     <div className="min-h-screen bg-background">
       {socialHelmet}
       <Helmet>
-        <title>Glosario GEO | Términos y Definiciones | esGEO</title>
+        <title>Glosario GEO | Términos y definiciones | esGEO</title>
         <meta name="description" content="Glosario completo de términos de Generative Engine Optimization (GEO). Definiciones autoritativas para optimización de contenido para IA generativa." />
         <link rel="canonical" href="https://www.esgeo.ai/glosario" />
         
@@ -117,10 +117,10 @@ const GlosarioPage = () => {
           <header className="mb-12 text-center" id="glosario-header">
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary border border-primary/20 px-4 py-2 rounded-full text-sm font-medium mb-4">
               <BookOpen className="h-4 w-4" />
-              GLOSARIO GEO
+              Glosario GEO
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-4">
-              Términos y Definiciones
+              Términos y definiciones
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-6">
               Definiciones autoritativas para dominar la optimización para IA generativa
@@ -131,7 +131,7 @@ const GlosarioPage = () => {
           {/* Introducción */}
           <HighlightSnippet lastModified="2026-07-15" id="glosario-intro" variant="definition" className="mb-12">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-primary">¿Qué es este Glosario?</h2>
+              <h2 className="text-2xl font-bold text-primary">¿Qué es este glosario?</h2>
               <ShareSectionButton sectionId="glosario-intro" title="introducción al glosario" />
             </div>
             <p className="text-lg leading-relaxed" data-speakable="true">
@@ -144,7 +144,7 @@ const GlosarioPage = () => {
           {/* Términos por Categoría */}
           <section id="terminos-fundamentales" className="mb-12">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-semibold text-primary">Términos Fundamentales</h2>
+              <h2 className="text-3xl font-semibold text-primary">Términos fundamentales</h2>
               <ShareSectionButton sectionId="terminos-fundamentales" title="términos fundamentales" />
             </div>
             <div className="space-y-6">
@@ -168,7 +168,7 @@ const GlosarioPage = () => {
 
           <section id="terminos-tecnicos" className="mb-12">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-semibold text-primary">Términos Técnicos</h2>
+              <h2 className="text-3xl font-semibold text-primary">Términos técnicos</h2>
               <ShareSectionButton sectionId="terminos-tecnicos" title="términos técnicos" />
             </div>
             <div className="space-y-6">
@@ -192,7 +192,7 @@ const GlosarioPage = () => {
 
           <section id="terminos-estrategicos" className="mb-12">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-semibold text-primary">Términos Estratégicos</h2>
+              <h2 className="text-3xl font-semibold text-primary">Términos estratégicos</h2>
               <ShareSectionButton sectionId="terminos-estrategicos" title="términos estratégicos" />
             </div>
             <div className="space-y-6">
@@ -216,7 +216,7 @@ const GlosarioPage = () => {
 
           {/* Contenido Relacionado */}
           <section className="bg-muted/30 rounded-lg p-8 text-center">
-            <h3 className="text-2xl font-bold text-primary mb-4">Continúa Aprendiendo</h3>
+            <h3 className="text-2xl font-bold text-primary mb-4">Continúa aprendiendo</h3>
             <p className="text-muted-foreground mb-6">
               Aplica estos conceptos en nuestro curso completo de GEO
             </p>
@@ -224,7 +224,7 @@ const GlosarioPage = () => {
               <Button variant="outline" asChild>
                 <Link to="/curso">
                   <BookOpen className="h-4 w-4 mr-2" />
-                  Curso Completo
+                  Curso completo
                 </Link>
               </Button>
               <Button variant="outline" asChild>
