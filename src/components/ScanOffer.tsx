@@ -67,11 +67,11 @@ export default function ScanOffer({ result }: ScanOfferProps) {
       );
       const j: ScanResult = await r.json();
       if (!r.ok || j.error) throw new Error(j.detail || j.error || "fallo");
-      if (!j.pages_ok) throw new Error(j.detail || "No pude leer ninguna pagina de ese dominio.");
+      if (!j.pages_ok) throw new Error(j.detail || "No pude leer ninguna página de ese dominio.");
       setScan(j);
     } catch (err) {
       const m = err instanceof Error ? err.message : String(err);
-      setError(m === "fallo" ? "El escaneo fallo. Vuelve a intentarlo en un minuto." : m);
+      setError(m === "fallo" ? "El escaneo falló. Vuelve a intentarlo en un minuto." : m);
     } finally {
       setLoading(false);
     }
@@ -94,7 +94,7 @@ export default function ScanOffer({ result }: ScanOfferProps) {
       throw new Error(j.error || "checkout");
     } catch {
       setBuying(false);
-      setError("No he podido abrir el pago. Escribeme a hola@esgeo.ai y lo resolvemos.");
+      setError("No he podido abrir el pago. Escríbeme a hola@esgeo.ai y lo resolvemos.");
     }
   }
 
@@ -110,11 +110,11 @@ export default function ScanOffer({ result }: ScanOfferProps) {
           </div>
           <div>
             <div className="text-3xl font-bold leading-none text-foreground">{scan.pages_ok}</div>
-            <div className="mt-1 text-xs text-muted-foreground">Paginas leidas</div>
+            <div className="mt-1 text-xs text-muted-foreground">Páginas leídas</div>
           </div>
           <div>
             <div className="text-3xl font-bold leading-none text-foreground">
-              {scan.spread.min}–{scan.spread.max}
+              {scan.spread.min} a {scan.spread.max}
             </div>
             <div className="mt-1 text-xs text-muted-foreground">De la peor a la mejor</div>
           </div>
@@ -154,7 +154,7 @@ export default function ScanOffer({ result }: ScanOfferProps) {
         )}
 
         <div className="mt-5">
-          <h3 className="mb-3 text-sm font-semibold text-foreground">Pagina por pagina, de peor a mejor</h3>
+          <h3 className="mb-3 text-sm font-semibold text-foreground">Página por página, de peor a mejor</h3>
           <ul className="divide-y divide-border">
             {scan.pages.map((p, i) => (
               <li key={i} className="flex items-center justify-between gap-4 py-2 text-sm">
@@ -169,8 +169,8 @@ export default function ScanOffer({ result }: ScanOfferProps) {
 
         <div className="mt-6 border-t border-border pt-5">
           <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-            Arreglar esto tu mismo es el curso. Que lo arregle yo sobre estas {scan.pages_ok} paginas,
-            con el plan priorizado y la evidencia antes/despues, es la auditoria.
+            Arreglar esto tú mismo es el curso. Que lo arregle yo sobre estas {scan.pages_ok} páginas,
+            con el plan priorizado y la evidencia antes/después, es la auditoría.
           </p>
           <Button size="lg" onClick={comprarAuditoria} disabled={buying}>
             {buying ? (
@@ -180,7 +180,7 @@ export default function ScanOffer({ result }: ScanOfferProps) {
               </>
             ) : (
               <>
-                Quiero la auditoria de mi sitio — 197 € <ArrowRight className="ml-2 h-4 w-4" />
+                Quiero la auditoría de mi sitio: 197 € <ArrowRight className="ml-2 h-4 w-4" />
               </>
             )}
           </Button>
@@ -192,13 +192,13 @@ export default function ScanOffer({ result }: ScanOfferProps) {
 
   return (
     <div className="mt-8 rounded-lg border border-border bg-muted/30 p-6 text-left">
-      <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Esto era una pagina</p>
+      <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Esto era una página</p>
       <h3 className="mt-2 text-xl font-semibold leading-snug text-foreground">
-        Tu web tiene mas. Y el fallo suele ser el mismo en todas.
+        Tu web tiene más. Y el fallo suele ser el mismo en todas.
       </h3>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        Cuando un problema se repite pagina tras pagina no es un problema de contenido: es de plantilla.
-        Se arregla una vez y sube el sitio entero. Leo hasta 10 paginas de tu sitemap y te digo cual es el tuyo.
+        Cuando un problema se repite página tras página no es un problema de contenido: es de plantilla.
+        Se arregla una vez y sube el sitio entero. Leo hasta 10 páginas de tu sitemap y te digo cuál es el tuyo.
       </p>
       <form onSubmit={lanzar} className="mt-4 flex flex-col gap-2 sm:flex-row">
         <Input
@@ -217,12 +217,12 @@ export default function ScanOffer({ result }: ScanOfferProps) {
               Escaneando…
             </>
           ) : (
-            "Escanear mis 10 paginas"
+            "Escanear mis 10 páginas"
           )}
         </Button>
       </form>
       <p className="mt-3 text-xs text-muted-foreground">
-        Te enseño el resultado aqui mismo. Sin spam: esto es un informe, no una lista de correo.
+        Te enseño el resultado aquí mismo. Sin spam: esto es un informe, no una lista de correo.
       </p>
       {error && <p className="mt-3 text-sm text-destructive">{error}</p>}
     </div>
