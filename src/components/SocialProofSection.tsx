@@ -6,7 +6,7 @@ import { Bot, BookOpen, FileText, Gauge, ArrowRight } from "lucide-react";
  * Prueba social.
  *
  * Aquí había tres "testimonios" entrecomillados y firmados por "Equipo esGEO" y
- * "Filosofía esGEO" — citas nuestras con formato de reseña de cliente. Y estadísticas
+ * "Filosofía esGEO": citas nuestras con formato de reseña de cliente. Y estadísticas
  * que no podíamos respaldar.
  *
  * Se han sustituido por lo único que es verificable: nos pasamos nuestro propio auditor,
@@ -50,7 +50,7 @@ const SocialProofSection = () => {
                 esgeo.ai estuvo <strong className="text-foreground">invisible para las IAs desde el
                 día en que se publicó</strong>. No fue un despiste puntual: la web está hecha con
                 React y, como cualquier SPA, servía un HTML vacío. Escribimos artículos, publicamos
-                un glosario, lanzamos un curso — y durante todo ese tiempo ningún modelo pudo leer
+                un glosario, lanzamos un curso, y durante todo ese tiempo ningún modelo pudo leer
                 una sola palabra. El HTML que salía de nuestro servidor tenía{" "}
                 <strong className="text-foreground">237 caracteres</strong> de texto.
               </p>
@@ -58,7 +58,7 @@ const SocialProofSection = () => {
                 No lo supimos hasta que construimos el auditor y nos lo pasamos a nosotros mismos.
                 Sacamos un <strong className="text-foreground">35 sobre 100</strong>. La web que
                 vende un curso sobre cómo ser citado por las IAs era, para las IAs, una página en
-                blanco. Aplicamos el método F1–F5 sobre nuestro propio dominio y subimos a{" "}
+                blanco. Aplicamos el método F1-F5 sobre nuestro propio dominio y subimos a{" "}
                 <strong className="text-foreground">92</strong> (auditado el 12 de julio de 2026), con 8.700 caracteres legibles. Ese
                 es el caso de estudio del curso: no uno inventado, el nuestro.
               </p>
