@@ -1,5 +1,5 @@
 /**
- * src/data/glossary.ts — fuente de verdad del glosario GEO (F5-2).
+ * src/data/glossary.ts: fuente de verdad del glosario GEO (F5-2).
  *
  * Antes estos términos vivían inline en GlosarioPage.tsx y GeoTerm.tsx inventaba
  * una definición circular ("Término relacionado con GEO") cuando no recibía la
@@ -140,7 +140,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   {
     id: "chunking",
     term: "Chunking (fragmentación)",
-    definition: "División de un documento en fragmentos que el sistema de recuperación indexa por separado. Explica por qué un bloque autocontenido —que responde entero a una pregunta sin depender del párrafo anterior— se cita mucho más que un texto que exige leerlo todo.",
+    definition: "División de un documento en fragmentos que el sistema de recuperación indexa por separado. Explica por qué un bloque autocontenido (que responde entero a una pregunta sin depender del párrafo anterior) se cita mucho más que un texto que exige leerlo todo.",
     category: "Redacción"
   },
   {
