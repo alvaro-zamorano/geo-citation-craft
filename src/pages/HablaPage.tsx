@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 import { useGeoMetadata } from "@/hooks/useGeoMetadata";
 
 /**
- * /habla — la página pilar que explica EN DETALLE el framework HABLA: el modelo de cinco
+ * /habla: la página pilar que explica EN DETALLE el framework HABLA: el modelo de cinco
  * dimensiones que hay detrás del auditor de esGEO. Cada dimensión con su letra, qué mide,
  * por qué importa y cómo se comprueba con una máquina (no con una opinión). Embebe el
  * auditor en vivo (HablaWidget) para que el visitante ponga su web a hablar.
@@ -236,7 +236,7 @@ const HablaPage = () => {
               <p className="text-base text-foreground">
                 <strong>Definición.</strong> HABLA es un framework de auditoría de{" "}
                 <GeoTerm term="citabilidad">legibilidad para máquinas</GeoTerm> compuesto por cinco
-                dimensiones —Higiene, Accesible, Bloques, Lenguaje y eXtras— que puntúan de 0 a 100 si
+                dimensiones (Higiene, Accesible, Bloques, Lenguaje y eXtras) que puntúan de 0 a 100 si
                 un rastreador de IA como GPTBot o ClaudeBot puede leer, estructurar y citar una web a
                 partir del HTML que sirve el servidor, sin ejecutar JavaScript. Cada dimensión se
                 comprueba con reglas de máquina, no con juicios subjetivos; el auditor devuelve además
@@ -301,8 +301,8 @@ const HablaPage = () => {
 
             <p className="text-sm text-muted-foreground max-w-3xl mx-auto mt-8 text-center">
               El auditor no se queda en el número. Devuelve también el{" "}
-              <strong>rubric versionado</strong> —la versión exacta de las reglas con las que puntuó,
-              porque una nota sin rubric no es una nota— y un <strong>caveat</strong> que recuerda lo
+              <strong>rubric versionado</strong> (la versión exacta de las reglas con las que puntuó,
+              porque una nota sin rubric no es una nota) y un <strong>caveat</strong> que recuerda lo
               que la nota no significa: mide si una máquina <em>puede</em> leerte, no tu autoridad ni
               si de verdad te van a citar.
             </p>
