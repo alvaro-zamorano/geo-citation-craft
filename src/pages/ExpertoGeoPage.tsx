@@ -23,7 +23,7 @@ import { Link } from "react-router-dom";
  * Reglas v2.0 aplicadas:
  *  - Cero cifras inventadas. Rangos de precios marcados como "rango observado" no como verdad universal.
  *  - Sin "garantizado", "exponencial" ni promesas infalsificables.
- *  - CTA prioritario: email a fundador (sin Calendly ya que no está montado). Curso €47 como fallback.
+ *  - CTA prioritario: email a fundador (sin Calendly ya que no está montado). Curso 47 € como fallback.
  */
 
 const ExpertoGeoPage = () => {
@@ -192,7 +192,7 @@ const ExpertoGeoPage = () => {
               <Button asChild size="lg" variant="outline">
                 <Link to="/curso">
                   <BookOpen className="h-5 w-5 mr-2" />
-                  Aprender GEO yo mismo — Curso €47
+                  Aprender GEO yo mismo: curso 47 €
                 </Link>
               </Button>
             </div>
@@ -205,7 +205,7 @@ const ExpertoGeoPage = () => {
               <ShareSectionButton sectionId="que-es-experto-geo" title="qué es un experto GEO" />
             </div>
             <p className="text-lg leading-relaxed mb-4" data-speakable="true">
-              <strong>Un experto GEO (Generative Engine Optimization) es un profesional que diseña contenidos y arquitectura web para que los motores generativos —ChatGPT, Perplexity, Claude y Gemini— citen una marca como fuente.</strong> A diferencia del SEO, no optimiza para clics, sino para ser nombrado dentro de la respuesta que la IA da al usuario.
+              <strong>Un experto GEO (Generative Engine Optimization) es un profesional que diseña contenidos y arquitectura web para que los motores generativos (ChatGPT, Perplexity, Claude y Gemini) citen una marca como fuente.</strong> A diferencia del SEO, no optimiza para clics, sino para ser nombrado dentro de la respuesta que la IA da al usuario.
             </p>
             <p className="text-lg leading-relaxed">
               El trabajo combina cuatro capas: auditoría técnica del sitio (accesibilidad para bots de IA como GPTBot, ClaudeBot, PerplexityBot, Google-Extended), redacción citable (answer-first, párrafos atómicos, datos con fuente), estructura semántica (Schema.org, JSON-LD) y medición continua de menciones en respuestas IA.
@@ -464,7 +464,7 @@ const ExpertoGeoPage = () => {
                   <Button asChild size="lg" variant="outline">
                     <Link to="/curso">
                       <ArrowRight className="h-5 w-5 mr-2" />
-                      Prefiero aprenderlo yo — Curso €47
+                      Prefiero aprenderlo yo: curso 47 €
                     </Link>
                   </Button>
                 </div>
@@ -491,7 +491,7 @@ const ExpertoGeoPage = () => {
                 <p className="text-sm text-muted-foreground">Resultados verificables con captura del modelo.</p>
               </Link>
               <Link to="/curso" className="block p-4 rounded-lg border hover:border-accent transition-colors">
-                <p className="font-semibold text-primary mb-1">Curso GEO completo (€47)</p>
+                <p className="font-semibold text-primary mb-1">Curso GEO completo (47 €)</p>
                 <p className="text-sm text-muted-foreground">La metodología que un experto aplica, para que la apliques tú.</p>
               </Link>
               <Link to="/radar-ia/geo-vs-seo-diferencias" className="block p-4 rounded-lg border hover:border-accent transition-colors">
