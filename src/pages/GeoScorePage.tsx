@@ -12,7 +12,7 @@ import { trackEvent } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
 
 /**
- * /geo-score — antes era un quiz de autoevaluación: el visitante contestaba preguntas y el
+ * /geo-score: antes era un quiz de autoevaluación: el visitante contestaba preguntas y el
  * front calculaba una nota. Era una nota inventada sobre respuestas subjetivas.
  *
  * Ahora la página sirve el auditor real (HABLA): lee el HTML que tu servidor entrega, sin
@@ -27,7 +27,7 @@ const GeoScorePage = () => {
   const [lastResult, setLastResult] = useState<HablaResult | null>(null);
   const { toast } = useToast();
 
-  // F5-8: compartir la nota con URL parametrizada — navigator.share con fallback
+  // F5-8: compartir la nota con URL parametrizada. navigator.share con fallback
   // a portapapeles. SOLO en handler de evento (SSR-safe).
   const shareScore = () => {
     if (!lastResult) return;
@@ -50,7 +50,7 @@ const GeoScorePage = () => {
   const faqs = [
     {
       q: "¿Qué mide exactamente el auditor?",
-      a: "Descarga el HTML que tu servidor entrega —sin ejecutar JavaScript, igual que un crawler de IA— y lo puntúa de 0 a 100 sobre cinco dimensiones: Higiene (robots.txt, sitemap, HTTPS), Accesible (¿hay texto real en el HTML inicial?), Bloques (h1, encabezados, HTML semántico, datos estructurados), Lenguaje (¿el primer bloque responde qué, para quién y cuánto?) y eXtras (llms.txt, señales de citación).",
+      a: "Descarga el HTML que tu servidor entrega (sin ejecutar JavaScript, igual que un crawler de IA) y lo puntúa de 0 a 100 sobre cinco dimensiones: Higiene (robots.txt, sitemap, HTTPS), Accesible (¿hay texto real en el HTML inicial?), Bloques (h1, encabezados, HTML semántico, datos estructurados), Lenguaje (¿el primer bloque responde qué, para quién y cuánto?) y eXtras (llms.txt, señales de citación).",
     },
     {
       q: "¿Por qué mi web puntúa bajo si se ve perfecta en el navegador?",
@@ -62,20 +62,20 @@ const GeoScorePage = () => {
     },
     {
       q: "¿Y si mi puntuación es mala?",
-      a: "Es lo normal: la mayoría de las webs modernas fallan el gate de accesibilidad. El auditor te dice qué arreglar primero; el curso F1–F5 te enseña a arreglarlo todo. La propia esgeo.ai puntuaba un 35 antes de aplicarse su propio método; hoy puntúa 92 (auditado el 12 de julio de 2026).",
+      a: "Es lo normal: la mayoría de las webs modernas fallan el gate de accesibilidad. El auditor te dice qué arreglar primero; el curso F1-F5 te enseña a arreglarlo todo. La propia esgeo.ai puntuaba un 35 antes de aplicarse su propio método; hoy puntúa 92 (auditado el 12 de julio de 2026).",
     },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Auditor GEO gratuito — ¿tu web habla con las IAs? | esGEO</title>
+        <title>Auditor GEO gratuito: ¿tu web habla con las IAs? | esGEO</title>
         <meta
           name="description"
           content="Analiza gratis si ChatGPT, Perplexity, Claude y Gemini pueden leer tu web. Puntuación 0-100 sobre el HTML real que sirve tu servidor, sin ejecutar JavaScript. Sin registro."
         />
         <link rel="canonical" href="https://www.esgeo.ai/geo-score" />
-        <meta property="og:title" content="Auditor GEO gratuito — ¿tu web habla con las IAs?" />
+        <meta property="og:title" content="Auditor GEO gratuito: ¿tu web habla con las IAs?" />
         <meta
           property="og:description"
           content="Puntuación 0-100 de la legibilidad de tu web para los modelos de IA. Gratis y sin registro."
@@ -83,7 +83,7 @@ const GeoScorePage = () => {
         <script type="application/ld+json">{JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            name: "HABLA — auditor de legibilidad máquina",
+            name: "HABLA: auditor de legibilidad máquina",
             url: "https://www.esgeo.ai/geo-score",
             applicationCategory: "DeveloperApplication",
             operatingSystem: "Web",
@@ -121,9 +121,9 @@ const GeoScorePage = () => {
                 className="snippet-block text-lg text-muted-foreground max-w-2xl mx-auto"
                 data-speakable="true"
               >
-                Este auditor descarga el HTML que tu servidor entrega de verdad —{" "}
-                <strong>sin ejecutar JavaScript, igual que GPTBot, ClaudeBot o PerplexityBot</strong>{" "}
-                — y lo puntúa de 0 a 100 sobre cinco dimensiones: Higiene, Accesible, Bloques,
+                Este auditor descarga el HTML que tu servidor entrega de verdad,{" "}
+                <strong>sin ejecutar JavaScript, igual que GPTBot, ClaudeBot o PerplexityBot</strong>
+                , y lo puntúa de 0 a 100 sobre cinco dimensiones: Higiene, Accesible, Bloques,
                 Lenguaje y eXtras. Es gratuito, no pide registro y tarda unos diez segundos. Si tu
                 web está hecha con React, Vue o Angular sin renderizado en servidor, es probable que
                 suspenda: el HTML que sale de tu servidor está vacío y el crawler no ve nada.
@@ -148,7 +148,7 @@ const GeoScorePage = () => {
               <div className="mt-4 text-center">
                 <Button variant="outline" onClick={shareScore}>
                   <Share2 className="h-4 w-4 mr-2" />
-                  Compartir mi nota — {lastResult.total}/100
+                  Compartir mi nota: {lastResult.total}/100
                 </Button>
               </div>
             )}
@@ -197,7 +197,7 @@ const GeoScorePage = () => {
               un HTML vacío de 237 caracteres, gate de accesibilidad suspendido. Cuando pasamos este
               mismo auditor por nuestra propia web, sacó un <strong>35</strong>. La web que
               vende un curso sobre cómo ser citado por las IAs era, para las IAs, una página en
-              blanco. Lo arreglamos aplicando el método F1–F5 y publicamos el antes y el después.
+              blanco. Lo arreglamos aplicando el método F1-F5 y publicamos el antes y el después.
               Puedes auditarnos tú mismo con el formulario de arriba.
             </p>
           </div>
@@ -232,7 +232,7 @@ const GeoScorePage = () => {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild size="lg" variant="secondary">
                 <Link to="/curso">
-                  Ver el curso — 47 € <ArrowRight className="h-4 w-4 ml-2" />
+                  Ver el curso: 47 € <ArrowRight className="h-4 w-4 ml-2" />
                 </Link>
               </Button>
               <Button
