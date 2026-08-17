@@ -117,8 +117,8 @@ const HiperpersonalizacionPage = () => {
                 data-speakable="true"
               >
                 La hiperpersonalización en tiempo real cambia el contenido de una página según
-                señales de tu sesión —de dónde llegas, si ya habías estado, cuánto interés
-                muestras— y lo hace <strong>entero en tu navegador</strong>: sin backend, sin
+                señales de tu sesión (de dónde llegas, si ya habías estado, cuánto interés
+                muestras) y lo hace <strong>entero en tu navegador</strong>: sin backend, sin
                 login, sin cookies de terceros y sin enviar tus datos a ningún sitio. Aquí te
                 enseñamos cómo funciona, con el mismo motor que corre en esta web.
               </p>
@@ -157,8 +157,8 @@ const HiperpersonalizacionPage = () => {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 La norma de oro es que el <strong className="text-foreground">default va
                 primero</strong>. La página se construye completa y correcta sin ninguna
-                personalización —eso es lo que ven los buscadores y los modelos de IA que
-                rastrean esta web— y los cambios se aplican encima, solo en tu navegador. Si el
+                personalización (eso es lo que ven los buscadores y los modelos de IA que
+                rastrean esta web) y los cambios se aplican encima, solo en tu navegador. Si el
                 motor falla, no carga o lo bloqueas, no se rompe nada: ves la versión genérica,
                 que también está pensada para funcionar.
               </p>
