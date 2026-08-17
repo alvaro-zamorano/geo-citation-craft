@@ -36,7 +36,7 @@ interface HablaWidgetProps {
  */
 export default function HablaWidget({
   title = "¿Tu web habla con las IAs?",
-  subtitle = "Escribe tu dominio. En 10 segundos sabrás qué ve ChatGPT cuando entra en tu web — que casi nunca es lo que ves tú.",
+  subtitle = "Escribe tu dominio. En 10 segundos sabrás qué ve ChatGPT cuando entra en tu web: casi nunca es lo que ves tú.",
   className = "",
   initialUrl,
   onAnalyzeStart,
@@ -236,7 +236,7 @@ export default function HablaWidget({
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <Button asChild size="lg" className="flex-1">
                 <Link to="/curso" onClick={() => onResultCtaClick?.("curso", result.grade)}>
-                  Arreglarlo con el curso — 47 €
+                  Arreglarlo yo mismo: el curso, 47 €
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Link>
               </Button>
