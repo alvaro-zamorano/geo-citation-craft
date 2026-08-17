@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HablaWidget from "@/components/HablaWidget";
 import { Button } from "@/components/ui/button";
+import ScanOffer from "@/components/ScanOffer";
 import { type HablaResult } from "@/lib/habla";
 import { trackEvent } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
@@ -151,6 +152,10 @@ const GeoScorePage = () => {
                 </Button>
               </div>
             )}
+
+            {/* El segundo paso: una pagina no es un sitio. Aqui es donde el
+                auditor deja de ser un juguete y empieza a capturar leads. */}
+            {lastResult && <ScanOffer result={lastResult} />}
 
             {/* Cómo funciona */}
             <div className="grid md:grid-cols-3 gap-4 mt-12">
