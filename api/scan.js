@@ -116,6 +116,51 @@ const uuid4 = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c =>
   return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
 });
 
+// Un escaneo es una senal de compra mucho mas fuerte que un analisis suelto:
+// alguien acaba de dar su email para ver su sitio entero. Se avisa en caliente,
+// con el reply-to apuntando al prospecto para poder contestarle de una tecla.
+async function avisarOwner(d, email, referrer) {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return;
+  const to = process.env.OWNER_EMAIL || 'azmglg@gmail.com';
+  const dominio = String(d.url).replace(/^https?:\/\//, '');
+  const top = (d.repeated_issues || []).slice(0, 3)
+    .map(p => `- ${p.win} (${p.pages}/${d.pages_ok} paginas)`).join('\n');
+  const text = `Alguien ha escaneado su sitio en esgeo.ai
+
+Email:    ${email}
+Web:      ${d.url}
+Nota:     ${d.site_score} (${d.site_grade})
+Paginas:  ${d.pages_ok}
+Peor:     ${d.worst.url} (${d.worst.total})
+Origen:   ${referrer || 'scan'}
+
+Lo que se le repite:
+${top || '- nada repetido: sus problemas son puntuales'}
+
+Titular del informe:
+${d.headline}
+
+Este lead ya tiene la auditoria medio hecha. Es el candidato natural al
+tier de 197 EUR: responde a este email y le llega a el directamente.`;
+  try {
+    const r = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: 'Bearer ' + key, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: 'esGEO scan <ventas@esgeo.ai>',
+        to: [to],
+        reply_to: email,
+        subject: `Escaneo esGEO: ${dominio} — ${d.site_score}/100 (${email})`,
+        text
+      })
+    });
+    if (!r.ok) console.error('[scan] Resend ' + r.status + ': ' + (await r.text()).slice(0, 200));
+  } catch (e) {
+    console.error('[scan] aviso al owner fallido:', e.message);
+  }
+}
+
 async function logScan(rows, email, scanId, referrer) {
   try {
     await fetch(SB_URL + '/rest/v1/habla_analyses', {
@@ -202,6 +247,7 @@ export default async function handler(req, res) {
     };
 
     await logScan(results.filter(r => r.http === 200), email, scanId, String(q.from || '').slice(0, 40));
+    await avisarOwner(out, email, String(q.from || '').slice(0, 40));
     res.status(200).json(out);
   } catch (e) {
     res.status(500).json({ error: 'Escaneo fallido', detail: String(e).slice(0, 140) });
