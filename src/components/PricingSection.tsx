@@ -21,11 +21,11 @@ type Plan = {
 };
 
 const PricingSection = () => {
-  // F2-5: tercer tier ancla (197 €) — entrega manual de la auditoría.
+  // F2-5: tercer tier ancla (197 €), entrega manual de la auditoría.
   // H-9: pendiente de aprobación de Álvaro (aprobar o retirar).
   const plans: Plan[] = [
     {
-      name: "F0 — Empieza gratis",
+      name: "F0. Empieza gratis",
       price: "0",
       description: "Audita tu web y lee el primer módulo. Sin pagar.",
       icon: Users,
@@ -41,28 +41,28 @@ const PricingSection = () => {
       highlight: false,
     },
     {
-      name: "Curso Completo",
+      name: "Curso completo",
       price: String(COMPLETE_COURSE.price),
 
       description: "Todo el framework GEO en un pack.",
       icon: Crown,
       features: COMPLETE_COURSE.features,
-      cta: "Comprar el curso — 47 €",
+      cta: "Comprar el curso: 47 €",
       variant: "default" as const,
       highlight: true,
     },
     {
-      name: "Curso + Auditoría personalizada",
+      name: "Curso + auditoría personalizada",
       price: "197",
-      description: "El curso completo más nuestra auditoría de tu dominio.",
+      description: "No lo arreglas tú: lo audito yo sobre tu dominio y te digo por dónde empezar.",
       icon: Search,
       features: [
-        "Todo lo del Curso Completo (F1-F5, 142 páginas)",
-        "Auditoría HABLA de tu dominio, comentada en vídeo/PDF",
-        "Plan de acción priorizado: qué arreglar y en qué orden",
-        "Entrega personal por email, con seguimiento directo",
+        "Auditoría HABLA de tu dominio, página por página",
+        "El fallo que se repite en tu plantilla, que es el que sube todo el sitio de golpe",
+        "Plan de acción priorizado: qué tocar, en qué orden y cuánto cuesta cada cosa",
+        "El curso completo (F1-F5) incluido",
       ],
-      cta: "Comprar curso + auditoría — 197 €",
+      cta: "Comprar curso + auditoría: 197 €",
       variant: "default" as const,
       highlight: false,
       productType: "curso-auditoria" as const,
