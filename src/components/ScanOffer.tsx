@@ -31,6 +31,7 @@ interface ScanResult {
   spread: { min: number; max: number };
   headline: string;
   repeated_issues: RepeatedIssue[];
+  site_issues?: RepeatedIssue[];
   pages: { url: string; total: number; grade: string }[];
   detail?: string;
   error?: string;
@@ -131,6 +132,21 @@ export default function ScanOffer({ result }: ScanOfferProps) {
                     {p.pages}/{scan.pages_ok}
                   </span>
                   <span className="text-muted-foreground">{p.win}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {scan.site_issues && scan.site_issues.length > 0 && (
+          <div className="mt-5">
+            <h3 className="mb-3 text-sm font-semibold text-foreground">
+              De sitio: un fichero, un arreglo
+            </h3>
+            <ul className="space-y-2">
+              {scan.site_issues.map((p, i) => (
+                <li key={i} className="text-sm leading-relaxed text-muted-foreground">
+                  {p.win}
                 </li>
               ))}
             </ul>
