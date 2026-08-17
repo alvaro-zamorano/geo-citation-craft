@@ -11,7 +11,7 @@ import { Card, CardContent } from "@/components/ui/card";
  *
  * Ese es el argumento honesto Y el argumento comercial. La nota no compra autoridad.
  * Elimina el motivo técnico por el que hoy no te citan. Es una condición necesaria,
- * no suficiente — y decirlo es exactamente lo que nos hace creíbles.
+ * no suficiente, y decirlo es exactamente lo que nos hace creíbles.
  */
 
 interface Row {
