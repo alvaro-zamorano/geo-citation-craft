@@ -15,7 +15,7 @@ interface BuyButtonProps {
 }
 
 /**
- * BuyButton — el único camino a la compra.
+ * BuyButton: el único camino a la compra.
  *
  * Antes, los CTA de la home y de los módulos enlazaban a `/checkout`, que era una
  * página que solo hacía `navigate('/curso#comprar')`. El usuario pagaba dos saltos y
@@ -23,7 +23,7 @@ interface BuyButtonProps {
  * Ahora cualquier "comprar" abre Stripe directamente.
  */
 export default function BuyButton({
-  children = "Comprar el curso — 47 €",
+  children = "Comprar el curso: 47 €",
   className = "btn-cta",
   source,
   showArrow = true,
