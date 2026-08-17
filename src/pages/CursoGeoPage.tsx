@@ -42,6 +42,10 @@ const CursoGeoPage = () => {
   });
 
   const { visitorState, visitCount, isFromAI } = useVisitorState();
+  // Misma comprobación que HablaWidget: para un lead o un cliente, EmailCapture
+  // devuelve null. La sección que lo envuelve se condiciona igual para no dejar
+  // un bloque vacío con su padding.
+  const isKnownVisitor = visitorState === 'lead' || visitorState === 'customer';
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [showMobileCTA, setShowMobileCTA] = useState(false);
@@ -110,7 +114,7 @@ const CursoGeoPage = () => {
     {
       id: 'faq-chatgpt-cite',
       question: '¿El curso enseña a hacer que ChatGPT cite mi web concretamente?',
-      answer: 'Sí. El módulo F3 (Autoridad Generativa) tiene una sección específica para ChatGPT con búsqueda activa: cómo aparecer en sus respuestas con cita en formato markdown, qué señales E-E-A-T valora y qué estructura HTML rinde mejor. Incluye plantillas listas para aplicar y un protocolo de auditoría para detectar si tu marca ya está siendo citada y cómo escalar la frecuencia.',
+      answer: 'Sí. El módulo F3 (Autoridad generativa) tiene una sección específica para ChatGPT con búsqueda activa: cómo aparecer en sus respuestas con cita en formato markdown, qué señales E-E-A-T valora y qué estructura HTML rinde mejor. Incluye plantillas listas para aplicar y un protocolo de auditoría para detectar si tu marca ya está siendo citada y cómo escalar la frecuencia.',
     },
     {
       id: 'faq-resultados-tiempo',
@@ -201,7 +205,7 @@ const CursoGeoPage = () => {
     }
     if (visitCount > 1) {
       return {
-        title: 'Sigues pensando en GEO — es hora de actuar',
+        title: 'Sigues pensando en GEO: es hora de actuar',
         subtitle: 'El primer curso en español de Generative Engine Optimization',
       };
     }
@@ -260,9 +264,9 @@ const CursoGeoPage = () => {
                 data-speakable="true"
               >
                 El <strong>curso GEO de esGEO</strong> enseña a estructurar una web para que los
-                motores generativos la citen. Son <strong>5 módulos</strong> —F1 Accesibilidad para
+                motores generativos la citen. Son <strong>5 módulos</strong> (F1 Accesibilidad para
                 crawlers de IA, F2 Contexto semántico, F3 Autoridad generativa, F4 Validación
-                conversacional y F5 Mantenimiento— con guías PDF descargables y plantillas listas
+                conversacional y F5 Mantenimiento) con guías PDF descargables y plantillas listas
                 para aplicar. Precio: <strong>47 € de pago único</strong>, sin suscripción, con
                 acceso inmediato y los PDFs tuyos para siempre. Está pensado para fundadores,
                 responsables de marketing y especialistas SEO que ya tienen web y quieren aparecer
@@ -279,7 +283,7 @@ const CursoGeoPage = () => {
                   onClick={handleHeroCTA}
                   className="btn-cta text-lg cursor-pointer transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
                 >
-                  Quiero dominar GEO — €47
+                  Ver qué incluye
                 </button>
               </div>
               <p className="text-sm text-muted-foreground flex items-center justify-center gap-2 pt-4">
@@ -338,7 +342,7 @@ const CursoGeoPage = () => {
               {/* Problem */}
               <div className="text-center">
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                  El Problema: Tu web es invisible para las IA generativas
+                  El problema: tu web es invisible para las IA generativas
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   Mientras tu competencia es citada por ChatGPT, tu marca no aparece en ninguna respuesta.
@@ -349,7 +353,7 @@ const CursoGeoPage = () => {
               <div className="grid md:grid-cols-2 gap-8">
                 <Card className="border-destructive/20 bg-destructive/5 card-clay">
                   <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg mb-4 text-foreground">Antes: Sin GEO</h3>
+                    <h3 className="font-bold text-lg mb-4 text-foreground">Antes: sin GEO</h3>
                     <ul className="space-y-3 text-sm">
                       <li className="flex gap-3">
                         <span className="text-destructive">✗</span>
@@ -373,7 +377,7 @@ const CursoGeoPage = () => {
 
                 <Card className="border-accent/20 bg-accent/5 card-clay">
                   <CardContent className="pt-6">
-                    <h3 className="font-bold text-lg mb-4 text-foreground">Después: Con GEO</h3>
+                    <h3 className="font-bold text-lg mb-4 text-foreground">Después: con GEO</h3>
                     <ul className="space-y-3 text-sm">
                       <li className="flex gap-3">
                         <span className="text-accent">✓</span>
@@ -399,7 +403,7 @@ const CursoGeoPage = () => {
               {/* Solution */}
               <Card className="border-primary/20 bg-primary/5 card-clay">
                 <CardContent className="pt-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-4">La Solución: Aprende GEO</h3>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">La solución: aprende GEO</h3>
                   <p className="text-lg text-muted-foreground mb-4">
                     Este curso te enseña a optimizar tu contenido específicamente para la era de la búsqueda generativa.
                   </p>
@@ -418,7 +422,7 @@ const CursoGeoPage = () => {
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                5 Módulos Progresivos
+                5 módulos progresivos
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Desde fundamentos hasta técnicas avanzadas, todo lo que necesitas para dominar GEO
@@ -460,7 +464,7 @@ const CursoGeoPage = () => {
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-4 max-w-4xl">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
-              Resultados Verificables
+              Resultados verificables
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -489,18 +493,22 @@ const CursoGeoPage = () => {
           </div>
         </section>
 
-        {/* Email Capture */}
-        <section className="py-16 md:py-24 bg-secondary/30">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <EmailCapture source="course_page" />
-          </div>
-        </section>
+        {/* Email Capture — EmailCapture devuelve null si el visitante ya es lead o
+            cliente. La sección se condiciona con la MISMA comprobación para que no
+            quede un bloque vacío con su padding. */}
+        {!isKnownVisitor && (
+          <section className="py-16 md:py-24 bg-secondary/30">
+            <div className="container mx-auto px-4 max-w-4xl">
+              <EmailCapture source="course_page" />
+            </div>
+          </section>
+        )}
 
         {/* FAQ Section */}
         <section className="py-16 md:py-24 bg-secondary/30">
           <div className="container mx-auto px-4 max-w-4xl">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
-              Preguntas Frecuentes
+              Preguntas frecuentes
             </h2>
 
             <Accordion type="single" collapsible className="space-y-3">
@@ -591,7 +599,7 @@ const CursoGeoPage = () => {
                         Procesando...
                       </>
                     ) : (
-                      'Quiero dominar GEO — €47'
+                      'Quiero el curso: 47 €'
                     )}
                   </button>
 
