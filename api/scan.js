@@ -126,6 +126,8 @@ async function avisarOwner(d, email, referrer) {
   const dominio = String(d.url).replace(/^https?:\/\//, '');
   const top = (d.repeated_issues || []).slice(0, 3)
     .map(p => `- ${p.win} (${p.pages}/${d.pages_ok} paginas)`).join('\n');
+  const sitio = (d.site_issues || []).slice(0, 3)
+    .map(p => `- ${p.win}`).join('\n');
   const text = `Alguien ha escaneado su sitio en esgeo.ai
 
 Email:    ${email}
@@ -135,8 +137,11 @@ Paginas:  ${d.pages_ok}
 Peor:     ${d.worst.url} (${d.worst.total})
 Origen:   ${referrer || 'scan'}
 
-Lo que se le repite:
+Lo que se le repite pagina tras pagina (es de plantilla):
 ${top || '- nada repetido: sus problemas son puntuales'}
+
+De sitio (un fichero, un arreglo):
+${sitio || '- nada'}
 
 Titular del informe:
 ${d.headline}
