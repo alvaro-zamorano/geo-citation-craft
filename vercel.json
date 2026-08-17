@@ -78,6 +78,12 @@
     "api/premium-health.ts": {
       "maxDuration": 10,
       "includeFiles": "premium/**"
+    },
+    "api/analyze.js": {
+      "maxDuration": 30
+    },
+    "api/scan.js": {
+      "maxDuration": 60
     }
   },
   "headers": [
