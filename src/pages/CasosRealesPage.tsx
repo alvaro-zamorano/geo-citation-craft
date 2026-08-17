@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { useGeoMetadata } from "@/hooks/useGeoMetadata";
 
 const CasosRealesPage = () => {
-  // F1-7: esta página no tenía <Helmet> — título, description, canonical y metas
+  // F1-7: esta página no tenía <Helmet>: título, description, canonical y metas
   // sociales salen del hook.
   const { helmet: socialHelmet } = useGeoMetadata({
     title: "Por qué funciona GEO: evidencia y casos verificables | esGEO",
@@ -222,7 +222,7 @@ const CasosRealesPage = () => {
                     <div>
                       <h3 className="font-semibold text-primary mb-2">Busca &quot;curso de GEO&quot; en Google</h3>
                       <p className="text-sm text-muted-foreground">
-                        Estamos en la primera página. No porque lo digamos nosotros — porque aplicamos nuestra propia metodología.
+                        Estamos en la primera página. No porque lo digamos nosotros: porque aplicamos nuestra propia metodología.
                       </p>
                     </div>
                   </div>
@@ -298,14 +298,14 @@ const CasosRealesPage = () => {
               </CardHeader>
               <CardContent className="space-y-4 text-center">
                 <p className="text-muted-foreground">
-                  Lanzamos en 2025. No somos una plataforma masiva — somos profesionales que vimos el cambio hacia motores generativos antes que la mayoría y decidimos crear el recurso que nos habría gustado tener.
+                  Lanzamos en 2025. No somos una plataforma masiva: somos profesionales que vimos el cambio hacia motores generativos antes que la mayoría y decidimos crear el recurso que nos habría gustado tener.
                 </p>
                 <p className="text-muted-foreground">
                   No fabricamos testimonios. No inflamos números. Cada afirmación en esta página es verificable por ti en menos de un minuto.
                 </p>
                 <div className="pt-4">
                   <p className="text-sm font-medium text-primary">
-                    La mejor prueba de que GEO funciona es que estás leyendo esto — probablemente porque Google o una IA te trajo aquí.
+                    La mejor prueba de que GEO funciona es que estás leyendo esto, probablemente porque Google o una IA te trajo aquí.
                   </p>
                 </div>
               </CardContent>
