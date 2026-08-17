@@ -22,7 +22,7 @@ const RUBRIC = '2.0';
 // una herramienta que no declara sus límites no está midiendo, está vendiendo.
 const CAVEAT = 'HABLA mide si una máquina PUEDE leerte y extraer una afirmación citable. ' +
   'No mide autoridad. Wikipedia saca 68 en este mismo rubric y los modelos la citan cada día, ' +
-  'porque la autoridad no se marca: se gana. Una nota alta no te compra citas — elimina el ' +
+  'porque la autoridad no se marca: se gana. Una nota alta no te compra citas: elimina el ' +
   'motivo técnico por el que hoy no te citan. El rubric es público y va versionado.';
 
 // El eje L (answerability) asume que la página TIENE algo que afirmar: un producto, un
