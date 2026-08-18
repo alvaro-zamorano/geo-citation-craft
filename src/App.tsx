@@ -29,6 +29,7 @@ const ContenidoIAPage = React.lazy(() => import("./pages/ContenidoIAPage"));
 const HiperpersonalizacionPage = React.lazy(() => import("./pages/HiperpersonalizacionPage"));
 const MachineReadabilityPage = React.lazy(() => import("./pages/MachineReadabilityPage"));
 const HablaPage = React.lazy(() => import("./pages/HablaPage"));
+const AuditoriaPage = React.lazy(() => import("./pages/AuditoriaPage"));
 const CheckoutPage = React.lazy(() => import("./pages/CheckoutPage"));
 const PurchaseSuccessPage = React.lazy(() => import("./pages/PurchaseSuccessPage"));
 const UnsubscribePage = React.lazy(() => import("./pages/UnsubscribePage"));
@@ -110,6 +111,7 @@ export function AppRoutes() {
               <Route path="/hiperpersonalizacion" element={<HiperpersonalizacionPage />} />
               <Route path="/machine-readability" element={<MachineReadabilityPage />} />
               <Route path="/habla" element={<HablaPage />} />
+              <Route path="/auditoria" element={<AuditoriaPage />} />
               <Route path="/consultor-geo" element={<Navigate to="/experto-geo" replace />} />
               <Route path="/especialista-geo" element={<Navigate to="/experto-geo" replace />} />
               <Route path="/checkout" element={<CheckoutPage />} />
