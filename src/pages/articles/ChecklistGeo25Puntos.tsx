@@ -127,7 +127,7 @@ const ChecklistGeo25Puntos = () => {
                 <p className="text-xl leading-relaxed">
                   <strong>Esta es una checklist de 25 puntos para auditar si tu web está lista para la IA
                   generativa</strong>, agrupada en las cinco dimensiones del framework{" "}
-                  <strong>HABLA</strong>: Higiene, Accesible, Bloques, Lenguaje y eXtras &mdash; cinco puntos
+                  <strong>HABLA</strong>: Higiene, Accesible, Bloques, Lenguaje y eXtras, cinco puntos
                   por dimensión. Cada punto incluye por qué importa y cómo verificarlo tú mismo. Pensada como
                   pieza de referencia para recorrer de arriba abajo antes de publicar o rediseñar.
                 </p>
@@ -426,7 +426,7 @@ const ChecklistGeo25Puntos = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
 
