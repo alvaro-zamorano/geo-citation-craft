@@ -169,7 +169,7 @@ const DatosEstructuradosModelosGenerativos = () => {
                 </ul>
 
                 <div className="bg-success/5 border border-success/20 p-4 rounded-lg mb-4">
-                  <h4 className="font-semibold text-success mb-2">✅ Implementación en este artículo</h4>
+                  <h4 className="font-semibold text-success mb-2">Implementación en este artículo</h4>
                   <p className="text-sm text-success">
                     Esta página usa Article + SpeakableSpecification para los snippets destacados. 
                     Cada <code>HighlightSnippet</code> tiene un ID único que puede ser citado individualmente.
@@ -224,7 +224,7 @@ const DatosEstructuradosModelosGenerativos = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
             {/* F2-7: captura de email al final del artículo */}
