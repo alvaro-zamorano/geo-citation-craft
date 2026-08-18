@@ -154,7 +154,7 @@ const ModuloF3Page = () => {
               MÓDULO F3
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-4">
-              Autoridad Generativa
+              Autoridad generativa
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground italic mb-6">
               "Para aparecer en una respuesta generada por IA, no basta con existir: debes ser digno de confianza para el modelo."
@@ -165,7 +165,7 @@ const ModuloF3Page = () => {
           {/* Objetivo del Módulo */}
           <section id="f3-objetivo" className="mb-12 section-anchor">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-semibold text-primary">Objetivo del Módulo</h2>
+              <h2 className="text-3xl font-semibold text-primary">Objetivo del módulo</h2>
               <ShareSectionButton sectionId="f3-objetivo" title="objetivo del módulo" />
             </div>
             <HighlightSnippet lastModified="2026-07-15" variant="definition" className="mb-6">
@@ -181,7 +181,7 @@ const ModuloF3Page = () => {
           {/* Cómo entiende un LLM la Autoridad */}
           <section id="f3-entendimiento-llm" className="mb-12 section-anchor">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-semibold text-primary">¿Cómo entiende un LLM la Autoridad?</h2>
+              <h2 className="text-3xl font-semibold text-primary">¿Cómo entiende un LLM la autoridad?</h2>
               <ShareSectionButton sectionId="f3-entendimiento-llm" title="entendimiento LLM autoridad" />
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
@@ -216,7 +216,7 @@ const ModuloF3Page = () => {
               {/* Indicador de contenido bloqueado */}
               <div className="bg-gradient-to-t from-background to-transparent h-12 -mt-12 relative z-10"></div>
               <div className="text-center text-muted-foreground text-sm italic mt-2">
-                ✨ Tabla completa con 15+ señales de autoridad disponible en el contenido premium
+                Tabla completa con 15+ señales de autoridad disponible en el contenido premium
               </div>
             </div>
 
@@ -374,7 +374,7 @@ const ModuloF3Page = () => {
 
           {/* Call to Action para desbloquear contenido */}
           <div className="mt-16 p-8 bg-gradient-to-r from-accent/10 to-primary/10 border border-accent/20 rounded-xl text-center">
-            <h3 className="text-2xl font-bold text-primary mb-4">🔓 Desbloquea el Módulo F3 Completo</h3>
+            <h3 className="text-2xl font-bold text-primary mb-4">Desbloquea el módulo F3 completo</h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
               Accede a la tabla completa con 15+ señales de autoridad, checklist detallado, 
               prompt optimizado para LLMs y herramientas especializadas.
@@ -383,10 +383,10 @@ const ModuloF3Page = () => {
               {/* Antes: "Desbloquear F3 por €10". Los módulos sueltos ya no se venden:
                   ese botón llevaba a un producto que no existe. */}
               <BuyButton source="modulo-f3" className="btn-cta">
-                Desbloquear los 5 módulos — 47 €
+                Desbloquear los 5 módulos: 47 €
               </BuyButton>
               <Button variant="outline" size="lg" asChild>
-                <Link to="/curso">Ver Todos los Módulos</Link>
+                <Link to="/curso">Ver todos los módulos</Link>
               </Button>
             </div>
             <GuaranteeNote compact className="mt-4" />
