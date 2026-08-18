@@ -148,7 +148,7 @@ const GeoParaEcommerce = () => {
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Durante veinte años, el SEO de ecommerce tuvo un único objetivo medible: que el usuario
                   viera tu ficha en el buscador y <em>hiciera clic</em> para llegar a ella. Toda la
-                  optimización &mdash; el título, la meta descripción, los enlaces internos &mdash; empujaba
+                  optimización (el título, la meta descripción, los enlaces internos) empujaba
                   hacia ese clic. El GEO cambia la pregunta. Cuando alguien escribe en ChatGPT o Perplexity
                   &laquo;¿mejor mochila impermeable por menos de 100&nbsp;&euro;?&raquo;, no va a recibir diez
                   enlaces azules: va a recibir una respuesta redactada con dos o tres productos concretos
@@ -285,8 +285,8 @@ const GeoParaEcommerce = () => {
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Las preguntas de compra en IA son casi siempre comparativas: &laquo;¿mejor X para Y?&raquo;,
                   &laquo;¿A o B para Z?&raquo;, &laquo;alternativas a W por menos de N euros&raquo;. Si en tu
-                  web publicas guías de compra y comparativas honestas &mdash;con tablas de características,
-                  rangos de precio y recomendaciones por caso de uso&mdash; le estás dando al modelo el texto
+                  web publicas guías de compra y comparativas honestas (con tablas de características,
+                  rangos de precio y recomendaciones por caso de uso) le estás dando al modelo el texto
                   ya masticado que necesita para responder. Una guía tipo &laquo;Cómo elegir mochila
                   impermeable: capacidad, materiales y precio&raquo; que enlaza a tus productos concretos es
                   una de las piezas con más <GeoTerm term="citabilidad">citabilidad</GeoTerm> del ecommerce.
@@ -325,8 +325,8 @@ const GeoParaEcommerce = () => {
                   Categorías, ItemList y feeds
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  Las páginas de categoría son mapas del catálogo. Marcarlas con <code>ItemList</code> &mdash;
-                  la lista ordenada de productos que contienen&mdash; ayuda al motor a entender qué vendes y
+                  Las páginas de categoría son mapas del catálogo. Marcarlas con <code>ItemList</code>{" "}
+                  (la lista ordenada de productos que contienen) ayuda al motor a entender qué vendes y
                   cómo se agrupa. Sumado a un feed de producto bien mantenido (nombre, precio, disponibilidad,
                   identificadores), das una imagen coherente de tu inventario que la IA puede leer sin
                   reconstruirla ficha a ficha. La coherencia entre lo que dice el feed, el schema y el HTML
@@ -334,7 +334,7 @@ const GeoParaEcommerce = () => {
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   Un archivo <GeoTerm term="llms-txt">llms.txt</GeoTerm> puede orientar además a los modelos
-                  hacia tus páginas más valiosas &mdash;guías, categorías principales, productos destacados&mdash;
+                  hacia tus páginas más valiosas (guías, categorías principales, productos destacados)
                   a modo de índice legible por máquinas. No sustituye al schema, pero refuerza qué partes del
                   catálogo quieres que se consideren primero.
                 </p>
@@ -348,7 +348,7 @@ const GeoParaEcommerce = () => {
                   Las reseñas de clientes son material que las IAs <strong>sintetizan</strong>. Cuando alguien
                   pregunta &laquo;¿es cómoda esta silla para ocho horas de trabajo?&raquo;, el modelo tira de
                   las opiniones publicadas para construir un veredicto. Publícalas como texto en la página
-                  &mdash;no solo dentro de un widget que carga por JavaScript&mdash; y márcalas con schema
+                  (no solo dentro de un widget que carga por JavaScript) y márcalas con schema
                   review únicamente cuando sean reales. Diez reseñas concretas y variadas valen más, para la
                   síntesis, que un &laquo;4,8 estrellas&raquo; sin contexto.
                 </p>
@@ -421,7 +421,7 @@ const GeoParaEcommerce = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
 
