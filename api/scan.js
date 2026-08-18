@@ -180,6 +180,84 @@ async function logScan(rows, email, scanId, referrer) {
   } catch { /* nunca bloquear la respuesta */ }
 }
 
+// El escaneo, sin `res` ni `req` de por medio. Vive aparte del handler porque el
+// webhook de Stripe lo necesita en proceso para armar la auditoria de 197 EUR:
+// llamarse a si mismo por HTTP seria una funcion esperando a otra funcion.
+// Devuelve `out` (el JSON que ve el cliente) y `results` (lo crudo, para el log).
+export async function escanear(root, limite) {
+  const t0 = Date.now();
+  const urls = await discover(root, limite);
+  const results = await pool(urls, CONCURRENCY, u => analyze(u).catch(() => ({ url: u, http: 0, total: null, grade: null, scores: null, checks: null, wins: [] })));
+
+  const ok = results.filter(r => typeof r.total === 'number' && r.http === 200);
+  // Ninguna pagina legible: no hay nada que agregar. Se devuelve igualmente por
+  // `out`, con pages_ok en 0, y quien llama decide si eso es un 200 o un error.
+  if (!ok.length) return {
+    out: {
+      url: root, rubric: '2.0', pages_scanned: results.length, pages_ok: 0,
+      detail: 'No pude leer ninguna página de ese dominio. O no responde, o bloquea a los crawlers que no conoce.',
+      pages: results.map(r => ({ url: r.url, total: r.total, grade: r.grade, http: r.http }))
+    },
+    results
+  };
+
+  const sorted = [...ok].sort((a, b) => a.total - b.total);
+  const avg = Math.round(ok.reduce((s, r) => s + r.total, 0) / ok.length);
+
+  // El fallo repetido: la misma recomendación en varias páginas es un problema
+  // de plantilla, no de contenido. Se arregla una vez y sube todo el sitio.
+  const freq = new Map();
+  for (const r of ok) for (const w of new Set(r.wins || [])) {
+    const e = freq.get(w) || { win: w, pages: 0 };
+    e.pages++; freq.set(w, e);
+  }
+  // Un fallo de SITIO (robots.txt, sitemap, llms.txt, HTTPS) vive en un unico
+  // fichero: sale en las 10 paginas porque es el mismo fichero leido 10 veces,
+  // no porque se repita. Colarlo en el titular como "aparece en 10 de 10
+  // paginas" hace que la linea que vende el informe suene a tonteria.
+  const DE_SITIO = /robots\.txt|sitemap|llms\.txt|HTTPS|certificado/i;
+  const todos = [...freq.values()].sort((a, b) => b.pages - a.pages)
+    .map(p => ({ ...p, share: Math.round(100 * p.pages / ok.length) }));
+  const siteIssues = todos.filter(p => DE_SITIO.test(p.win));
+  const patterns = todos.filter(p => !DE_SITIO.test(p.win) && p.pages > 1);
+
+  const dist = ok.reduce((a, r) => (a[r.grade] = (a[r.grade] || 0) + 1, a), {});
+  const gateFails = ok.filter(r => !r.gateA).length;
+
+  // scan_id es uuid en Postgres: un fallback no-uuid haria que el insert de
+  // Supabase devolviera 400 y logScan se lo tragara. Leads perdidos sin ruido.
+  const scanId = globalThis.crypto?.randomUUID?.() || uuid4();
+
+  const out = {
+    url: root, rubric: '2.0', scan_id: scanId,
+    pages_scanned: results.length, pages_ok: ok.length,
+    elapsed_ms: Date.now() - t0,
+    site_score: avg,
+    site_grade: avg >= 80 ? 'BILINGÜE' : avg >= 60 ? 'CONVERSACIONAL' : avg >= 40 ? 'BALBUCEA' : 'MUDA',
+    spread: { min: sorted[0].total, max: sorted[sorted.length - 1].total },
+    worst: { url: sorted[0].url, total: sorted[0].total, grade: sorted[0].grade },
+    best: { url: sorted[sorted.length - 1].url, total: sorted[sorted.length - 1].total, grade: sorted[sorted.length - 1].grade },
+    grade_distribution: dist,
+    pages_failing_gate: gateFails,
+    repeated_issues: patterns.slice(0, 6),
+    site_issues: siteIssues.slice(0, 4),
+    // Tres desenlaces distintos, y el tercero existe porque el segundo mentia:
+    // decir "sin fallos repetidos" mientras debajo se listan tres problemas de
+    // sitio deja al lector pensando que el informe se contradice.
+    headline: patterns.length
+      ? `"${frase(patterns[0].win)}" aparece en ${patterns[0].pages} de ${ok.length} páginas.`
+      : siteIssues.length
+        ? `Tus páginas no repiten ningún fallo: lo que te queda es de sitio, ${siteIssues.length} arreglo${siteIssues.length > 1 ? 's' : ''} en un fichero.`
+        : `Sin fallos repetidos entre páginas: los problemas son puntuales, no de plantilla.`,
+    pages: ok.map(r => ({
+      url: r.url, total: r.total, grade: r.grade,
+      scores: r.scores, wins_count: (r.wins || []).length, wins: r.wins || []
+    })).sort((a, b) => a.total - b.total)
+  };
+
+  return { out, results };
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   const q = req.query || {};
@@ -196,74 +274,12 @@ export default async function handler(req, res) {
   }
 
   const limit = Math.min(MAX_URLS, Math.max(2, parseInt(q.limit, 10) || 10));
-  const t0 = Date.now();
 
   try {
-    const urls = await discover(root, limit);
-    const results = await pool(urls, CONCURRENCY, u => analyze(u).catch(() => ({ url: u, http: 0, total: null, grade: null, scores: null, checks: null, wins: [] })));
+    const { out, results } = await escanear(root, limit);
+    if (!out.pages_ok) return res.status(200).json(out);
 
-    const ok = results.filter(r => typeof r.total === 'number' && r.http === 200);
-    if (!ok.length) return res.status(200).json({
-      url: root, rubric: '2.0', pages_scanned: results.length, pages_ok: 0,
-      detail: 'No pude leer ninguna página de ese dominio. O no responde, o bloquea a los crawlers que no conoce.',
-      pages: results.map(r => ({ url: r.url, total: r.total, grade: r.grade, http: r.http }))
-    });
-
-    const sorted = [...ok].sort((a, b) => a.total - b.total);
-    const avg = Math.round(ok.reduce((s, r) => s + r.total, 0) / ok.length);
-
-    // El fallo repetido: la misma recomendación en varias páginas es un problema
-    // de plantilla, no de contenido. Se arregla una vez y sube todo el sitio.
-    const freq = new Map();
-    for (const r of ok) for (const w of new Set(r.wins || [])) {
-      const e = freq.get(w) || { win: w, pages: 0 };
-      e.pages++; freq.set(w, e);
-    }
-    // Un fallo de SITIO (robots.txt, sitemap, llms.txt, HTTPS) vive en un unico
-    // fichero: sale en las 10 paginas porque es el mismo fichero leido 10 veces,
-    // no porque se repita. Colarlo en el titular como "aparece en 10 de 10
-    // paginas" hace que la linea que vende el informe suene a tonteria.
-    const DE_SITIO = /robots\.txt|sitemap|llms\.txt|HTTPS|certificado/i;
-    const todos = [...freq.values()].sort((a, b) => b.pages - a.pages)
-      .map(p => ({ ...p, share: Math.round(100 * p.pages / ok.length) }));
-    const siteIssues = todos.filter(p => DE_SITIO.test(p.win));
-    const patterns = todos.filter(p => !DE_SITIO.test(p.win) && p.pages > 1);
-
-    const dist = ok.reduce((a, r) => (a[r.grade] = (a[r.grade] || 0) + 1, a), {});
-    const gateFails = ok.filter(r => !r.gateA).length;
-
-    // scan_id es uuid en Postgres: un fallback no-uuid haria que el insert de
-    // Supabase devolviera 400 y logScan se lo tragara. Leads perdidos sin ruido.
-    const scanId = globalThis.crypto?.randomUUID?.() || uuid4();
-
-    const out = {
-      url: root, rubric: '2.0', scan_id: scanId,
-      pages_scanned: results.length, pages_ok: ok.length,
-      elapsed_ms: Date.now() - t0,
-      site_score: avg,
-      site_grade: avg >= 80 ? 'BILINGÜE' : avg >= 60 ? 'CONVERSACIONAL' : avg >= 40 ? 'BALBUCEA' : 'MUDA',
-      spread: { min: sorted[0].total, max: sorted[sorted.length - 1].total },
-      worst: { url: sorted[0].url, total: sorted[0].total, grade: sorted[0].grade },
-      best: { url: sorted[sorted.length - 1].url, total: sorted[sorted.length - 1].total, grade: sorted[sorted.length - 1].grade },
-      grade_distribution: dist,
-      pages_failing_gate: gateFails,
-      repeated_issues: patterns.slice(0, 6),
-      site_issues: siteIssues.slice(0, 4),
-      // Tres desenlaces distintos, y el tercero existe porque el segundo mentia:
-      // decir "sin fallos repetidos" mientras debajo se listan tres problemas de
-      // sitio deja al lector pensando que el informe se contradice.
-      headline: patterns.length
-        ? `"${frase(patterns[0].win)}" aparece en ${patterns[0].pages} de ${ok.length} páginas.`
-        : siteIssues.length
-          ? `Tus páginas no repiten ningún fallo: lo que te queda es de sitio, ${siteIssues.length} arreglo${siteIssues.length > 1 ? 's' : ''} en un fichero.`
-          : `Sin fallos repetidos entre páginas: los problemas son puntuales, no de plantilla.`,
-      pages: ok.map(r => ({
-        url: r.url, total: r.total, grade: r.grade,
-        scores: r.scores, wins_count: (r.wins || []).length, wins: r.wins || []
-      })).sort((a, b) => a.total - b.total)
-    };
-
-    await logScan(results.filter(r => r.http === 200), email, scanId, String(q.from || '').slice(0, 40));
+    await logScan(results.filter(r => r.http === 200), email, out.scan_id, String(q.from || '').slice(0, 40));
     await avisarOwner(out, email, String(q.from || '').slice(0, 40));
     res.status(200).json(out);
   } catch (e) {
