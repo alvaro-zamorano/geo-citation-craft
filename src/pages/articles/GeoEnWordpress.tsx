@@ -149,7 +149,7 @@ const GeoEnWordpress = () => {
                   El primer obstáculo de cualquier estrategia GEO es tan básico que se pasa por alto: que el
                   bot pueda leer la página. Muchas webs modernas están hechas con frameworks de JavaScript que
                   montan el contenido en el navegador. Si el servidor solo entrega un contenedor vacío, el
-                  rastreador &mdash; que normalmente no ejecuta JavaScript &mdash; ve una página en blanco por
+                  rastreador (que normalmente no ejecuta JavaScript) ve una página en blanco por
                   muy completa que se vea en tu pantalla. Es el gate que suspenden tantas SPAs y el motivo por
                   el que necesitan <GeoTerm term="ssr-prerender">SSR o prerenderizado</GeoTerm>.
                 </p>
@@ -188,7 +188,7 @@ const GeoEnWordpress = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   La pieza más rentable es el <strong>primer párrafo</strong>. En lugar de una entradilla de
                   marca que tarda tres frases en llegar al grano, empieza respondiendo: qué es esto, para quién
-                  y &mdash; si aplica &mdash; cuánto cuesta. Esa <GeoTerm term="answerability">respondibilidad</GeoTerm>{" "}
+                  y, si aplica, cuánto cuesta. Esa <GeoTerm term="answerability">respondibilidad</GeoTerm>{" "}
                   directa es lo que convierte un párrafo en un bloque citable. Un texto que exige leerlo entero
                   para entenderlo se cita mucho menos que uno autocontenido.
                 </p>
@@ -210,8 +210,8 @@ const GeoEnWordpress = () => {
                   <code>Article</code>, <code>WebPage</code>, <code>BreadcrumbList</code> y la organización.
                   Para preguntas frecuentes puedes usar un bloque o módulo que genere <code>FAQPage</code>, y
                   para una tienda WooCommerce, el marcado <code>Product</code> con precio y disponibilidad. Lo
-                  importante es que el schema exista, sea coherente con lo que ve el usuario y no se solape
-                  &mdash; conviene evitar que dos plugins marquen la misma entidad dos veces.
+                  importante es que el schema exista, sea coherente con lo que ve el usuario y no se solape:
+                  conviene evitar que dos plugins marquen la misma entidad dos veces.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   Después de activarlo, valida. Pega una URL en un validador de datos estructurados y confirma
@@ -274,7 +274,7 @@ const GeoEnWordpress = () => {
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   El <GeoTerm term="llms-txt">llms.txt</GeoTerm> es un fichero de texto en formato markdown que
-                  se coloca en la raíz del dominio &mdash; en <code>tudominio.com/llms.txt</code> &mdash; con
+                  se coloca en la raíz del dominio (en <code>tudominio.com/llms.txt</code>) con
                   una descripción del sitio y enlaces curados a tus páginas más importantes, pensado para
                   orientar a los modelos de lenguaje. WordPress no lo crea por su cuenta, así que tienes que
                   añadirlo tú.
@@ -313,7 +313,7 @@ const GeoEnWordpress = () => {
                   robots.txt, puedes gestionarlo desde ahí; si no, se edita el fichero físico en la raíz.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Un matiz que suele confundir: bloquear GPTBot &mdash; que sirve para entrenamiento &mdash; no
+                  Un matiz que suele confundir: bloquear GPTBot (que sirve para entrenamiento) no
                   es lo mismo que impedir que ChatGPT te cite en búsqueda, de lo que se encarga OAI-SearchBot.
                   Decide con criterio qué agentes permites y sé consciente de qué implica cada uno.
                 </p>
@@ -366,8 +366,8 @@ const GeoEnWordpress = () => {
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Puede parecer que marcar schema y ordenar encabezados son detalles menores, pero la evidencia
                   apunta a que el contenido y su estructura pesan de verdad. El trabajo académico que dio nombre
-                  a la disciplina &mdash; el paper "GEO: Generative Engine Optimization" de Princeton, publicado
-                  en arXiv (2311.09735) en noviembre de 2023 y presentado en KDD 2024 &mdash; midió que aplicar
+                  a la disciplina (el paper "GEO: Generative Engine Optimization" de Princeton, publicado
+                  en arXiv (2311.09735) en noviembre de 2023 y presentado en KDD 2024) midió que aplicar
                   métodos <GeoTerm term="geo">GEO</GeoTerm> puede aumentar la visibilidad de una fuente hasta un
                   40% en las respuestas generativas.
                 </p>
@@ -438,7 +438,7 @@ const GeoEnWordpress = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
 
