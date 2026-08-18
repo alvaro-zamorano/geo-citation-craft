@@ -55,7 +55,7 @@ const ModuleCTA: React.FC<ModuleCTAProps> = ({ moduleId, className = "" }) => {
               <ul className="space-y-1.5 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-accent flex-shrink-0" />
-                  5 módulos (F1-F5) — 142 páginas
+                  5 módulos (F1-F5), 142 páginas
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-accent flex-shrink-0" />
@@ -74,7 +74,7 @@ const ModuleCTA: React.FC<ModuleCTAProps> = ({ moduleId, className = "" }) => {
                 <span className="block text-xs text-muted-foreground">pago único</span>
               </div>
               <BuyButton source="module-cta" className="btn-cta text-sm px-6">
-                Comprar el curso — €{COMPLETE_COURSE.price}
+                Comprar el curso: {COMPLETE_COURSE.price} €
               </BuyButton>
             </div>
           </div>
