@@ -22,6 +22,8 @@ import { createClient } from "@supabase/supabase-js";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import manifest from "./_lib/manifest.json" with { type: "json" };
+import { construirPack } from "./_lib/auditoria.mjs";
+import { escanear } from "./scan.js";
 
 export const config = {
   api: { bodyParser: false }, // raw body required for Stripe signature verification
@@ -302,6 +304,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // 2. F3-2: registrar la compra en public.purchases + lead converted (no bloquea)
     await recordPurchase(session, productType, moduleId, email);
+
+    // 2b. La auditoría de 197 € se genera y se entrega sola. Todo lo que lleva
+    //     el pack sale del HTML y del sitemap del cliente, sin modelo de por
+    //     medio: por eso puede tardar segundos en vez de un día de trabajo.
+    //     Si falla, no se toca la compra: los PDFs del curso ya han salido y el
+    //     aviso al owner dirá que hay entrega manual pendiente.
+    if (productType === "curso-auditoria") {
+      const dominio = (session.custom_fields || []).find((f) => f.key === "dominio")?.text?.value || "";
+      if (!dominio) {
+        console.error("[webhook] curso-auditoria sin dominio: queda entrega manual");
+      } else {
+        try {
+          const pack = await construirPack(dominio, email, escanear);
+          await sendEmail(
+            email,
+            SENDER,
+            `Tu auditoría de ${pack.dominio} ya está lista`,
+            pack.html,
+            pack.adjuntos,
+            pack.text
+          );
+          console.log(`[webhook] auditoría entregada a ${email}: ${pack.dominio}, ${pack.scan.pages_ok} páginas, nota ${pack.scan.site_score}`);
+        } catch (packErr) {
+          console.error("[webhook] auditoría automática falló:", (packErr as Error).message);
+        }
+      }
+    }
 
     // 3. Notificación al owner (no bloquea el response si falla)
     try {
