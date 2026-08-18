@@ -149,7 +149,7 @@ const ModuloF1Page = () => {
               MÓDULO F1
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-4">
-              Fundamentos: Accesibilidad Generativa
+              Fundamentos: accesibilidad generativa
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground italic mb-6">
               "Si un LLM no puede leerte, no puede recomendarte."
@@ -160,7 +160,7 @@ const ModuloF1Page = () => {
           {/* Objetivo del Módulo */}
           <section id="f1-objetivo" className="mb-12">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-semibold text-primary">Objetivo del Módulo</h2>
+              <h2 className="text-3xl font-semibold text-primary">Objetivo del módulo</h2>
               <ShareSectionButton sectionId="f1-objetivo" title="objetivo F1" />
             </div>
             <HighlightSnippet lastModified="2026-07-15" variant="definition" className="mb-6">
