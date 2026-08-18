@@ -32,6 +32,7 @@ const Footer = () => {
             <h3 className="font-semibold mb-4 text-sm uppercase tracking-wider text-primary-foreground/50">Producto</h3>
             <ul className="space-y-2.5 text-sm">
               <li><Link to="/geo-score" className="text-primary-foreground/70 hover:text-accent transition-colors">Audita tu web (gratis)</Link></li>
+              <li><Link to="/auditoria" className="text-primary-foreground/70 hover:text-accent transition-colors">Auditoría personalizada: 197 €</Link></li>
               <li><Link to="/habla" className="text-primary-foreground/70 hover:text-accent transition-colors">El framework HABLA</Link></li>
               <li><Link to="/curso" className="text-primary-foreground/70 hover:text-accent transition-colors">Curso completo: 47 €</Link></li>
               <li><Link to="/casos-reales" className="text-primary-foreground/70 hover:text-accent transition-colors">Casos reales</Link></li>
