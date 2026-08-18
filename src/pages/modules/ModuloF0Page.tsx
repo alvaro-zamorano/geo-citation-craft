@@ -137,7 +137,7 @@ const ModuloF0Page = () => {
               MÓDULO F0 - GRATIS
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-4">
-              ¿Necesitas GEO? Diagnóstico Gratuito
+              ¿Necesitas GEO? diagnóstico gratuito
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground italic mb-6">
               "Descubre si tu sitio web es invisible para la IA."
@@ -155,7 +155,7 @@ const ModuloF0Page = () => {
           {/* Diagnóstico Rápido */}
           <section id="f0-diagnostico" className="mb-12">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-semibold text-primary">Diagnóstico Rápido: ¿Tu Web Es Visible para la IA?</h2>
+              <h2 className="text-3xl font-semibold text-primary">Diagnóstico rápido: ¿tu web es visible para la IA?</h2>
               <ShareSectionButton sectionId="f0-diagnostico" title="diagnóstico F0" />
             </div>
             <HighlightSnippet lastModified="2026-07-15" variant="insight" className="mb-6">
@@ -175,7 +175,7 @@ const ModuloF0Page = () => {
 
           {/* Tu Siguiente Paso */}
           <section className="mb-12 text-center">
-            <h2 className="text-3xl font-semibold text-primary mb-6">Tu Siguiente Paso: Comienza la Implementación</h2>
+            <h2 className="text-3xl font-semibold text-primary mb-6">Tu siguiente paso: comienza la implementación</h2>
             <p className="text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto">
               Ahora que sabes por qué necesitas GEO, es momento de implementar la solución. 
               El Módulo F1 te dará la base técnica fundamental que todo sitio necesita.
@@ -186,14 +186,14 @@ const ModuloF0Page = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Target className="h-5 w-5" />
-                    Implementación Individual
+                    Implementación individual
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground">Lee F1 gratis y aplica lo que puedas por tu cuenta. Sin pagar nada.</p>
                   <Button asChild className="w-full">
                     <Link to="/curso/f1">
-                      Empezar con F1: Accesibilidad
+                      Empezar con F1: accesibilidad
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
                   </Button>
@@ -204,13 +204,13 @@ const ModuloF0Page = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Zap className="h-5 w-5" />
-                    Framework Completo
+                    Framework completo
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground">Los 5 módulos (F1 a F5) en PDF. 47 € de pago único.</p>
                   <BuyButton source="modulo-f0" className="btn-cta w-full text-sm">
-                    Comprar el curso — 47 €
+                    Comprar el curso: 47 €
                   </BuyButton>
                   <GuaranteeNote compact />
                 </CardContent>
@@ -223,7 +223,7 @@ const ModuloF0Page = () => {
             <Button variant="outline" asChild>
               <Link to="/curso">
                 <ArrowRight className="w-4 h-4 mr-2 rotate-180" />
-                Volver al Curso
+                Volver al curso
               </Link>
             </Button>
             <Button asChild>
