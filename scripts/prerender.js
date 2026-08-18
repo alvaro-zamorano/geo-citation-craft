@@ -33,6 +33,7 @@ const ROUTES = [
   '/curso/f4',
   '/curso/f5',
   '/checkout',
+  '/auditoria',
   '/metodologia',
   '/casos',
   '/glosario',
