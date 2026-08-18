@@ -20,7 +20,7 @@ interface HablaWidgetProps {
   onAnalyzeStart?: (url: string) => void;
   onAnalyzeComplete?: (result: HablaResult) => void;
   onAnalyzeError?: (message: string) => void;
-  /** Click en los CTAs que aparecen tras el resultado. `target`: 'curso' | 'informe'. */
+  /** Click en los CTAs que aparecen tras el resultado. `target`: 'curso' | 'auditoria' | 'informe'. */
   onResultCtaClick?: (target: string, grade: string) => void;
 }
 
@@ -232,16 +232,42 @@ export default function HablaWidget({
               </div>
             )}
 
-            {/* CTA */}
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <Button asChild size="lg" className="flex-1">
-                <Link to="/curso" onClick={() => onResultCtaClick?.("curso", result.grade)}>
-                  Arreglarlo yo mismo: el curso, 47 €
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </Link>
-              </Button>
+            {/* CTA. La nota decide qué se ofrece primero: a quien saca menos de 60 no se le
+                vende un PDF de deberes, se le vende que se lo arreglen. */}
+            <div className="mt-6 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-2">
+                {result.total < 60 ? (
+                  <>
+                    <Button asChild size="lg" className="flex-1">
+                      <Link to="/auditoria" onClick={() => onResultCtaClick?.("auditoria", result.grade)}>
+                        Que te lo arregle yo: auditoría, 197 €
+                        <ArrowRight className="h-4 w-4 ml-2" />
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" size="lg" className="flex-1">
+                      <Link to="/curso" onClick={() => onResultCtaClick?.("curso", result.grade)}>
+                        Prefiero aprender a hacerlo: curso, 47 €
+                      </Link>
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button asChild size="lg" className="flex-1">
+                      <Link to="/curso" onClick={() => onResultCtaClick?.("curso", result.grade)}>
+                        Arreglarlo yo mismo: el curso, 47 €
+                        <ArrowRight className="h-4 w-4 ml-2" />
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" size="lg" className="flex-1">
+                      <Link to="/auditoria" onClick={() => onResultCtaClick?.("auditoria", result.grade)}>
+                        O te lo arreglo yo: auditoría, 197 €
+                      </Link>
+                    </Button>
+                  </>
+                )}
+              </div>
               {/* F5-8: el informe se abre desde un handler, tras el gate de email */}
-              <Button variant="outline" size="lg" className="flex-1" onClick={handleReportClick}>
+              <Button variant="outline" size="lg" className="w-full" onClick={handleReportClick}>
                 Ver informe completo
               </Button>
             </div>
