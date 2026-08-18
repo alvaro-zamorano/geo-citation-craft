@@ -215,7 +215,7 @@ const QueEsGeoGuiaCompleta = () => {
                   <ul className="space-y-2">
                     <li><strong>ChatGPT:</strong> 900 millones de usuarios activos semanales (OpenAI, febrero de 2026, vía TechCrunch)</li>
                     <li><strong>Perplexity:</strong> el buscador conversacional de referencia, con índice propio en tiempo real</li>
-                    <li><strong>Google:</strong> Integra Gemini en búsqueda (AI Overviews) — respuestas IA en SERP</li>
+                    <li><strong>Google:</strong> Integra Gemini en búsqueda (AI Overviews), respuestas IA en SERP</li>
                     <li><strong>Tendencia:</strong> una parte creciente de las consultas se resuelve dentro de la respuesta de la IA, sin clic al sitio web</li>
                   </ul>
                 </HighlightSnippet>
@@ -403,7 +403,7 @@ const QueEsGeoGuiaCompleta = () => {
 
                 <div className="space-y-3 mb-6">
                   <div className="border-l-4 border-accent pl-4 py-2">
-                    <h4 className="font-semibold text-lg mb-1">ChatGPT (OpenAI) — 900 millones de usuarios semanales</h4>
+                    <h4 className="font-semibold text-lg mb-1">ChatGPT (OpenAI): 900 millones de usuarios semanales</h4>
                     <p className="text-muted-foreground text-sm">
                       El estándar. Si quieres aparecer en IA, ChatGPT es la prioridad 1.
                       Datos de entrenamiento congelados; tardía en indexación pero larga vida.
@@ -411,7 +411,7 @@ const QueEsGeoGuiaCompleta = () => {
                   </div>
 
                   <div className="border-l-4 border-accent pl-4 py-2">
-                    <h4 className="font-semibold text-lg mb-1">Perplexity — 15M+ usuarios, crecimiento rápido</h4>
+                    <h4 className="font-semibold text-lg mb-1">Perplexity: 15M+ usuarios, crecimiento rápido</h4>
                     <p className="text-muted-foreground text-sm">
                       Búsqueda real-time. Citación inmediata. Mejor ROI para contenido nuevo.
                       Si recién empiezas con GEO, Perplexity da resultados más rápido.
@@ -419,7 +419,7 @@ const QueEsGeoGuiaCompleta = () => {
                   </div>
 
                   <div className="border-l-4 border-accent pl-4 py-2">
-                    <h4 className="font-semibold text-lg mb-1">Google Gemini (en AI Overviews) — Integrado en búsqueda</h4>
+                    <h4 className="font-semibold text-lg mb-1">Google Gemini (en AI Overviews): Integrado en búsqueda</h4>
                     <p className="text-muted-foreground text-sm">
                       Google está integrando respuestas IA directas en SERP. Si Google te incluye en su "AI Overview",
                       es tráfico potencial sin clic. Importante para largo plazo.
@@ -427,7 +427,7 @@ const QueEsGeoGuiaCompleta = () => {
                   </div>
 
                   <div className="border-l-4 border-accent pl-4 py-2">
-                    <h4 className="font-semibold text-lg mb-1">Claude (Anthropic) — Crecimiento en Enterprise</h4>
+                    <h4 className="font-semibold text-lg mb-1">Claude (Anthropic): Crecimiento en Enterprise</h4>
                     <p className="text-muted-foreground text-sm">
                       Menos usuarios que ChatGPT pero crecimiento en sector enterprise.
                       Importante para B2B. Tiende a ser conservador en citación.
@@ -512,7 +512,7 @@ const QueEsGeoGuiaCompleta = () => {
                 herramientas para medir citabilidad en ChatGPT, Perplexity y más.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
             {/* F2-7: captura de email al final del artículo */}
