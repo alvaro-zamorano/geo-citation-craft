@@ -144,7 +144,7 @@ const QueEsLlmsTxt = () => {
                 <h2 className="text-2xl font-semibold text-primary mb-4">Para qué sirve (el problema que resuelve)</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Cuando un modelo de lenguaje visita tu web, se encuentra el mismo HTML lleno de menús,
-                  banners, scripts y avisos de cookies que un humano &mdash; solo que sin la capacidad de
+                  banners, scripts y avisos de cookies que un humano, solo que sin la capacidad de
                   ignorarlos de un vistazo. Gran parte de su "presupuesto de atención" se va en descartar
                   ruido. El <GeoTerm term="llms-txt">llms.txt</GeoTerm> propone un atajo: un único archivo,
                   en texto limpio, que dice "esto es lo que soy y estas son mis páginas importantes".
@@ -183,8 +183,8 @@ const QueEsLlmsTxt = () => {
 - [Metodología F1-F5](https://www.esgeo.ai/metodologia): cómo puntúa el rubric`}</code>
                 </pre>
                 <p className="text-muted-foreground leading-relaxed">
-                  La versión ampliada &mdash; <strong>llms-full.txt</strong> (o llms-ctx-full.txt) &mdash;
-                  no lista enlaces: concatena el contenido de esas páginas en texto plano para que el modelo
+                  La versión ampliada (<strong>llms-full.txt</strong> o llms-ctx-full.txt) no lista
+                  enlaces: concatena el contenido de esas páginas en texto plano para que el modelo
                   lo lea entero. En esGEO ya publicamos una en{" "}
                   <code>/llms-full.txt</code>, generada en el build a partir de todas las rutas.
                 </p>
@@ -250,7 +250,7 @@ const QueEsLlmsTxt = () => {
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   Nuestra recomendación: publícalo porque cuesta diez minutos y no hace daño, pero trátalo
-                  como lo que es &mdash; higiene, no palanca. La palanca de verdad para que te citen sigue
+                  como lo que es: higiene, no palanca. La palanca de verdad para que te citen sigue
                   siendo el contenido citable y la estructura de cada página.
                 </p>
               </section>
@@ -298,7 +298,7 @@ const QueEsLlmsTxt = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
 
