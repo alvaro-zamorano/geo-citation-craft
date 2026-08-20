@@ -2,7 +2,7 @@
  * POST /api/checkout
  * Creates a Stripe Checkout Session.
  *
- * Body: { productType: 'complete' | 'curso-auditoria', guestEmail?: string }
+ * Body: { productType: 'complete' | 'curso-auditoria', guestEmail?: string, dominio?: string }
  * Returns: { url: string } | { error: string }
  *
  * F2-2: los módulos sueltos (f1..f5, 10 € cada uno) YA NO se venden: 5×10 € hacía
@@ -40,10 +40,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
   try {
-    const { productType, moduleId, guestEmail } = (req.body || {}) as {
+    const { productType, moduleId, guestEmail, dominio } = (req.body || {}) as {
       productType?: string;
       moduleId?: string;
       guestEmail?: string;
+      dominio?: string;
     };
 
     // F2-2: la venta por módulos está retirada. Rechazo explícito (400) de
@@ -97,6 +98,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         },
       ];
       productMeta = { product_type: "curso-auditoria" };
+      // Si venimos del escaneo ya sabemos que web es. Viaja en los metadatos y
+      // nos ahorramos pedirsela otra vez en la pantalla de pago.
+      const dominioLimpio = String(dominio || "").trim().replace(/^https?:\/\//, "").replace(/\/+$/, "").split("/")[0];
+      if (dominioLimpio.includes(".")) productMeta.dominio = dominioLimpio.slice(0, 120);
       amount = String(CURSO_AUDITORIA_AMOUNT / 100);
     } else {
       return res.status(400).json({ error: "Invalid product type" });
@@ -125,10 +130,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       customer_email: guestEmail || undefined,
       metadata: productMeta,
       // La auditoria empezaba con un email nuestro preguntando "que web quieres
-      // que audite?". Ese ida y vuelta enfriaba la entrega y costaba un dia. El
-      // dominio se pide ahora en la propia pantalla de pago y viaja en la sesion.
+      // que audite?". Ese ida y vuelta enfriaba la entrega. Si el comprador viene
+      // del escaneo ya lo sabemos y no se le pregunta; si llega en frio, aqui.
       custom_fields:
-        productType === "curso-auditoria"
+        productType === "curso-auditoria" && !productMeta.dominio
           ? [
               {
                 key: "dominio",
