@@ -22,7 +22,9 @@ const ssrEntry = path.join(projectRoot, 'dist-ssr', 'entry-server.js');
 
 /** Rutas públicas. Las transaccionales (auth, dashboard, success,
  *  guest-access, unsubscribe, admin) quedan fuera a propósito: son SPA.
- *  /checkout se prerenderiza desde F1-9: es una página de pre-pago real. */
+ *  /checkout se prerenderiza desde F1-9: es una página de pre-pago real.
+ *  /auditoria/demo se prerenderiza en su estado sin ?url=: el h1 y el
+ *  formulario para escribir el dominio. Los resultados son client-side. */
 const ROUTES = [
   '/',
   '/curso',
@@ -34,6 +36,7 @@ const ROUTES = [
   '/curso/f5',
   '/checkout',
   '/auditoria',
+  '/auditoria/demo',
   '/metodologia',
   '/casos',
   '/glosario',
