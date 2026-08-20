@@ -250,6 +250,13 @@ function stripStaticHead(template) {
 
 function buildPage(template, head, html) {
   let out = stripStaticHead(template);
+  // Si Helmet trae su propia meta de robots, la del shell sobra: sin esto una
+  // página que pide noindex (/auditoria/demo) sale con "index, follow" y
+  // "noindex,follow" a la vez. Las rutas cuyo Helmet no dice nada de robots se
+  // quedan con la del shell, que es la que les corresponde.
+  if (/name="(robots|googlebot|bingbot)"/i.test(head)) {
+    out = out.replace(/<meta\s+name="(robots|googlebot|bingbot)"[^>]*>\s*/gi, '');
+  }
   out = out.replace(/<\/head>/i, `    ${head}\n  </head>`);
   out = out.replace(
     /<div id="root">\s*<\/div>/i,
