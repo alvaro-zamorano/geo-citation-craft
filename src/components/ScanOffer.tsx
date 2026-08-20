@@ -85,7 +85,7 @@ export default function ScanOffer({ result }: ScanOfferProps) {
       const r = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productType: "curso-auditoria", guestEmail: email || undefined }),
+        body: JSON.stringify({ productType: "curso-auditoria", guestEmail: email || undefined, dominio }),
       });
       const j = await r.json();
       if (j.url) {
