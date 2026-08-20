@@ -29,6 +29,7 @@ const ContenidoIAPage = React.lazy(() => import("./pages/ContenidoIAPage"));
 const HiperpersonalizacionPage = React.lazy(() => import("./pages/HiperpersonalizacionPage"));
 const MachineReadabilityPage = React.lazy(() => import("./pages/MachineReadabilityPage"));
 const HablaPage = React.lazy(() => import("./pages/HablaPage"));
+const DemoAuditoriaPage = React.lazy(() => import("./pages/DemoAuditoriaPage"));
 const AuditoriaPage = React.lazy(() => import("./pages/AuditoriaPage"));
 const CheckoutPage = React.lazy(() => import("./pages/CheckoutPage"));
 const PurchaseSuccessPage = React.lazy(() => import("./pages/PurchaseSuccessPage"));
@@ -111,6 +112,8 @@ export function AppRoutes() {
               <Route path="/hiperpersonalizacion" element={<HiperpersonalizacionPage />} />
               <Route path="/machine-readability" element={<MachineReadabilityPage />} />
               <Route path="/habla" element={<HablaPage />} />
+              {/* La demo compartible va ANTES que /auditoria: primero lo específico. */}
+              <Route path="/auditoria/demo" element={<DemoAuditoriaPage />} />
               <Route path="/auditoria" element={<AuditoriaPage />} />
               <Route path="/consultor-geo" element={<Navigate to="/experto-geo" replace />} />
               <Route path="/especialista-geo" element={<Navigate to="/experto-geo" replace />} />
