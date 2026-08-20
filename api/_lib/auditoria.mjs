@@ -364,3 +364,80 @@ ${primero ? `<p>Empieza por ahí: al ser un fallo de plantilla, lo arreglas una 
 
   return { dominio, raiz, scan, informe, adjuntos, html, text };
 }
+
+// ── La demo ─────────────────────────────────────────────────────────────────
+// Un aperitivo del pack, servido ya recortado.
+//
+// El corte se hace AQUI, en el servidor, y no con un desenfoque de CSS: si
+// mandaramos el informe entero y lo tapasemos, cualquiera lo lee con el
+// inspector en diez segundos. Lo que no se ha pagado no viaja por el cable.
+//
+// Que se ve y por que: el titular y la nota (el gancho), el primer fallo de
+// plantilla entero (la prueba de que el diagnostico es suyo y es real), y las
+// primeras lineas de SUS ficheros ya generados (la prueba de que existen). Lo
+// que se corta es el volumen. Ver doce lineas de tu propio llms.txt bien
+// escrito convence mas que cualquier parrafo prometiendolo.
+const asoma = (texto, lineas) => {
+  const todas = String(texto || '').split('\n');
+  return {
+    muestra: todas.slice(0, lineas).join('\n'),
+    total: todas.length,
+    ocultas: Math.max(0, todas.length - lineas)
+  };
+};
+
+export async function construirDemo(dominioCrudo, escanear) {
+  const raiz = 'https://' + String(dominioCrudo || '').trim()
+    .replace(/^https?:\/\//, '').replace(/\/+$/, '').split('/')[0];
+
+  const { out: scan } = await escanear(raiz, 12);
+  if (!scan || !scan.pages_ok) throw new Error('no se pudo leer ninguna página de ' + raiz);
+
+  const [llms, jsonld] = await Promise.all([
+    generarLlmsTxt(raiz).catch(() => null),
+    generarJsonLd(raiz).catch(() => null)
+  ]);
+  const robots = generarRobots(raiz);
+
+  const repetidos = scan.repeated_issues || [];
+  const paginas = scan.pages || [];
+
+  return {
+    dominio: raiz.replace(/^https?:\/\//, ''),
+    raiz,
+    headline: scan.headline,
+    site_score: scan.site_score,
+    site_grade: scan.site_grade,
+    spread: scan.spread,
+    pages_ok: scan.pages_ok,
+    pages_failing_gate: scan.pages_failing_gate,
+    primer_fallo: repetidos[0] || null,
+    fallos_ocultos: Math.max(0, repetidos.length - 1),
+    peores: paginas.slice(0, 3).map(p => ({ url: p.url, total: p.total, grade: p.grade })),
+    paginas_ocultas: Math.max(0, paginas.length - 3),
+    ficheros: {
+      llms: llms ? asoma(llms, 12) : null,
+      robots: asoma(robots, 14),
+      jsonld: jsonld ? { ...asoma(jsonld.codigo, 12), faltan: jsonld.faltan.length } : null
+    }
+  };
+}
+
+// Solo los ficheros, ya recortados. Es lo que pide la demo cuando el cliente
+// acaba de escanear: la parte del escaneo ya la tiene en pantalla y volver a
+// lanzarlo costaria otros cinco segundos por nada.
+export async function construirDemoFicheros(dominioCrudo) {
+  const raiz = 'https://' + String(dominioCrudo || '').trim()
+    .replace(/^https?:\/\//, '').replace(/\/+$/, '').split('/')[0];
+  const [llms, jsonld] = await Promise.all([
+    generarLlmsTxt(raiz).catch(() => null),
+    generarJsonLd(raiz).catch(() => null)
+  ]);
+  const robots = generarRobots(raiz);
+  return {
+    dominio: raiz.replace(/^https?:\/\//, ''),
+    llms: llms ? asoma(llms, 12) : null,
+    robots: asoma(robots, 14),
+    jsonld: jsonld ? { ...asoma(jsonld.codigo, 12), faltan: jsonld.faltan.length } : null
+  };
+}
