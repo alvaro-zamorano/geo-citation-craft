@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import DemoAuditoria from "@/components/DemoAuditoria";
 import { captureLead } from "@/lib/lead";
 import type { HablaResult } from "@/lib/habla";
 
@@ -167,10 +168,12 @@ export default function ScanOffer({ result }: ScanOfferProps) {
           </ul>
         </div>
 
+        <DemoAuditoria dominio={dominio} paginas={scan.pages_ok} />
+
         <div className="mt-6 border-t border-border pt-5">
           <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-            Arreglar esto tú mismo es el curso. Que lo arregle yo sobre estas {scan.pages_ok} páginas,
-            con el plan priorizado y la evidencia antes/después, es la auditoría.
+            Desbloquéalo todo: los tres ficheros completos, el informe de tus {scan.pages_ok} páginas y el plan
+            priorizado. Llega a tu correo en menos de un minuto, y el curso F1-F5 va incluido.
           </p>
           <Button size="lg" onClick={comprarAuditoria} disabled={buying}>
             {buying ? (
