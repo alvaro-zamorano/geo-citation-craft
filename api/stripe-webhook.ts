@@ -121,9 +121,10 @@ function buildOwnerNotification(
   const country = session.customer_details?.address?.country || "—";
   const sessionId = session.id;
   const when = new Date((session.created || Date.now() / 1000) * 1000).toISOString().replace("T", " ").slice(0, 19);
-  // El dominio llega desde el custom_field del checkout. Si la compra es anterior
-  // a ese cambio, no viene: se marca y se pregunta como antes.
-  const dominio = (session.custom_fields || []).find((f) => f.key === "dominio")?.text?.value || "";
+  // El dominio llega por los metadatos (si vino del escaneo) o por el custom_field
+  // del checkout. Si la compra es anterior a esos cambios, no viene: se marca y se
+  // pregunta como antes.
+  const dominio = session.metadata?.dominio || (session.custom_fields || []).find((f) => f.key === "dominio")?.text?.value || "";
 
   // El product type SIEMPRE visible en la notificación. Para curso-auditoria el asunto
   // depende de lo que de verdad pasó: si el pack salió solo, no hay nada pendiente y el
@@ -338,7 +339,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     //     Si falla, no se toca la compra: los PDFs del curso ya han salido y el
     //     aviso al owner dirá que hay entrega manual pendiente.
     if (productType === "curso-auditoria") {
-      const dominio = (session.custom_fields || []).find((f) => f.key === "dominio")?.text?.value || "";
+      const dominio = session.metadata?.dominio || (session.custom_fields || []).find((f) => f.key === "dominio")?.text?.value || "";
       if (!dominio) {
         console.error("[webhook] curso-auditoria sin dominio: queda entrega manual");
         auditoria = { entregada: false, dominio: "" };
