@@ -10,15 +10,18 @@ import { Lock, Loader2 } from "lucide-react";
  *
  * Ver doce lineas de tu propio llms.txt bien escrito convence mas que
  * cualquier parrafo prometiendolo.
+ *
+ * `Fichero`, `Trozo` y `DemoFicheros` se exportan porque la pagina compartible
+ * (/auditoria/demo) pinta exactamente los mismos tres bloques.
  */
 
-interface Trozo {
+export interface Trozo {
   muestra: string;
   total: number;
   ocultas: number;
 }
 
-interface DemoFicheros {
+export interface DemoFicheros {
   dominio: string;
   llms: Trozo | null;
   robots: Trozo;
@@ -31,7 +34,7 @@ interface DemoAuditoriaProps {
   paginas: number;
 }
 
-function Fichero({ nombre, pie, trozo }: { nombre: string; pie: string; trozo: Trozo | null }) {
+export function Fichero({ nombre, pie, trozo }: { nombre: string; pie: string; trozo: Trozo | null }) {
   if (!trozo) return null;
   return (
     <div className="mt-5">
