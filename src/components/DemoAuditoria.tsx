@@ -38,10 +38,10 @@ function Fichero({ nombre, pie, trozo }: { nombre: string; pie: string; trozo: T
       <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{nombre}</p>
       <p className="mt-1 text-sm text-muted-foreground">{pie}</p>
       <div className="relative mt-2">
-        <pre className="max-h-64 overflow-hidden rounded-lg border border-border bg-background p-4 text-xs leading-relaxed">
+        <pre className="max-h-72 overflow-hidden whitespace-pre-wrap break-words rounded-lg border border-border bg-background p-4 text-xs leading-relaxed">
           {trozo.muestra}
         </pre>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 rounded-b-lg bg-gradient-to-t from-muted/95 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 rounded-b-lg bg-gradient-to-t from-background via-background/80 to-transparent" />
       </div>
       {trozo.ocultas > 0 && (
         <p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
