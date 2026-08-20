@@ -84,6 +84,9 @@
     },
     "api/scan.js": {
       "maxDuration": 60
+    },
+    "api/demo.js": {
+      "maxDuration": 30
     }
   },
   "headers": [
