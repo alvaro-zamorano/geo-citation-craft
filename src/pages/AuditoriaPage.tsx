@@ -31,6 +31,9 @@ import { useGeoMetadata } from "@/hooks/useGeoMetadata";
  *
  * Checkout: BuyButton con productType "curso-auditoria" (ver src/lib/checkout.ts).
  * La garantía va escrita a mano porque GuaranteeNote sirve el texto canónico de los 47 €.
+ *
+ * Quien no se fía de una descripción tiene /auditoria/demo: la misma auditoría,
+ * generada con su dominio y cortada por la mitad.
  */
 const AuditoriaPage = () => {
   const { helmet: socialHelmet } = useGeoMetadata({
@@ -233,7 +236,15 @@ const AuditoriaPage = () => {
             <p className="text-sm text-muted-foreground mt-3">
               Pago único. El curso completo F1-F5 va incluido.
             </p>
-            <p className="mt-6">
+            <p className="mt-5">
+              <Link
+                to="/auditoria/demo"
+                className="text-sm text-primary underline underline-offset-4 hover:text-accent transition-colors"
+              >
+                ¿Prefieres verla con tu web antes de pagar? Mira la demo
+              </Link>
+            </p>
+            <p className="mt-3">
               <Link
                 to="/geo-score"
                 className="text-sm text-primary underline underline-offset-4 hover:text-accent transition-colors"
