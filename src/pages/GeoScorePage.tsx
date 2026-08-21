@@ -134,6 +134,7 @@ const GeoScorePage = () => {
               title="Analiza tu dominio"
               subtitle="Escribe la dirección y te digo qué encuentra un crawler de IA cuando entra."
               initialUrl={initialUrl}
+              modoEscaneo
               onAnalyzeStart={(url) => trackEvent.geoScoreStarted(url)}
               onAnalyzeComplete={(r) => {
                 setLastResult(r);
@@ -143,19 +144,20 @@ const GeoScorePage = () => {
               onResultCtaClick={(target, grade) => trackEvent.geoScoreCta(target, grade)}
             />
 
-            {/* F5-8: compartir la nota con URL parametrizada (?url=) */}
+            {/* El segundo paso: una pagina no es un sitio. Aqui es donde el
+                auditor deja de ser un juguete y empieza a capturar leads. */}
+            {lastResult && <ScanOffer result={lastResult} />}
+
+            {/* F5-8: compartir la nota con URL parametrizada (?url=). Va DESPUES
+                de la oferta y en tono discreto: no debe competir con la venta. */}
             {lastResult && (
               <div className="mt-4 text-center">
-                <Button variant="outline" onClick={shareScore}>
+                <Button variant="ghost" size="sm" onClick={shareScore}>
                   <Share2 className="h-4 w-4 mr-2" />
                   Compartir mi nota: {lastResult.total}/100
                 </Button>
               </div>
             )}
-
-            {/* El segundo paso: una pagina no es un sitio. Aqui es donde el
-                auditor deja de ser un juguete y empieza a capturar leads. */}
-            {lastResult && <ScanOffer result={lastResult} />}
 
             {/* Cómo funciona */}
             <div className="grid md:grid-cols-3 gap-4 mt-12">

@@ -15,6 +15,10 @@ interface HablaWidgetProps {
   /** F5-8: dominio con el que pre-lanzar el análisis (p. ej. de ?url= en /geo-score).
    *  Solo se consume en useEffect: SSR-safe. */
   initialUrl?: string;
+  // En /geo-score, debajo hay un ScanOffer que pide el email y vende la
+  // auditoria. Que el widget calle: dos capturas seguidas y cuatro botones en
+  // la misma pantalla es lo que estaba matando la conversion.
+  modoEscaneo?: boolean;
   /** Hooks de analítica — solo se disparan en handlers de evento (SSR-safe). */
   onAnalyzeStart?: (url: string) => void;
   onAnalyzeComplete?: (result: HablaResult) => void;
@@ -38,6 +42,7 @@ export default function HablaWidget({
   subtitle = "Escribe tu dominio. En 10 segundos sabrás qué ve ChatGPT cuando entra en tu web: casi nunca es lo que ves tú.",
   className = "",
   initialUrl,
+  modoEscaneo = false,
   onAnalyzeStart,
   onAnalyzeComplete,
   onAnalyzeError,
@@ -209,44 +214,50 @@ export default function HablaWidget({
               </div>
             )}
 
-            {/* CTA. La nota decide qué se ofrece primero: a quien saca menos de 60 no se le
-                vende un PDF de deberes, se le vende que se lo arreglen. */}
-            <div className="mt-6 flex flex-col sm:flex-row gap-2">
-              {result.total < 60 ? (
-                <>
-                  <Button asChild size="lg" className="flex-1">
-                    <Link to="/auditoria" onClick={() => onResultCtaClick?.("auditoria", result.grade)}>
-                      Que te lo arregle yo: auditoría, 197 €
-                      <ArrowRight className="h-4 w-4 ml-2" />
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" size="lg" className="flex-1">
-                    <Link to="/curso" onClick={() => onResultCtaClick?.("curso", result.grade)}>
-                      Prefiero aprender a hacerlo: curso, 47 €
-                    </Link>
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Button asChild size="lg" className="flex-1">
-                    <Link to="/curso" onClick={() => onResultCtaClick?.("curso", result.grade)}>
-                      Arreglarlo yo mismo: el curso, 47 €
-                      <ArrowRight className="h-4 w-4 ml-2" />
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" size="lg" className="flex-1">
-                    <Link to="/auditoria" onClick={() => onResultCtaClick?.("auditoria", result.grade)}>
-                      O te lo arreglo yo: auditoría, 197 €
-                    </Link>
-                  </Button>
-                </>
-              )}
-            </div>
+            {/* La venta y la captura solo cuando el widget va solo en la página.
+                En modo escaneo las pone el ScanOffer de abajo, una sola vez. */}
+            {!modoEscaneo && (
+              <>
+                {/* CTA. La nota decide qué se ofrece primero: a quien saca menos de 60 no se le
+                    vende un PDF de deberes, se le vende que se lo arreglen. */}
+                <div className="mt-6 flex flex-col sm:flex-row gap-2">
+                  {result.total < 60 ? (
+                    <>
+                      <Button asChild size="lg" className="flex-1">
+                        <Link to="/auditoria" onClick={() => onResultCtaClick?.("auditoria", result.grade)}>
+                          Que te lo arregle yo: auditoría, 197 €
+                          <ArrowRight className="h-4 w-4 ml-2" />
+                        </Link>
+                      </Button>
+                      <Button asChild variant="outline" size="lg" className="flex-1">
+                        <Link to="/curso" onClick={() => onResultCtaClick?.("curso", result.grade)}>
+                          Prefiero aprender a hacerlo: curso, 47 €
+                        </Link>
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button asChild size="lg" className="flex-1">
+                        <Link to="/curso" onClick={() => onResultCtaClick?.("curso", result.grade)}>
+                          Arreglarlo yo mismo: el curso, 47 €
+                          <ArrowRight className="h-4 w-4 ml-2" />
+                        </Link>
+                      </Button>
+                      <Button asChild variant="outline" size="lg" className="flex-1">
+                        <Link to="/auditoria" onClick={() => onResultCtaClick?.("auditoria", result.grade)}>
+                          O te lo arreglo yo: auditoría, 197 €
+                        </Link>
+                      </Button>
+                    </>
+                  )}
+                </div>
 
-            {/* Captura de email */}
-            <div className="mt-6">
-              <EmailCapture source={`habla-${result.grade}`} />
-            </div>
+                {/* Captura de email */}
+                <div className="mt-6">
+                  <EmailCapture source={`habla-${result.grade}`} />
+                </div>
+              </>
+            )}
 
             {/* Lo que la nota NO significa. Va aquí, no en la letra pequeña. */}
             {result.caveat && (
