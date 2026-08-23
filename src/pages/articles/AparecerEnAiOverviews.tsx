@@ -156,7 +156,7 @@ const AparecerEnAiOverviews = () => {
                   Los AI Overviews son los resúmenes generados por IA que Google coloca <em>encima</em> de
                   los resultados de siempre. Google los presentó en su conferencia I/O de mayo de 2024 y,
                   un año después, el 20 de mayo de 2025, anunció su expansión a más de 200 países y
-                  territorios y más de 40 idiomas &mdash; el español entre ellos. En Estados Unidos, la
+                  territorios y más de 40 idiomas, el español entre ellos. En Estados Unidos, la
                   respuesta la genera una versión personalizada de Gemini 2.5.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
@@ -317,7 +317,7 @@ const AparecerEnAiOverviews = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
 

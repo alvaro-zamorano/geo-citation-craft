@@ -22,6 +22,8 @@ import { createClient } from "@supabase/supabase-js";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import manifest from "./_lib/manifest.json" with { type: "json" };
+import { construirPack } from "./_lib/auditoria.mjs";
+import { escanear } from "./scan.js";
 
 export const config = {
   api: { bodyParser: false }, // raw body required for Stripe signature verification
@@ -106,27 +108,57 @@ ${auditNoteHtml}
   return { html, text };
 }
 
-function buildOwnerNotification(session: Stripe.Checkout.Session, productType: string, customerEmail: string, attachments: { name: string }[]): { subject: string; html: string; text: string } {
+function buildOwnerNotification(
+  session: Stripe.Checkout.Session,
+  productType: string,
+  customerEmail: string,
+  attachments: { name: string }[],
+  auditoria?: { entregada: boolean; dominio: string; nota?: number; paginas?: number } | null
+): { subject: string; html: string; text: string } {
   const amount = (session.amount_total || 0) / 100;
   const currency = (session.currency || "eur").toUpperCase();
   const products = attachments.map(a => a.name).join(", ") || (productType === "complete" ? "Curso completo" : productType);
   const country = session.customer_details?.address?.country || "—";
   const sessionId = session.id;
   const when = new Date((session.created || Date.now() / 1000) * 1000).toISOString().replace("T", " ").slice(0, 19);
+  // El dominio llega por los metadatos (si vino del escaneo) o por el custom_field
+  // del checkout. Si la compra es anterior a esos cambios, no viene: se marca y se
+  // pregunta como antes.
+  const dominio = session.metadata?.dominio || (session.custom_fields || []).find((f) => f.key === "dominio")?.text?.value || "";
 
-  // F2-5: el product type SIEMPRE visible en la notificación. Para curso-auditoria hay
-  // trabajo manual pendiente (auditoría HABLA + plan de acción): el subject lo grita.
+  // El product type SIEMPRE visible en la notificación. Para curso-auditoria el asunto
+  // depende de lo que de verdad pasó: si el pack salió solo, no hay nada pendiente y el
+  // aviso no puede decir "entrega manual"; si falló o no hubo dominio, lo grita como antes.
   const subject = productType === "curso-auditoria"
-    ? `💰⚠️ Venta esGEO [curso-auditoria]: €${amount} — ENTREGA MANUAL: auditoría pendiente`
+    ? auditoria?.entregada
+      ? `💰 Venta esGEO [curso-auditoria]: 197 € — auditoría de ${auditoria.dominio} entregada sola`
+      : `💰⚠️ Venta esGEO [curso-auditoria]: €${amount} — ENTREGA MANUAL: auditoría pendiente`
     : `💰 Venta esGEO [${productType}]: €${amount} — ${products}`;
 
-  const manualDeliveryNote = productType === "curso-auditoria"
-    ? `
+  const manualDeliveryNote = productType !== "curso-auditoria"
+    ? ""
+    : auditoria?.entregada
+      ? `
 
-⚠️ ACCIÓN REQUERIDA: este tier incluye auditoría HABLA comentada
-(vídeo/PDF) + plan de acción priorizado. Escribe al cliente para
-confirmar el dominio y entrégala manualmente.`
-    : "";
+Auditoría entregada automáticamente.
+
+Dominio: ${auditoria.dominio}
+Nota:    ${auditoria.nota} sobre 100, ${auditoria.paginas} páginas
+No hay nada pendiente por tu parte.`
+      : `
+
+⚠️ ACCIÓN REQUERIDA: auditoría HABLA comentada (vídeo/PDF) + plan de
+acción priorizado. Entrega manual.
+
+Dominio: ${dominio || "NO LO DIO — hay que preguntárselo"}${dominio ? `
+Escaneo listo para abrir:
+https://www.esgeo.ai/api/scan?url=${encodeURIComponent(dominio)}&email=${encodeURIComponent(customerEmail)}&limit=10&from=compra-197` : ""}`;
+
+  const auditoriaBoxHtml = productType !== "curso-auditoria"
+    ? ""
+    : auditoria?.entregada
+      ? `<p style="background:#dcfce7;border:1px solid #16a34a;padding:10px 14px;border-radius:6px;"><strong>✅ Auditoría entregada automáticamente.</strong><br><br><strong>Dominio:</strong> ${auditoria.dominio}<br><strong>Nota:</strong> ${auditoria.nota} sobre 100, ${auditoria.paginas} páginas<br>No hay nada pendiente por tu parte.</p>`
+      : `<p style="background:#fef3c7;border:1px solid #f59e0b;padding:10px 14px;border-radius:6px;"><strong>⚠️ ACCIÓN REQUERIDA:</strong> auditoría HABLA comentada (vídeo/PDF) + plan de acción priorizado. Entrega manual.<br><br><strong>Dominio:</strong> ${dominio || "<em>no lo dio — hay que preguntárselo</em>"}${dominio ? `<br><a href="https://www.esgeo.ai/api/scan?url=${encodeURIComponent(dominio)}&amp;email=${encodeURIComponent(customerEmail)}&amp;limit=10&amp;from=compra-197">Abrir el escaneo de las 10 páginas</a>` : ""}</p>`;
 
   const text = `Nueva venta en esgeo.ai
 
@@ -145,7 +177,7 @@ Stripe:    https://dashboard.stripe.com/payments/${sessionId}`;
 <html><head><meta charset="utf-8"></head>
 <body style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#1f2937;line-height:1.55;font-size:15px;max-width:560px;margin:24px auto;padding:0 20px;">
 <h2 style="margin:0 0 16px 0;color:#16a34a;">💰 Nueva venta — €${amount}</h2>
-${productType === "curso-auditoria" ? `<p style="background:#fef3c7;border:1px solid #f59e0b;padding:10px 14px;border-radius:6px;"><strong>⚠️ ACCIÓN REQUERIDA:</strong> este tier incluye auditoría HABLA comentada (vídeo/PDF) + plan de acción priorizado. Escribe al cliente para confirmar el dominio y entrégala manualmente.</p>` : ""}
+${auditoriaBoxHtml}
 <table style="width:100%;border-collapse:collapse;font-size:14px;">
 <tr><td style="padding:6px 0;color:#6b7280;width:90px;">Cliente</td><td style="padding:6px 0;"><strong>${customerEmail}</strong></td></tr>
 <tr><td style="padding:6px 0;color:#6b7280;">País</td><td style="padding:6px 0;">${country}</td></tr>
@@ -297,10 +329,44 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // 2. F3-2: registrar la compra en public.purchases + lead converted (no bloquea)
     await recordPurchase(session, productType, moduleId, email);
 
+    // Lo que de verdad ha pasado con la auditoria, para que el aviso al owner
+    // no diga "entrega manual pendiente" cuando ya se ha entregado sola.
+    let auditoria: { entregada: boolean; dominio: string; nota?: number; paginas?: number } | null = null;
+
+    // 2b. La auditoría de 197 € se genera y se entrega sola. Todo lo que lleva
+    //     el pack sale del HTML y del sitemap del cliente, sin modelo de por
+    //     medio: por eso puede tardar segundos en vez de un día de trabajo.
+    //     Si falla, no se toca la compra: los PDFs del curso ya han salido y el
+    //     aviso al owner dirá que hay entrega manual pendiente.
+    if (productType === "curso-auditoria") {
+      const dominio = session.metadata?.dominio || (session.custom_fields || []).find((f) => f.key === "dominio")?.text?.value || "";
+      if (!dominio) {
+        console.error("[webhook] curso-auditoria sin dominio: queda entrega manual");
+        auditoria = { entregada: false, dominio: "" };
+      } else {
+        try {
+          const pack = await construirPack(dominio, email, escanear);
+          await sendEmail(
+            email,
+            SENDER,
+            `Tu auditoría de ${pack.dominio} ya está lista`,
+            pack.html,
+            pack.adjuntos,
+            pack.text
+          );
+          auditoria = { entregada: true, dominio: pack.dominio, nota: pack.scan.site_score, paginas: pack.scan.pages_ok };
+          console.log(`[webhook] auditoría entregada a ${email}: ${pack.dominio}, ${pack.scan.pages_ok} páginas, nota ${pack.scan.site_score}`);
+        } catch (packErr) {
+          console.error("[webhook] auditoría automática falló:", (packErr as Error).message);
+          auditoria = { entregada: false, dominio };
+        }
+      }
+    }
+
     // 3. Notificación al owner (no bloquea el response si falla)
     try {
       const ownerEmail = process.env.OWNER_EMAIL || "azmglg@gmail.com";
-      const notif = buildOwnerNotification(session, productType, email, attachments);
+      const notif = buildOwnerNotification(session, productType, email, attachments, auditoria);
       const ownerResult = await sendEmail(ownerEmail, OWNER_NOTIFY_FROM, notif.subject, notif.html, [], notif.text);
       console.log(`[webhook] owner notified, id=${ownerResult.id}`);
     } catch (notifErr) {

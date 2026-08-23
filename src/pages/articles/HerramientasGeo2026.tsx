@@ -127,10 +127,10 @@ const HerramientasGeo2026 = () => {
                 <p className="text-xl leading-relaxed">
                   <strong>No busques "la mejor herramienta de GEO": no existe.</strong> El{" "}
                   <GeoTerm term="geo">GEO</GeoTerm> no es un problema, son varios, y cada uno tiene su
-                  categoría de herramienta. Este artículo las ordena por el problema que resuelven &mdash;
-                  auditar, monitorizar citas, generar schema, validar{" "}
+                  categoría de herramienta. Este artículo las ordena por el problema que resuelven
+                  (auditar, monitorizar citas, generar schema, validar{" "}
                   <GeoTerm term="llms-txt">llms.txt</GeoTerm>, trabajar la{" "}
-                  <GeoTerm term="answerability">respondibilidad</GeoTerm> &mdash; para que elijas tú, no
+                  <GeoTerm term="answerability">respondibilidad</GeoTerm>) para que elijas tú, no
                   para coronar a ninguna.
                 </p>
               </HighlightSnippet>
@@ -222,8 +222,8 @@ const HerramientasGeo2026 = () => {
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   <strong>Advertencia:</strong> el schema debe describir tu contenido real. Rellenar campos
-                  que no se corresponden con la página &mdash; valoraciones que no existen, precios inventados
-                  &mdash; es marcado engañoso y puede volverse en tu contra.
+                  que no se corresponden con la página (valoraciones que no existen, precios inventados) es
+                  marcado engañoso y puede volverse en tu contra.
                 </p>
 
                 <h3 className="text-xl font-medium text-primary mb-2">
@@ -231,8 +231,8 @@ const HerramientasGeo2026 = () => {
                 </h3>
                 <p className="text-muted-foreground leading-relaxed mb-2">
                   <strong>Qué hacen:</strong> te dan un borrador del fichero{" "}
-                  <GeoTerm term="llms-txt">llms.txt</GeoTerm> &mdash; el índice en texto plano que resume tu
-                  sitio para los modelos &mdash; y comprueban que la sintaxis sea correcta y los enlaces
+                  <GeoTerm term="llms-txt">llms.txt</GeoTerm> (el índice en texto plano que resume tu
+                  sitio para los modelos) y comprueban que la sintaxis sea correcta y los enlaces
                   apunten a algo.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-2">
@@ -273,7 +273,7 @@ const HerramientasGeo2026 = () => {
                 <p className="text-muted-foreground leading-relaxed mb-2">
                   <strong>Qué hacen:</strong> las suites de SEO tradicionales están incorporando módulos para
                   seguir menciones en asistentes y para informar sobre los{" "}
-                  <GeoTerm term="ai-overviews">AI Overviews</GeoTerm>. Su ventaja es que reutilizan los datos
+                  <GeoTerm term="ai-overviews">AI Overviews</GeoTerm> de Google. Su ventaja es que reutilizan los datos
                   que ya tienes de tu SEO.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-2">
@@ -385,7 +385,7 @@ const HerramientasGeo2026 = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
 

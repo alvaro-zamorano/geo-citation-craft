@@ -153,7 +153,7 @@ const ModuloF2Page = () => {
               MÓDULO F2
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-4">
-              Contexto Semántico y Formato Óptimo
+              Contexto semántico y formato óptimo
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground italic mb-6">
               "Los modelos generativos no posicionan keywords: sintetizan ideas bien expresadas." 
@@ -164,7 +164,7 @@ const ModuloF2Page = () => {
           {/* Objetivo del Módulo */}
           <section id="f2-objetivo" className="mb-12 section-anchor">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-semibold text-primary">Objetivo del Módulo</h2>
+              <h2 className="text-3xl font-semibold text-primary">Objetivo del módulo</h2>
               <ShareSectionButton sectionId="f2-objetivo" title="objetivo del módulo" />
             </div>
             <HighlightSnippet lastModified="2026-07-15" variant="definition" className="mb-6">
@@ -180,13 +180,13 @@ const ModuloF2Page = () => {
           {/* Principios Clave */}
           <section id="f2-principios" className="mb-12 section-anchor">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-semibold text-primary">Principios Clave del Módulo</h2>
+              <h2 className="text-3xl font-semibold text-primary">Principios clave del módulo</h2>
               <ShareSectionButton sectionId="f2-principios" title="principios clave" />
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="bg-muted/20">
                 <CardHeader>
-                  <CardTitle className="text-xl">Intención Conversacional</CardTitle>
+                  <CardTitle className="text-xl">Intención conversacional</CardTitle>
                 </CardHeader>
                 <CardContent className="text-muted-foreground">
                   <ul className="space-y-2">
@@ -198,7 +198,7 @@ const ModuloF2Page = () => {
               </Card>
               <Card className="bg-muted/20">
                 <CardHeader>
-                  <CardTitle className="text-xl">Claridad Semántica</CardTitle>
+                  <CardTitle className="text-xl">Claridad semántica</CardTitle>
                 </CardHeader>
                 <CardContent className="text-muted-foreground">
                   <ul className="space-y-2">
@@ -210,7 +210,7 @@ const ModuloF2Page = () => {
               </Card>
               <Card className="bg-muted/20">
                 <CardHeader>
-                  <CardTitle className="text-xl">Formato Fragmentable</CardTitle>
+                  <CardTitle className="text-xl">Formato fragmentable</CardTitle>
                 </CardHeader>
                 <CardContent className="text-muted-foreground">
                   <ul className="space-y-2">
@@ -223,7 +223,7 @@ const ModuloF2Page = () => {
               </Card>
               <Card className="bg-muted/20">
                 <CardHeader>
-                  <CardTitle className="text-xl">Enriquecimiento de Contenido</CardTitle>
+                  <CardTitle className="text-xl">Enriquecimiento de contenido</CardTitle>
                 </CardHeader>
                 <CardContent className="text-muted-foreground">
                   <ul className="space-y-2">
@@ -251,24 +251,24 @@ const ModuloF2Page = () => {
             <Button variant="outline" asChild>
               <Link to="/curso/f1">
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Módulo Anterior: F1 Accesibilidad Generativa
+                Módulo anterior: F1 accesibilidad generativa
               </Link>
             </Button>
             <BuyButton source="modulo-f2" className="btn-cta text-sm">
-              Desbloquear los 5 módulos — 47 €
+              Desbloquear los 5 módulos: 47 €
             </BuyButton>
           </div>
 
           {/* Contenido Relacionado - Preview */}
           <div className="mt-16 p-6 bg-muted/30 rounded-lg">
-            <h3 className="text-lg font-semibold text-primary mb-4 text-center">Vista Previa del Contenido Premium</h3>
+            <h3 className="text-lg font-semibold text-primary mb-4 text-center">Vista previa del contenido premium</h3>
             <div className="text-center space-y-2 text-muted-foreground">
               <p>✓ Checklist completo de implementación F2</p>
               <p>✓ Prompts avanzados para LLMs</p>
               <p>✓ Herramientas especializadas de análisis</p>
               <p>✓ Casos prácticos paso a paso</p>
               <BuyButton source="modulo-f2-gate" className="btn-cta text-sm mt-4" showArrow={false}>
-                Ver todo el contenido — 47 €
+                Ver todo el contenido: 47 €
               </BuyButton>
               <GuaranteeNote compact className="mt-4" />
             </div>

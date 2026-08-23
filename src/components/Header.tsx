@@ -24,6 +24,7 @@ const Header = () => {
 
         <nav className="hidden md:flex items-center space-x-5">
           <Link to="/geo-score" className="text-sm font-semibold text-primary hover:text-accent transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded px-2 py-1">Audita tu web</Link>
+          <Link to="/auditoria" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded px-2 py-1">Auditoría</Link>
 
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center space-x-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded px-2 py-1">
@@ -31,7 +32,7 @@ const Header = () => {
               <ChevronDown className="h-4 w-4" />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem asChild><Link to="/machine-readability" className="cursor-pointer">Machine Readability — guía completa</Link></DropdownMenuItem>
+              <DropdownMenuItem asChild><Link to="/machine-readability" className="cursor-pointer">Machine Readability: guía completa</Link></DropdownMenuItem>
               <DropdownMenuItem asChild><Link to="/habla" className="cursor-pointer">El framework HABLA</Link></DropdownMenuItem>
               <DropdownMenuItem asChild><Link to="/metodologia" className="cursor-pointer">Metodología</Link></DropdownMenuItem>
               <DropdownMenuItem asChild><Link to="/hiperpersonalizacion" className="cursor-pointer">Hiperpersonalización</Link></DropdownMenuItem>
@@ -47,6 +48,7 @@ const Header = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem asChild><Link to="/curso" className="cursor-pointer">Curso Completo</Link></DropdownMenuItem>
+              <DropdownMenuItem asChild><Link to="/auditoria" className="cursor-pointer">Curso + auditoría: 197 €</Link></DropdownMenuItem>
               <DropdownMenuItem asChild><Link to="/curso/f1" className="cursor-pointer">F1 - Fundamentos</Link></DropdownMenuItem>
               <DropdownMenuItem asChild><Link to="/curso/f2" className="cursor-pointer">F2 - Contexto Semántico</Link></DropdownMenuItem>
               <DropdownMenuItem asChild><Link to="/curso/f3" className="cursor-pointer">F3 - Autoridad Generativa</Link></DropdownMenuItem>
@@ -61,7 +63,7 @@ const Header = () => {
         <div className="hidden md:flex items-center gap-3">
           <Button asChild size="sm" className="bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg shadow-lg hover:shadow-accent/50 transition-all duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent">
             <Link to="/curso#comprar" className="cursor-pointer">
-              Curso GEO — €47
+              Curso GEO: 47 €
             </Link>
           </Button>
         </div>
@@ -82,13 +84,14 @@ const Header = () => {
             <div className="pb-4 border-b">
               <Button asChild className="w-full bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg shadow-lg cursor-pointer transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent" onClick={() => setIsMenuOpen(false)}>
                 <Link to="/curso#comprar" className="cursor-pointer">
-                  Curso GEO — €47
+                  Curso GEO: 47 €
                 </Link>
               </Button>
             </div>
             <Link to="/geo-score" className="block text-sm font-semibold text-primary hover:text-accent transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1" onClick={() => setIsMenuOpen(false)}>Audita tu web</Link>
+            <Link to="/auditoria" className="block text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1" onClick={() => setIsMenuOpen(false)}>Auditoría</Link>
             <div className="pt-2 pb-1 text-xs uppercase tracking-wider text-muted-foreground/60 px-2">Aprende</div>
-            <Link to="/machine-readability" className="block text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1" onClick={() => setIsMenuOpen(false)}>Machine Readability — guía</Link>
+            <Link to="/machine-readability" className="block text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1" onClick={() => setIsMenuOpen(false)}>Machine Readability: guía</Link>
             <Link to="/habla" className="block text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1" onClick={() => setIsMenuOpen(false)}>El framework HABLA</Link>
             <Link to="/metodologia" className="block text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1" onClick={() => setIsMenuOpen(false)}>Metodología</Link>
             <Link to="/hiperpersonalizacion" className="block text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1" onClick={() => setIsMenuOpen(false)}>Hiperpersonalización</Link>

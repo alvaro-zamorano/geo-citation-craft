@@ -127,7 +127,7 @@ const ChecklistGeo25Puntos = () => {
                 <p className="text-xl leading-relaxed">
                   <strong>Esta es una checklist de 25 puntos para auditar si tu web está lista para la IA
                   generativa</strong>, agrupada en las cinco dimensiones del framework{" "}
-                  <strong>HABLA</strong>: Higiene, Accesible, Bloques, Lenguaje y eXtras &mdash; cinco puntos
+                  <strong>HABLA</strong>: Higiene, Accesible, Bloques, Lenguaje y eXtras, cinco puntos
                   por dimensión. Cada punto incluye por qué importa y cómo verificarlo tú mismo. Pensada como
                   pieza de referencia para recorrer de arriba abajo antes de publicar o rediseñar.
                 </p>
@@ -164,7 +164,7 @@ const ChecklistGeo25Puntos = () => {
               </section>
 
               <section id="higiene" className="mb-12">
-                <h2 className="text-2xl font-semibold text-primary mb-4">H — Higiene técnica</h2>
+                <h2 className="text-2xl font-semibold text-primary mb-4">H: Higiene técnica</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Los cimientos. Si un bot no puede rastrear tu web o encuentra señales contradictorias, todo
                   lo demás da igual. Estos cinco puntos aseguran que la puerta esté abierta y bien señalizada.
@@ -208,7 +208,7 @@ const ChecklistGeo25Puntos = () => {
               </section>
 
               <section id="accesible" className="mb-12">
-                <h2 className="text-2xl font-semibold text-primary mb-4">A — Accesible para el bot</h2>
+                <h2 className="text-2xl font-semibold text-primary mb-4">A: Accesible para el bot</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Que el bot entre no significa que <em>lea</em>. Muchos rastreadores procesan el HTML inicial
                   y no ejecutan JavaScript como un navegador. Estos puntos comprueban que tu texto llegue de
@@ -250,7 +250,7 @@ const ChecklistGeo25Puntos = () => {
               </section>
 
               <section id="bloques" className="mb-12">
-                <h2 className="text-2xl font-semibold text-primary mb-4">B — Bloques y estructura</h2>
+                <h2 className="text-2xl font-semibold text-primary mb-4">B: Bloques y estructura</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   El bot ya lee tu texto; ahora tiene que <em>entender su estructura</em>. Encabezados
                   ordenados, HTML semántico y datos estructurados le permiten identificar de qué trata cada
@@ -291,7 +291,7 @@ const ChecklistGeo25Puntos = () => {
               </section>
 
               <section id="lenguaje" className="mb-12">
-                <h2 className="text-2xl font-semibold text-primary mb-4">L — Lenguaje y citabilidad</h2>
+                <h2 className="text-2xl font-semibold text-primary mb-4">L: Lenguaje y citabilidad</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Estructura correcta, pero ¿es el texto <em>citable</em>? Un modelo tiende a extraer
                   fragmentos que se sostienen solos. Estos puntos trabajan la{" "}
@@ -333,7 +333,7 @@ const ChecklistGeo25Puntos = () => {
               </section>
 
               <section id="extras" className="mb-12">
-                <h2 className="text-2xl font-semibold text-primary mb-4">X — eXtras que suman autoridad</h2>
+                <h2 className="text-2xl font-semibold text-primary mb-4">X: eXtras que suman autoridad</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Con los cuatro pilares cubiertos, estos extras refuerzan tu identidad y tu autoridad como
                   fuente. No son imprescindibles para empezar, pero marcan la diferencia entre una web
@@ -426,7 +426,7 @@ const ChecklistGeo25Puntos = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
 

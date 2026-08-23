@@ -7,7 +7,7 @@ interface GuaranteeNoteProps {
 }
 
 /**
- * F2-1: Garantía medible — texto canónico único.
+ * F2-1: garantía medible, texto canónico único.
  *
  * Se muestra bajo cada BuyButton, en /curso#comprar y en /checkout. La promesa
  * es verificable con el propio auditor del sitio (/geo-score): antes y después.

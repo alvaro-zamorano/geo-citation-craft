@@ -17,12 +17,12 @@ const HeroSection = () => {
           <h1 id="hp-headline" className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-[1.1] tracking-tight animate-fade-up-delay-1">
             Haz que la IA{" "}
             <span className="text-accent-light relative">
-              Recomiende
+              recomiende
               <svg className="absolute -bottom-2 left-0 w-full h-3 text-accent-light/40" viewBox="0 0 200 8" fill="none">
                 <path d="M1 5.5C40 2 80 1 100 3C120 5 160 6 199 2.5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
               </svg>
             </span>{" "}
-            Tu Negocio
+            tu negocio
           </h1>
 
           {/*
@@ -33,13 +33,13 @@ const HeroSection = () => {
             className="snippet-block text-lg md:text-xl text-primary-foreground/85 mb-10 leading-relaxed max-w-2xl mx-auto animate-fade-up-delay-2 text-left md:text-center"
             data-speakable="true"
           >
-            Cuando alguien pregunta a ChatGPT por lo que tú vendes, cita a tres webs. Hoy ninguna
-            es la tuya — y probablemente ni siquiera puede leerte. <strong>esGEO te enseña a
-            arreglarlo con el método F1-F5: 5 módulos en PDF, 47&nbsp;€ de pago único, sin
-            suscripción.</strong>
+            Cuando alguien le pregunta a ChatGPT por lo que tú vendes, cita a tres webs. Hoy
+            ninguna es la tuya, y lo más probable es que ni siquiera pueda leerte: los crawlers
+            de IA no ejecutan JavaScript, y a la mayoría de las webs modernas les llegan vacías.{" "}
+            <strong>Compruébalo en diez segundos, gratis y sin registro.</strong>
           </p>
 
-          {/* TL;DR para lectores rápidos — oculto por defecto; lo revela el motor
+          {/* TL;DR para lectores rápidos, oculto por defecto; lo revela el motor
               de hiperpersonalización (regla "skimmer"). El default renderiza sin él. */}
           <p
             id="hp-tldr"
@@ -54,7 +54,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10 animate-fade-up-delay-3">
             <Button size="lg" className="btn-glow bg-white/15 hover:bg-white/25 backdrop-blur-sm text-white border border-white/30 font-bold px-10 py-7 text-lg rounded-xl cursor-pointer transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white" asChild>
               <Link to="/curso/f0">
-                Empezar Gratis con F0
+                Empezar gratis con F0
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -62,7 +62,7 @@ const HeroSection = () => {
             <Button size="lg" className="btn-glow cta-pulse bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-7 text-lg rounded-xl cursor-pointer transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary" asChild>
               <Link to="/curso#comprar">
                 <Zap className="mr-2 h-5 w-5" />
-                Curso Completo — €{COMPLETE_COURSE.price}
+                Curso completo: €{COMPLETE_COURSE.price}
               </Link>
             </Button>
           </div>
@@ -80,7 +80,7 @@ const HeroSection = () => {
               <Package className="h-5 w-5 text-accent-light flex-shrink-0 mt-0.5" />
               <span className="text-primary-foreground/75">
                 <strong className="text-primary-foreground block">Qué obtienes</strong>
-                El método F1-F5 completo: 5 módulos y 142 páginas en PDF, tuyos al instante.
+                El método F1-F5 completo: lo que hicimos para pasar de 35 a 92 en nuestra propia web, paso a paso.
               </span>
             </li>
             <li className="flex items-start gap-2.5">

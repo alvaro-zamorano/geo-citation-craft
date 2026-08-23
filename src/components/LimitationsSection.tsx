@@ -21,13 +21,13 @@ const LimitationsSection = () => {
           <div className="text-center mb-12">
             <Badge variant="outline" className="mb-4 text-warning border-warning/30">
               <Shield className="mr-2 h-4 w-4" />
-              Transparencia Total
+              Transparencia total
             </Badge>
             <h2 className="text-3xl font-bold text-primary mb-3">
-              Lo que Podemos y lo que No
+              Lo que podemos y lo que no
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Somos honestos sobre qué funciona y qué factores están fuera de nuestro control.
+              Esto es lo que el método puede hacer por ti y lo que no. Preferimos decírtelo antes de que pagues.
             </p>
           </div>
 
@@ -78,8 +78,8 @@ const LimitationsSection = () => {
               <div className="text-xs text-muted-foreground">Primeros resultados</div>
             </div>
             <div className="p-4 rounded-xl bg-background card-elevated">
-              <div className="text-2xl font-bold text-accent mb-1">Varía</div>
-              <div className="text-xs text-muted-foreground">Según nicho y competencia</div>
+              <div className="text-2xl font-bold text-accent mb-1">Depende</div>
+              <div className="text-xs text-muted-foreground">De tu sector y de quién compita contigo</div>
             </div>
             <div className="p-4 rounded-xl bg-background card-elevated">
               <div className="text-2xl font-bold text-accent mb-1">+Calidad</div>

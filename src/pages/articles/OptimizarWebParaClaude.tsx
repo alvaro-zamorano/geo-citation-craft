@@ -185,7 +185,7 @@ const OptimizarWebParaClaude = () => {
                 </p>
 
                 <div className="bg-card rounded p-4 text-xs overflow-x-auto mb-6 border border-accent/20">
-                  <pre className="text-muted-foreground">{`# Ejemplo ilustrativo — adáptalo y verifica el nombre de agente en tu caso
+                  <pre className="text-muted-foreground">{`# Ejemplo ilustrativo: adáptalo y verifica el nombre de agente en tu caso
 # Permitir el rastreo de ClaudeBot:
 User-agent: ClaudeBot
 Allow: /
@@ -293,10 +293,10 @@ Allow: /
                 <h2 className="text-2xl font-semibold text-primary mb-4">El mismo trabajo que para ChatGPT y Perplexity (con matices)</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Conviene repetirlo porque ahorra dinero y tiempo: <strong>no existe un servicio de
-                  "optimización para Claude" separado del resto.</strong> El grueso de las acciones —servir
+                  "optimización para Claude" separado del resto.</strong> El grueso de las acciones (servir
                   HTML completo, estructurar con encabezados, responder arriba, fragmentar, fechar,
                   <GeoTerm term="datos-estructurados"> marcar con datos estructurados</GeoTerm> y ganar
-                  autoridad— sirve para todos los asistentes a la vez.
+                  autoridad) sirve para todos los asistentes a la vez.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Los matices son eso, matices. Perplexity tiende a premiar la frescura y la búsqueda en
@@ -305,8 +305,8 @@ Allow: /
                   matices contradice a los demás: apuntan en la misma dirección de calidad.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Si dudas de un dato concreto —el nombre exacto de un agente, si una función de navegación
-                  está activa en tu caso, o qué está bloqueado— no lo inventes: <strong>compruébalo en tu
+                  Si dudas de un dato concreto (el nombre exacto de un agente, si una función de navegación
+                  está activa en tu caso, o qué está bloqueado) no lo inventes: <strong>compruébalo en tu
                   robots.txt, en tus logs y en la documentación vigente del proveedor.</strong> Esa disciplina
                   es, en sí misma, parte de una buena estrategia de citación.
                 </p>
@@ -430,7 +430,7 @@ Allow: /
                 completa de GEO paso a paso.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
 

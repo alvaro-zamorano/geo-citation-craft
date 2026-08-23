@@ -148,7 +148,7 @@ const ModuloF5Page = () => {
               </Badge>
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold text-primary mb-6">
-              Mantenimiento Evolutivo
+              Mantenimiento evolutivo
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
               "En el nuevo paradigma, no se posiciona quien publica más, sino quien evoluciona mejor."
@@ -159,7 +159,7 @@ const ModuloF5Page = () => {
           {/* Objective */}
           <HighlightSnippet lastModified="2026-07-15" id="f5-objetivo" variant="definition" className="mb-16">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-primary">Objetivo del Módulo</h2>
+              <h2 className="text-2xl font-bold text-primary">Objetivo del módulo</h2>
               <ShareSectionButton sectionId="f5-objetivo" title="objetivo del módulo" />
             </div>
             <p className="text-lg leading-relaxed" data-speakable="true">
@@ -174,7 +174,7 @@ const ModuloF5Page = () => {
           {/* Preview - Single Key Principle */}
           <section id="f5-principios-preview" className="mb-12">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-bold text-primary">Principios Clave del Mantenimiento Evolutivo</h2>
+              <h2 className="text-3xl font-bold text-primary">Principios clave del mantenimiento evolutivo</h2>
               <ShareSectionButton sectionId="f5-principios-preview" title="principios clave" />
             </div>
             
@@ -184,7 +184,7 @@ const ModuloF5Page = () => {
 
             <Card className="bg-muted/20 mb-6">
               <CardHeader>
-                <CardTitle className="text-xl">Evolución de los Modelos</CardTitle>
+                <CardTitle className="text-xl">Evolución de los modelos</CardTitle>
               </CardHeader>
               <CardContent className="text-muted-foreground">
                 <p className="mb-2">Los modelos principales se actualizan cada pocos meses, lo que puede traer cambios en cómo interpretan y valoran el contenido.</p>
@@ -265,7 +265,7 @@ const ModuloF5Page = () => {
             <Button variant="outline" asChild>
               <Link to="/curso/f4">
                 <ArrowLeft className="h-4 w-4 mr-2" />
-                Módulo F4: Validación Conversacional
+                Módulo F4: validación conversacional
               </Link>
             </Button>
             <Button asChild>
@@ -278,7 +278,7 @@ const ModuloF5Page = () => {
 
           {/* Related Tools */}
           <div className="p-6 bg-muted/30 rounded-lg text-center">
-            <h3 className="text-lg font-semibold text-primary mb-4">Herramientas Recomendadas</h3>
+            <h3 className="text-lg font-semibold text-primary mb-4">Herramientas recomendadas</h3>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button variant="ghost" size="sm" asChild>
                 <a href="https://www.notion.so/" target="_blank" rel="noopener noreferrer">

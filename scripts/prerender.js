@@ -22,7 +22,9 @@ const ssrEntry = path.join(projectRoot, 'dist-ssr', 'entry-server.js');
 
 /** Rutas públicas. Las transaccionales (auth, dashboard, success,
  *  guest-access, unsubscribe, admin) quedan fuera a propósito: son SPA.
- *  /checkout se prerenderiza desde F1-9: es una página de pre-pago real. */
+ *  /checkout se prerenderiza desde F1-9: es una página de pre-pago real.
+ *  /auditoria/demo se prerenderiza en su estado sin ?url=: el h1 y el
+ *  formulario para escribir el dominio. Los resultados son client-side. */
 const ROUTES = [
   '/',
   '/curso',
@@ -33,6 +35,8 @@ const ROUTES = [
   '/curso/f4',
   '/curso/f5',
   '/checkout',
+  '/auditoria',
+  '/auditoria/demo',
   '/metodologia',
   '/casos',
   '/glosario',
@@ -246,6 +250,13 @@ function stripStaticHead(template) {
 
 function buildPage(template, head, html) {
   let out = stripStaticHead(template);
+  // Si Helmet trae su propia meta de robots, la del shell sobra: sin esto una
+  // página que pide noindex (/auditoria/demo) sale con "index, follow" y
+  // "noindex,follow" a la vez. Las rutas cuyo Helmet no dice nada de robots se
+  // quedan con la del shell, que es la que les corresponde.
+  if (/name="(robots|googlebot|bingbot)"/i.test(head)) {
+    out = out.replace(/<meta\s+name="(robots|googlebot|bingbot)"[^>]*>\s*/gi, '');
+  }
   out = out.replace(/<\/head>/i, `    ${head}\n  </head>`);
   out = out.replace(
     /<div id="root">\s*<\/div>/i,

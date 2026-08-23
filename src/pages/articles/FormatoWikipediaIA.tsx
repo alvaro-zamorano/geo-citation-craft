@@ -154,7 +154,7 @@ const FormatoWikipediaIA = () => {
                 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div className="bg-danger/5 border border-danger/20 p-4 rounded-lg">
-                    <h4 className="font-semibold text-danger mb-2">❌ Contenido comercial típico</h4>
+                    <h4 className="font-semibold text-danger mb-2">Contenido comercial típico</h4>
                     <p className="text-sm text-danger italic">
                       "¡Descubre el INCREÍBLE secreto del marketing que REVOLUCIONARÁ tu negocio! 
                       Esta PODEROSA estrategia que usan los expertos..."
@@ -162,7 +162,7 @@ const FormatoWikipediaIA = () => {
                   </div>
                   
                   <div className="bg-success/5 border border-success/20 p-4 rounded-lg">
-                    <h4 className="font-semibold text-success mb-2">✅ Estilo Wikipedia</h4>
+                    <h4 className="font-semibold text-success mb-2">Estilo Wikipedia</h4>
                     <p className="text-sm text-success italic">
                       "El marketing de contenidos es una estrategia que consiste en crear y distribuir 
                       contenido valioso para atraer y retener una audiencia específica."
@@ -184,7 +184,7 @@ const FormatoWikipediaIA = () => {
                 </ol>
 
                 <div className="bg-primary/5 border border-primary/20 p-4 rounded-lg">
-                  <h4 className="font-semibold text-primary mb-2">💡 Tip práctico</h4>
+                  <h4 className="font-semibold text-primary mb-2">Tip práctico</h4>
                   <p className="text-sm text-primary">
                     Antes de publicar, pregúntate: "¿Estaría este contenido en Wikipedia?" 
                     Si la respuesta es no, necesitas más neutralidad y estructura.
@@ -221,7 +221,7 @@ const FormatoWikipediaIA = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
             {/* F2-7: captura de email al final del artículo */}

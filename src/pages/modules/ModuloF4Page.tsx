@@ -153,7 +153,7 @@ const ModuloF4Page = () => {
               MÓDULO F4
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-4">
-              Validación Conversacional
+              Validación conversacional
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground italic mb-6">
               "GEO no es un SEO técnico, es un diálogo. El test final es: ¿te cita la IA cuando alguien pregunta?"
@@ -164,7 +164,7 @@ const ModuloF4Page = () => {
           {/* Objetivo del Módulo */}
           <section id="f4-objetivo" className="mb-12 section-anchor">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-semibold text-primary">Objetivo del Módulo</h2>
+              <h2 className="text-3xl font-semibold text-primary">Objetivo del módulo</h2>
               <ShareSectionButton sectionId="f4-objetivo" title="objetivo del módulo" />
             </div>
             <HighlightSnippet lastModified="2026-07-15" variant="definition" className="mb-6">
@@ -191,24 +191,24 @@ const ModuloF4Page = () => {
             <Button variant="outline" asChild>
               <Link to="/curso/f3">
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                Módulo Anterior: F3
+                Módulo anterior: F3
               </Link>
             </Button>
             <BuyButton source="modulo-f4" className="btn-cta text-sm">
-              Desbloquear los 5 módulos — 47 €
+              Desbloquear los 5 módulos: 47 €
             </BuyButton>
           </div>
 
           {/* Contenido Relacionado - Preview */}
           <div className="mt-16 p-6 bg-muted/30 rounded-lg">
-            <h3 className="text-lg font-semibold text-primary mb-4 text-center">Vista Previa del Contenido Premium</h3>
+            <h3 className="text-lg font-semibold text-primary mb-4 text-center">Vista previa del contenido premium</h3>
             <div className="text-center space-y-2 text-muted-foreground">
               <p>✓ Metodología completa de targeting generativo</p>
               <p>✓ Herramientas de análisis de consultas</p>
               <p>✓ Estrategias de optimización de contenido</p>
               <p>✓ Casos prácticos de implementación</p>
               <BuyButton source="modulo-f4-gate" className="btn-cta text-sm mt-4" showArrow={false}>
-                Acceder al contenido completo — 47 €
+                Acceder al contenido completo: 47 €
               </BuyButton>
               <GuaranteeNote compact className="mt-4" />
             </div>

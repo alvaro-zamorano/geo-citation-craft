@@ -144,7 +144,7 @@ const GeoAeoLlmoSeo = () => {
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Cuando una categoría es nueva, el nombre aún no está decidido, y cada actor intenta que
                   gane el suyo. Con la optimización para IA ha pasado exactamente eso: agencias, herramientas
-                  y académicos han propuesto siglas distintas para describir el mismo fenómeno &mdash; que
+                  y académicos han propuesto siglas distintas para describir el mismo fenómeno: que
                   ChatGPT, Perplexity, Claude, Gemini y los <GeoTerm term="ai-overviews">AI Overviews</GeoTerm>{" "}
                   responden citando fuentes, y quieres ser una de ellas.
                 </p>
@@ -157,7 +157,7 @@ const GeoAeoLlmoSeo = () => {
               <section id="cada-termino" className="mb-12">
                 <h2 className="text-2xl font-semibold text-primary mb-4">Qué significa cada sigla</h2>
 
-                <h3 className="text-xl font-medium text-primary mb-2">GEO — Generative Engine Optimization</h3>
+                <h3 className="text-xl font-medium text-primary mb-2">GEO: Generative Engine Optimization</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Optimización para <GeoTerm term="motores-generativos">motores generativos</GeoTerm>:
                   sistemas que <em>recuperan</em> información y <em>generan</em> una respuesta citando
@@ -167,7 +167,7 @@ const GeoAeoLlmoSeo = () => {
                   la visibilidad de una fuente <strong>hasta un 40%</strong> en la respuesta generada.
                 </p>
 
-                <h3 className="text-xl font-medium text-primary mb-2">AEO — Answer Engine Optimization</h3>
+                <h3 className="text-xl font-medium text-primary mb-2">AEO: Answer Engine Optimization</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Optimización para "motores de respuesta". El término es anterior a la ola de los LLM: nació
                   con los featured snippets, los asistentes de voz y la <GeoTerm term="answerability">
@@ -175,14 +175,14 @@ const GeoAeoLlmoSeo = () => {
                   sinónimo de GEO, con el acento puesto en responder preguntas concretas.
                 </p>
 
-                <h3 className="text-xl font-medium text-primary mb-2">LLMO — Large Language Model Optimization</h3>
+                <h3 className="text-xl font-medium text-primary mb-2">LLMO: Large Language Model Optimization</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Optimización para modelos de lenguaje. Pone el foco en el modelo en sí (cómo entiende y
                   reproduce tu contenido) más que en el buscador que lo envuelve. A veces aparece como "LLM
                   SEO" o "AI SEO". Mismo trabajo, distinta etiqueta.
                 </p>
 
-                <h3 className="text-xl font-medium text-primary mb-2">SEO para IA — la evolución del SEO clásico</h3>
+                <h3 className="text-xl font-medium text-primary mb-2">SEO para IA: la evolución del SEO clásico</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   No es una disciplina nueva sino el SEO de siempre reorientado: el HTML semántico, el
                   rastreo, el <GeoTerm term="datos-estructurados">schema</GeoTerm> y la velocidad siguen
@@ -234,8 +234,8 @@ const GeoAeoLlmoSeo = () => {
                 </HighlightSnippet>
                 <p className="text-muted-foreground leading-relaxed">
                   Fíjate en la columna "Foco": no describen trabajos distintos, describen el mismo trabajo
-                  mirado desde ángulos distintos. El 90% de las acciones &mdash; responder arriba, fragmentar,
-                  marcar con schema, servir HTML completo, ganar autoridad &mdash; son idénticas.
+                  mirado desde ángulos distintos. El 90% de las acciones (responder arriba, fragmentar,
+                  marcar con schema, servir HTML completo, ganar autoridad) son idénticas.
                 </p>
               </section>
 
@@ -298,7 +298,7 @@ const GeoAeoLlmoSeo = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
 

@@ -425,28 +425,28 @@ Disallow: /admin/
 
                 <div className="space-y-3">
                   <div className="border border-destructive/20 bg-destructive/5 rounded p-4">
-                    <p className="font-semibold text-destructive mb-1">❌ Bloquear a Perplexity en robots.txt</p>
+                    <p className="font-semibold text-destructive mb-1">Bloquear a Perplexity en robots.txt</p>
                     <p className="text-sm text-muted-foreground">
                       Si has configurado "Disallow: /" para todos los bots, Perplexity no puede indexarte.
                     </p>
                   </div>
 
                   <div className="border border-destructive/20 bg-destructive/5 rounded p-4">
-                    <p className="font-semibold text-destructive mb-1">❌ Nunca actualizar contenido</p>
+                    <p className="font-semibold text-destructive mb-1">Nunca actualizar contenido</p>
                     <p className="text-sm text-muted-foreground">
                       Un artículo de 2023 sin cambios pierde visibilidad en Perplexity rápidamente.
                     </p>
                   </div>
 
                   <div className="border border-destructive/20 bg-destructive/5 rounded p-4">
-                    <p className="font-semibold text-destructive mb-1">❌ Pedir a Perplexity no indexar</p>
+                    <p className="font-semibold text-destructive mb-1">Pedir a Perplexity no indexar</p>
                     <p className="text-sm text-muted-foreground">
                       Algunos sitios usan "User-agent: CCBot" para bloquear a Perplexity. Si lo haces, no aparecerás.
                     </p>
                   </div>
 
                   <div className="border border-destructive/20 bg-destructive/5 rounded p-4">
-                    <p className="font-semibold text-destructive mb-1">❌ Contenido detrás de paywall sin preview</p>
+                    <p className="font-semibold text-destructive mb-1">Contenido detrás de paywall sin preview</p>
                     <p className="text-muted-foreground">
                       Perplexity no cita contenido que no puede leer. Si tu artículo está completamente bloqueado, no aparecerá.
                     </p>
@@ -539,7 +539,7 @@ Disallow: /admin/
                 Aprende la estrategia completa de GEO.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
             {/* F2-7: captura de email al final del artículo */}

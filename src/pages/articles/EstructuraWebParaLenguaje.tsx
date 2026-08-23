@@ -127,7 +127,7 @@ const EstructuraWebParaLenguaje = () => {
                 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div className="bg-danger/5 border border-danger/20 p-4 rounded-lg">
-                    <h4 className="font-semibold text-danger mb-2">❌ Enfoque SEO tradicional</h4>
+                    <h4 className="font-semibold text-danger mb-2">Enfoque SEO tradicional</h4>
                     <ul className="text-sm space-y-1 text-danger">
                       <li>• Keywords distribuidas artificialmente</li>
                       <li>• Contenido largo sin estructura clara</li>
@@ -137,7 +137,7 @@ const EstructuraWebParaLenguaje = () => {
                   </div>
                   
                   <div className="bg-success/5 border border-success/20 p-4 rounded-lg">
-                    <h4 className="font-semibold text-success mb-2">✅ Enfoque GEO</h4>
+                    <h4 className="font-semibold text-success mb-2">Enfoque GEO</h4>
                     <ul className="text-sm space-y-1 text-success">
                       <li>• Conceptos explicados naturalmente</li>
                       <li>• Bloques temáticos bien definidos</li>
@@ -214,7 +214,7 @@ const EstructuraWebParaLenguaje = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
             {/* F2-7: captura de email al final del artículo */}

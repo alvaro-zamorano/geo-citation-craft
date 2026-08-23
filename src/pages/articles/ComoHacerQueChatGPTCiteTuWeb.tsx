@@ -147,7 +147,7 @@ const ComoHacerQueChatGPTCiteTuWeb = () => {
               </section>
 
               <section id="tecnica-1-fragmentacion" className="mb-12">
-                <h2 className="text-2xl font-semibold text-primary mb-4">Técnica 1: Fragmentación — El arma secreta</h2>
+                <h2 className="text-2xl font-semibold text-primary mb-4">Técnica 1: Fragmentación, el arma secreta</h2>
 
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   <GeoTerm term="fragmentacion">Fragmentación</GeoTerm> significa dividir tu contenido en bloques independientes, citables y reutilizables.
@@ -374,28 +374,28 @@ const ComoHacerQueChatGPTCiteTuWeb = () => {
 
                 <div className="space-y-3">
                   <div className="border border-destructive/20 bg-destructive/5 rounded p-4">
-                    <p className="font-semibold text-destructive mb-1">❌ Párrafos de 500+ palabras sin subtítulos</p>
+                    <p className="font-semibold text-destructive mb-1">Párrafos de 500+ palabras sin subtítulos</p>
                     <p className="text-sm text-muted-foreground">
                       ChatGPT no sabe dónde termina una idea y comienza otra.
                     </p>
                   </div>
 
                   <div className="border border-destructive/20 bg-destructive/5 rounded p-4">
-                    <p className="font-semibold text-destructive mb-1">❌ Contenido que cambia frecuentemente</p>
+                    <p className="font-semibold text-destructive mb-1">Contenido que cambia frecuentemente</p>
                     <p className="text-sm text-muted-foreground">
                       Si tu "definición de GEO" cambia cada semana, el modelo desconfiará.
                     </p>
                   </div>
 
                   <div className="border border-destructive/20 bg-destructive/5 rounded p-4">
-                    <p className="font-semibold text-destructive mb-1">❌ Afirmaciones sin respaldo</p>
+                    <p className="font-semibold text-destructive mb-1">Afirmaciones sin respaldo</p>
                     <p className="text-sm text-muted-foreground">
                       "GEO es 10x mejor" sin datos o citas pierde credibilidad.
                     </p>
                   </div>
 
                   <div className="border border-destructive/20 bg-destructive/5 rounded p-4">
-                    <p className="font-semibold text-destructive mb-1">❌ No actualizar nunca</p>
+                    <p className="font-semibold text-destructive mb-1">No actualizar nunca</p>
                     <p className="text-sm text-muted-foreground">
                       Contenido de 2020 sin "última actualización" baja autoridad generativa.
                     </p>
@@ -486,7 +486,7 @@ const ComoHacerQueChatGPTCiteTuWeb = () => {
                 para todos los modelos de IA.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
             {/* F2-7: captura de email al final del artículo */}

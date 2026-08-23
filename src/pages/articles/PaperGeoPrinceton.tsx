@@ -132,8 +132,8 @@ const PaperGeoPrinceton = () => {
                   <strong>El término <GeoTerm term="geo">GEO</GeoTerm> nació en un paper académico.</strong> El
                   estudio "GEO: Generative Engine Optimization", de un equipo con Princeton University como
                   afiliación principal, se publicó en arXiv el 16 de noviembre de 2023 y se presentó en la
-                  conferencia KDD 2024. Su hallazgo central: aplicar métodos GEO &mdash; citas, estadísticas,
-                  citas de fuentes y lenguaje con autoridad &mdash; puede aumentar la visibilidad de una fuente en
+                  conferencia KDD 2024. Su hallazgo central: aplicar métodos GEO (citas, estadísticas,
+                  citas de fuentes y lenguaje con autoridad) puede aumentar la visibilidad de una fuente en
                   la respuesta generada <strong>hasta un 40%</strong>.
                 </p>
               </HighlightSnippet>
@@ -227,7 +227,7 @@ const PaperGeoPrinceton = () => {
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   Aun así, hay un patrón robusto: añadir estadísticas, citas y fuentes fue de lo más efectivo de
                   forma consistente. Y hay un anti-patrón igual de claro: el <em>keyword stuffing</em> clásico
-                  del SEO &mdash; rellenar el texto de palabras clave repetidas &mdash; no ayudaba, e incluso podía
+                  del SEO (rellenar el texto de palabras clave repetidas) no ayudaba, e incluso podía
                   perjudicar la visibilidad en la respuesta generada.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
@@ -341,7 +341,7 @@ const PaperGeoPrinceton = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos, del diagnóstico a la citación.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
 

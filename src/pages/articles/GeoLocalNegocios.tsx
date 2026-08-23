@@ -126,7 +126,7 @@ const GeoLocalNegocios = () => {
               <HighlightSnippet lastModified="2026-07-20" id="definicion" variant="definition" className="mb-6">
                 <p className="text-xl leading-relaxed">
                   <strong>El GEO local es aplicar <GeoTerm term="geo">GEO</GeoTerm> a un negocio de barrio</strong>{" "}
-                  &mdash; restaurante, clínica, tienda o autónomo &mdash; para que ChatGPT, Perplexity, Gemini
+                  (restaurante, clínica, tienda o autónomo) para que ChatGPT, Perplexity, Gemini
                   y los <GeoTerm term="ai-overviews">AI Overviews</GeoTerm> te mencionen cuando alguien pregunta
                   por el "mejor X en mi ciudad". No se trata de salir en el mapa, sino de ser la fuente que la
                   IA cita dentro de la respuesta conversacional.
@@ -201,7 +201,7 @@ const GeoLocalNegocios = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   El GEO local persigue una mención: que cuando el motor generativo construye su respuesta,
                   tenga tus datos claros, tus hechos verificables y tus reseñas sintetizadas, y decida nombrarte.
-                  Comparten cimientos &mdash; ficha bien puesta, reseñas reales, web sana &mdash; pero la métrica
+                  Comparten cimientos (ficha bien puesta, reseñas reales, web sana), pero la métrica
                   de éxito es distinta: del clic a la mención.
                 </p>
               </section>
@@ -218,7 +218,7 @@ const GeoLocalNegocios = () => {
                   Lo mínimo que debe incluir: el nombre exacto del negocio, la dirección postal completa, las
                   coordenadas geográficas (latitud y longitud), el teléfono, el horario de apertura por días y
                   el tipo concreto de negocio (Restaurant, Dentist, Store, según corresponda). Si de verdad
-                  recoges valoraciones en tu propia web, puedes añadir aggregateRating &mdash; pero solo si es
+                  recoges valoraciones en tu propia web, puedes añadir aggregateRating, pero solo si es
                   real y verificable. Inventar una nota media es un riesgo, no un atajo: rompe la confianza que
                   intentas construir.
                 </p>
@@ -239,7 +239,7 @@ const GeoLocalNegocios = () => {
                   número 4" en otro, o un teléfono con y sin prefijo.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  El GEO local exige que ese trío &mdash; nombre, dirección y teléfono &mdash; aparezca escrito
+                  El GEO local exige que ese trío (nombre, dirección y teléfono) aparezca escrito
                   exactamente igual en toda tu web, en tu ficha de Google, en tus redes y en cualquier directorio
                   donde estés. Cuando los datos coinciden en todas partes, la IA puede afirmar tu información con
                   confianza. Cuando se contradicen, ante la duda, prefiere no citarte. La coherencia NAP no es
@@ -274,8 +274,8 @@ const GeoLocalNegocios = () => {
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   La consecuencia práctica: no cuenta solo la nota media, cuenta lo que la gente dice y con qué
-                  palabras. Reseñas reales, recientes y descriptivas &mdash; que mencionen el plato, el servicio
-                  concreto, la zona &mdash; le dan a la IA material rico para citarte con precisión. Pedir a
+                  palabras. Reseñas reales, recientes y descriptivas (que mencionen el plato, el servicio
+                  concreto, la zona) le dan a la IA material rico para citarte con precisión. Pedir a
                   clientes satisfechos que cuenten qué les gustó, en sus palabras, ayuda más que perseguir una
                   cifra. Y responder a las reseñas, incluidas las regulares, añade contexto que también se lee.
                 </p>
@@ -310,7 +310,7 @@ const GeoLocalNegocios = () => {
                   Crear una página por servicio y, cuando tiene sentido, por localidad o zona, permite responder
                   con precisión a preguntas muy concretas. Una página "Ortodoncia invisible en Granada centro"
                   responde exactamente a esa consulta mejor que una home que lo mezcla todo. Eso sí: cada página
-                  debe aportar información real y distinta &mdash; nada de clonar el mismo texto cambiando el
+                  debe aportar información real y distinta: nada de clonar el mismo texto cambiando el
                   nombre de la calle. La <GeoTerm term="autoridad-ia">autoridad</GeoTerm> se gana con contenido
                   útil, no con plantillas repetidas.
                 </p>
@@ -322,7 +322,7 @@ const GeoLocalNegocios = () => {
                   Aquí el negocio de barrio parte, a veces, con ventaja sobre una marca grande. Muchos
                   <GeoTerm term="motores-generativos"> motores generativos</GeoTerm> leen el HTML que devuelve
                   el servidor y no ejecutan JavaScript como lo haría un navegador completo. Si tu web sirve el
-                  contenido &mdash; nombre, dirección, servicios, textos &mdash; directamente en ese HTML, la IA
+                  contenido (nombre, dirección, servicios, textos) directamente en ese HTML, la IA
                   lo ve sin esfuerzo.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
@@ -358,8 +358,8 @@ const GeoLocalNegocios = () => {
                   <div className="border-l-4 border-accent pl-4">
                     <h3 className="text-lg font-medium text-primary mb-2">¿El GEO local sustituye al SEO local?</h3>
                     <p className="text-muted-foreground">
-                      No, lo complementa. Comparten cimientos &mdash; NAP coherente, ficha completa, reseñas
-                      reales &mdash; pero persiguen cosas distintas: el SEO local, una posición en el mapa; el
+                      No, lo complementa. Comparten cimientos (NAP coherente, ficha completa, reseñas
+                      reales), pero persiguen cosas distintas: el SEO local, una posición en el mapa; el
                       GEO local, una mención dentro de la respuesta de la IA. Bien hecho, un trabajo refuerza el
                       otro.
                     </p>
@@ -389,7 +389,7 @@ const GeoLocalNegocios = () => {
                 Aprende la metodología completa en nuestro curso de 5 módulos.
               </p>
               <Link to="/curso#comprar" className="btn-cta inline-block cursor-pointer">
-                Ver el curso GEO — €47
+                Ver el curso GEO: 47 €
               </Link>
             </div>
 

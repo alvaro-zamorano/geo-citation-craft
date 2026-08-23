@@ -24,7 +24,7 @@ const homeFaqs = [
     id: "faq-home-que-es-geo",
     question: "¿Qué es GEO (Generative Engine Optimization) en 2026?",
     answer:
-      "GEO es la disciplina que optimiza páginas web para que los motores generativos —ChatGPT, Perplexity, Claude, Gemini y Copilot— las citen como fuente. En 2026 se considera el complemento natural del SEO clásico: el SEO te posiciona en buscadores, GEO te hace aparecer dentro de las respuestas que la IA genera directamente. Combina señales semánticas, datos estructurados y autoridad de marca.",
+      "GEO es la disciplina que optimiza páginas web para que los motores generativos (ChatGPT, Perplexity, Claude, Gemini y Copilot) las citen como fuente. En 2026 se considera el complemento natural del SEO clásico: el SEO te posiciona en buscadores, GEO te hace aparecer dentro de las respuestas que la IA genera directamente. Combina señales semánticas, datos estructurados y autoridad de marca.",
   },
   {
     id: "faq-home-geo-vs-seo-2026",
@@ -60,8 +60,8 @@ const homeTocItems = [
   { id: "que-es-geo", title: "¿Qué es GEO?" },
   { id: "metodologia", title: "5 módulos, en orden" },
   { id: "precios", title: "Empieza gratis. Paga una vez si te convence." },
-  { id: "casos-destacados", title: "Predicamos con el Ejemplo" },
-  { id: "limitaciones", title: "Lo que Podemos y lo que No" },
+  { id: "casos-destacados", title: "Predicamos con el ejemplo" },
+  { id: "limitaciones", title: "Lo que podemos y lo que no" },
   { id: "home-faq", title: "Preguntas frecuentes sobre GEO en 2026" },
   { id: "home-seguir-aprendiendo", title: "Seguir aprendiendo" },
 ];

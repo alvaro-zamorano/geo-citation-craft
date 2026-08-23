@@ -59,7 +59,7 @@ const PremiumContentGate = ({
 
         <div className="space-y-3">
           <BuyButton source={`gate-${moduleNumber}`} className="btn-cta w-full max-w-xs">
-            Desbloquear los 5 módulos — 47 €
+            Desbloquear los 5 módulos: 47 €
           </BuyButton>
 
           <GuaranteeNote compact />

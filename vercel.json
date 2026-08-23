@@ -66,7 +66,7 @@
       "maxDuration": 60
     },
     "api/stripe-webhook.ts": {
-      "maxDuration": 30,
+      "maxDuration": 60,
       "includeFiles": "premium/**"
     },
     "api/admin/auth.ts": {
@@ -78,6 +78,15 @@
     "api/premium-health.ts": {
       "maxDuration": 10,
       "includeFiles": "premium/**"
+    },
+    "api/analyze.js": {
+      "maxDuration": 30
+    },
+    "api/scan.js": {
+      "maxDuration": 60
+    },
+    "api/demo.js": {
+      "maxDuration": 60
     }
   },
   "headers": [

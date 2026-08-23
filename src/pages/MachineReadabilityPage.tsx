@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { useGeoMetadata } from "@/hooks/useGeoMetadata";
 
 /**
- * /machine-readability — página PILAR (cornerstone) del tema "legibilidad máquina / GEO".
+ * /machine-readability: página PILAR (cornerstone) del tema "legibilidad máquina / GEO".
  * Agrupa y enlaza todo el cluster: el framework HABLA, el Radar IA, la metodología, el
  * auditor gratuito y la página del framework /habla. Página larga, de referencia, citable.
  *
@@ -75,7 +75,7 @@ const ARTICULOS = [
 const FAQS = [
   {
     q: "¿Qué es la legibilidad máquina (machine readability)?",
-    a: "Es la capacidad de una web para ser leída por un programa automático —en este caso, los rastreadores de los modelos de IA— sin intervención humana ni ejecución de JavaScript. Una web es legible para la máquina cuando el HTML que entrega su servidor contiene el texto, la estructura y las señales que un crawler necesita para entender y citar su contenido.",
+    a: "Es la capacidad de una web para ser leída por un programa automático (en este caso, los rastreadores de los modelos de IA) sin intervención humana ni ejecución de JavaScript. Una web es legible para la máquina cuando el HTML que entrega su servidor contiene el texto, la estructura y las señales que un crawler necesita para entender y citar su contenido.",
   },
   {
     q: "¿Por qué mi web se ve bien en el navegador pero la IA no la lee?",
@@ -181,7 +181,7 @@ const MachineReadabilityPage = () => {
                   data-speakable="true"
                 >
                   <strong>La legibilidad máquina es la condición previa de todo lo demás:</strong>{" "}
-                  si un crawler de IA &mdash;que <strong>no ejecuta JavaScript</strong>&mdash; no puede leer el
+                  si un crawler de IA (que <strong>no ejecuta JavaScript</strong>) no puede leer el
                   HTML que sirve tu servidor, no puede entenderte y, por tanto, no puede citarte. Da igual lo
                   bonita que se vea tu web en el navegador: lo que importa es lo que la máquina recibe cuando
                   descarga tu página. Esta es la página pilar de la{" "}
@@ -198,18 +198,18 @@ const MachineReadabilityPage = () => {
               <p className="text-muted-foreground leading-relaxed mt-8">
                 Durante veinte años, el objetivo de una web fue posicionar enlaces para que una persona hiciera
                 clic. Con la llegada de los <GeoTerm term="motores-generativos">motores generativos</GeoTerm>{" "}
-                &mdash;ChatGPT, Perplexity, Claude, Gemini y los{" "}
-                <GeoTerm term="ai-overviews">AI Overviews</GeoTerm> de Google&mdash; el objetivo se ha
+                (ChatGPT, Perplexity, Claude, Gemini y los{" "}
+                <GeoTerm term="ai-overviews">AI Overviews</GeoTerm> de Google), el objetivo se ha
                 desplazado: ahora quieres ser la fuente que la IA lee, entiende y menciona en su respuesta.
                 Y para que eso ocurra, primero tu web tiene que ser legible para una máquina. Todo lo demás
-                &mdash;autoridad, frescura, buen contenido&mdash; llega después de superar ese umbral.
+                (autoridad, frescura, buen contenido) llega después de superar ese umbral.
               </p>
 
               <p className="text-muted-foreground leading-relaxed mt-4">
                 El error más caro es asumir que, si tú ves la página, la máquina también la ve. No es así.
                 Tú tienes un navegador que ejecuta JavaScript; el rastreador, por lo general, descarga el HTML
-                crudo y lo lee tal cual. Cuando esos dos documentos no coinciden &mdash;porque el contenido se
-                monta en el cliente&mdash;, hay una brecha invisible entre lo que crees que publicas y lo que
+                crudo y lo lee tal cual. Cuando esos dos documentos no coinciden (porque el contenido se
+                monta en el cliente), hay una brecha invisible entre lo que crees que publicas y lo que
                 la IA recibe. La legibilidad máquina consiste en cerrar esa brecha.
               </p>
             </div>
@@ -275,7 +275,7 @@ const MachineReadabilityPage = () => {
               <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto text-center mb-8">
                 No hace falta que te fíes de la teoría. Escribe tu dominio y mira, en unos segundos, qué ve un
                 crawler de IA cuando entra en tu web. El análisis descarga el HTML que sirve tu servidor
-                &mdash;sin ejecutar JavaScript&mdash; y lo puntúa sobre las cinco dimensiones de HABLA.
+                (sin ejecutar JavaScript) y lo puntúa sobre las cinco dimensiones de HABLA.
               </p>
 
               <HablaWidget
@@ -376,7 +376,7 @@ const MachineReadabilityPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button asChild size="lg" variant="secondary">
-                  <Link to="/curso">Ver el curso &mdash; 47 &euro; <ArrowRight className="h-4 w-4 ml-2" /></Link>
+                  <Link to="/curso">Ver el curso: 47 &euro; <ArrowRight className="h-4 w-4 ml-2" /></Link>
                 </Button>
                 <Button
                   asChild

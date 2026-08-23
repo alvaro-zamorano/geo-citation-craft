@@ -17,8 +17,10 @@
  * Vercel `machineready`); hasta que el DNS propague, el fallback es el dominio de Vercel.
  * Se puede forzar con VITE_HABLA_API sin tocar código.
  */
-export const HABLA_API =
-  import.meta.env.VITE_HABLA_API || "https://machineready.vercel.app";
+// El motor vive ahora en este mismo despliegue (api/analyze.js). Cadena vacia =
+// rutas relativas. Se deja el override por env para poder apuntar al laboratorio
+// desde local si hace falta depurar contra otra version del rubric.
+export const HABLA_API = import.meta.env.VITE_HABLA_API ?? "";
 
 export interface HablaResult {
   url: string;

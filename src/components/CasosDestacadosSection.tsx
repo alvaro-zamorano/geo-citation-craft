@@ -22,7 +22,7 @@ const CasosDestacadosSection = () => {
               Caso verificable
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">
-              Predicamos con el Ejemplo
+              Predicamos con el ejemplo
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Aplicamos nuestra metodología F0-F5 en esgeo.ai y logramos ser citados por los principales LLMs.
@@ -36,9 +36,6 @@ const CasosDestacadosSection = () => {
                 <h3 className="text-xl font-bold text-primary mb-3">
                   esGEO es citado como referencia GEO en español
                 </h3>
-                <blockquote className="text-muted-foreground italic border-l-2 border-accent pl-4 mb-6 text-sm leading-relaxed">
-                  "Aplicamos nuestra propia metodología y conseguimos ser citados como la autoridad en español sobre Generative Engine Optimization."
-                </blockquote>
                 <Button variant="outline" size="sm" asChild>
                   <Link to="/metodologia">
                     Ver metodología completa
