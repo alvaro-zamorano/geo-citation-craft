@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Fichero, type Trozo } from "@/components/DemoAuditoria";
 import { useGeoMetadata } from "@/hooks/useGeoMetadata";
+import { AUDITORIA_ACTIVA } from "@/lib/flags";
 
 /**
  * /auditoria/demo: la demo de la auditoria de 197 EUR, con URL propia.
@@ -24,6 +25,9 @@ import { useGeoMetadata } from "@/hooks/useGeoMetadata";
  * Va con noindex a proposito: es una pagina con parametro y no queremos mil
  * variantes indexadas. useGeoMetadata emite "index, follow" fijo, asi que el
  * noindex va en el Helmet propio, que se monta despues y gana.
+ *
+ * Con AUDITORIA_ACTIVA en false la demo se sigue viendo entera: es escaparate y
+ * alimenta el curso. Lo unico que cambia es el cierre, que ya no abre el pago.
  */
 
 interface FalloRepetido {
@@ -125,6 +129,8 @@ const DemoAuditoriaPage = () => {
     setParams({ url: limpio });
   }
 
+  // Sin uso mientras AUDITORIA_ACTIVA sea false: se conserva para que reabrir
+  // sea cambiar el flag y nada mas.
   async function comprarAuditoria() {
     setComprando(true);
     try {
@@ -350,37 +356,58 @@ const DemoAuditoriaPage = () => {
                 </div>
 
                 <div className="mt-8 border-t border-border pt-6">
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    Lo que ves aquí es el principio. La auditoría lleva los tres ficheros enteros, el
-                    informe con las cinco dimensiones de cada página y el plan ordenado por impacto.
-                    Llega a tu correo en menos de un minuto, con el curso F1-F5 incluido.
-                  </p>
-                  <Button
-                    size="lg"
-                    className="mt-4"
-                    onClick={comprarAuditoria}
-                    disabled={comprando}
-                  >
-                    {comprando ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Abriendo el pago…
-                      </>
-                    ) : (
-                      <>
-                        Quiero mi auditoría: 197 € <ArrowRight className="ml-2 h-4 w-4" />
-                      </>
-                    )}
-                  </Button>
-                  {error && <p className="mt-3 text-sm text-destructive">{error}</p>}
-                  <p className="mt-6">
-                    <Link
-                      to="/geo-score"
-                      className="text-sm text-primary underline underline-offset-4 hover:text-accent transition-colors"
-                    >
-                      ¿Prefieres el análisis gratuito completo? Audítala aquí
-                    </Link>
-                  </p>
+                  {AUDITORIA_ACTIVA ? (
+                    <>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        Lo que ves aquí es el principio. La auditoría lleva los tres ficheros enteros, el
+                        informe con las cinco dimensiones de cada página y el plan ordenado por impacto.
+                        Llega a tu correo en menos de un minuto, con el curso F1-F5 incluido.
+                      </p>
+                      <Button
+                        size="lg"
+                        className="mt-4"
+                        onClick={comprarAuditoria}
+                        disabled={comprando}
+                      >
+                        {comprando ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Abriendo el pago…
+                          </>
+                        ) : (
+                          <>
+                            Quiero mi auditoría: 197 € <ArrowRight className="ml-2 h-4 w-4" />
+                          </>
+                        )}
+                      </Button>
+                      {error && <p className="mt-3 text-sm text-destructive">{error}</p>}
+                      <p className="mt-6">
+                        <Link
+                          to="/geo-score"
+                          className="text-sm text-primary underline underline-offset-4 hover:text-accent transition-colors"
+                        >
+                          ¿Prefieres el análisis gratuito completo? Audítala aquí
+                        </Link>
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        Lo que ves aquí es el principio. La auditoría completa está cerrada ahora
+                        mismo mientras afino la entrega. Escríbeme a hola@esgeo.ai si quieres que te
+                        avise en cuanto la abra.
+                      </p>
+                      {error && <p className="mt-3 text-sm text-destructive">{error}</p>}
+                      <p className="mt-6">
+                        <Link
+                          to="/geo-score"
+                          className="text-sm text-primary underline underline-offset-4 hover:text-accent transition-colors"
+                        >
+                          Mientras tanto, audita tu web gratis
+                        </Link>
+                      </p>
+                    </>
+                  )}
                 </div>
               </>
             )}
