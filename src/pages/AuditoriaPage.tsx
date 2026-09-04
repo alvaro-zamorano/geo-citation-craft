@@ -21,6 +21,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useGeoMetadata } from "@/hooks/useGeoMetadata";
+import { AUDITORIA_ACTIVA } from "@/lib/flags";
 
 /**
  * /auditoria: la página propia del producto de 197 € (curso + auditoría personalizada).
@@ -34,6 +35,10 @@ import { useGeoMetadata } from "@/hooks/useGeoMetadata";
  *
  * Quien no se fía de una descripción tiene /auditoria/demo: la misma auditoría,
  * generada con su dominio y cortada por la mitad.
+ *
+ * Con AUDITORIA_ACTIVA en false la página sigue explicando el producto, pero los dos
+ * botones de compra se sustituyen por un aviso y la garantía se calla: no se promete
+ * devolver el dinero de algo que no se puede pagar.
  */
 const AuditoriaPage = () => {
   const { helmet: socialHelmet } = useGeoMetadata({
@@ -104,6 +109,26 @@ const AuditoriaPage = () => {
   const garantia =
     "Garantía medible: aplica el plan que te doy y vuelve a auditar tu web en los 30 días siguientes. Si tu nota no sube al menos 20 puntos, escríbeme con el antes y el después y te devuelvo los 197 €. La nota la pone la misma herramienta gratuita que puedes usar ahora, así que no depende de mi criterio.";
 
+  const avisoPausa =
+    "La auditoría está cerrada ahora mismo. Estoy afinando la entrega y no quiero cobrarla hasta que sea impecable. Escríbeme a hola@esgeo.ai y te aviso en cuanto la abra.";
+
+  /** El aviso que sustituye a cada botón de compra mientras la auditoría está pausada. */
+  const AvisoPausa = () => (
+    <div className="mx-auto max-w-2xl text-left">
+      <div className="rounded-2xl border border-accent/30 bg-accent/5 p-6 md:p-8">
+        <p className="text-muted-foreground leading-relaxed">{avisoPausa}</p>
+      </div>
+      <p className="mt-4 text-center">
+        <Link
+          to="/geo-score"
+          className="text-sm text-primary underline underline-offset-4 hover:text-accent transition-colors"
+        >
+          Mientras tanto, audita tu web gratis
+        </Link>
+      </p>
+    </div>
+  );
+
   const faqs = [
     {
       question: "¿Cuánto tarda?",
@@ -143,7 +168,9 @@ const AuditoriaPage = () => {
       "@type": "Offer",
       price: "197",
       priceCurrency: "EUR",
-      availability: "https://schema.org/InStock",
+      availability: AUDITORIA_ACTIVA
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
       url: "https://www.esgeo.ai/auditoria",
     },
   };
@@ -226,16 +253,22 @@ const AuditoriaPage = () => {
               repite en tu plantilla y te devuelve los ficheros ya escritos con los datos de tu
               sitio. Llega a tu correo en minutos, no en días.
             </p>
-            <BuyButton
-              source="auditoria-page-hero"
-              productType="curso-auditoria"
-              className="btn-glow bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-5 text-lg rounded-xl"
-            >
-              Quiero mi auditoría: 197 €
-            </BuyButton>
-            <p className="text-sm text-muted-foreground mt-3">
-              Pago único. El curso completo F1-F5 va incluido.
-            </p>
+            {AUDITORIA_ACTIVA ? (
+              <>
+                <BuyButton
+                  source="auditoria-page-hero"
+                  productType="curso-auditoria"
+                  className="btn-glow bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-5 text-lg rounded-xl"
+                >
+                  Quiero mi auditoría: 197 €
+                </BuyButton>
+                <p className="text-sm text-muted-foreground mt-3">
+                  Pago único. El curso completo F1-F5 va incluido.
+                </p>
+              </>
+            ) : (
+              <AvisoPausa />
+            )}
             <p className="mt-5">
               <Link
                 to="/auditoria/demo"
@@ -244,14 +277,16 @@ const AuditoriaPage = () => {
                 ¿Prefieres verla con tu web antes de pagar? Mira la demo
               </Link>
             </p>
-            <p className="mt-3">
-              <Link
-                to="/geo-score"
-                className="text-sm text-primary underline underline-offset-4 hover:text-accent transition-colors"
-              >
-                ¿Prefieres verlo antes? Audita una página gratis
-              </Link>
-            </p>
+            {AUDITORIA_ACTIVA && (
+              <p className="mt-3">
+                <Link
+                  to="/geo-score"
+                  className="text-sm text-primary underline underline-offset-4 hover:text-accent transition-colors"
+                >
+                  ¿Prefieres verlo antes? Audita una página gratis
+                </Link>
+              </p>
+            )}
           </div>
         </section>
 
@@ -318,20 +353,23 @@ const AuditoriaPage = () => {
           </div>
         </section>
 
-        {/* Garantía */}
-        <section className="py-14">
-          <div className="container mx-auto px-4 max-w-3xl">
-            <div className="rounded-2xl border border-accent/30 bg-accent/5 p-6 md:p-8 flex items-start gap-3">
-              <ShieldCheck className="h-6 w-6 text-accent flex-shrink-0 mt-0.5" aria-hidden="true" />
-              <div>
-                <h2 className="text-lg font-bold text-foreground mb-2">Garantía medible</h2>
-                <p className="text-muted-foreground leading-relaxed" data-speakable="true">
-                  {garantia}
-                </p>
+        {/* Garantía. Se calla mientras la auditoría está pausada: no se promete
+            devolver el dinero de algo que nadie puede pagar. */}
+        {AUDITORIA_ACTIVA && (
+          <section className="py-14">
+            <div className="container mx-auto px-4 max-w-3xl">
+              <div className="rounded-2xl border border-accent/30 bg-accent/5 p-6 md:p-8 flex items-start gap-3">
+                <ShieldCheck className="h-6 w-6 text-accent flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <div>
+                  <h2 className="text-lg font-bold text-foreground mb-2">Garantía medible</h2>
+                  <p className="text-muted-foreground leading-relaxed" data-speakable="true">
+                    {garantia}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* FAQ */}
         <section className="py-14 bg-muted/30 border-y border-border">
@@ -360,16 +398,34 @@ const AuditoriaPage = () => {
             <h2 className="text-2xl md:text-3xl font-bold mb-7">
               Tu web ya la están leyendo máquinas. La pregunta es qué entienden.
             </h2>
-            <BuyButton
-              source="auditoria-page-cierre"
-              productType="curso-auditoria"
-              className="btn-glow bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-5 text-lg rounded-xl"
-            >
-              Quiero mi auditoría: 197 €
-            </BuyButton>
-            <p className="text-sm text-primary-foreground/75 mt-3">
-              Pago único, factura con NIF/CIF, y el curso F1-F5 incluido.
-            </p>
+            {AUDITORIA_ACTIVA ? (
+              <>
+                <BuyButton
+                  source="auditoria-page-cierre"
+                  productType="curso-auditoria"
+                  className="btn-glow bg-accent hover:bg-accent/90 text-accent-foreground font-bold px-10 py-5 text-lg rounded-xl"
+                >
+                  Quiero mi auditoría: 197 €
+                </BuyButton>
+                <p className="text-sm text-primary-foreground/75 mt-3">
+                  Pago único, factura con NIF/CIF, y el curso F1-F5 incluido.
+                </p>
+              </>
+            ) : (
+              <div className="mx-auto max-w-2xl text-left">
+                <div className="rounded-2xl border border-primary-foreground/25 bg-primary-foreground/10 p-6 md:p-8">
+                  <p className="text-primary-foreground/85 leading-relaxed">{avisoPausa}</p>
+                </div>
+                <p className="mt-4 text-center">
+                  <Link
+                    to="/geo-score"
+                    className="text-sm text-primary-foreground underline underline-offset-4 hover:text-accent transition-colors"
+                  >
+                    Mientras tanto, audita tu web gratis
+                  </Link>
+                </p>
+              </div>
+            )}
           </div>
         </section>
       </main>
