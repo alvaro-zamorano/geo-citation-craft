@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { COMPLETE_COURSE } from "@/data/modules";
 import BuyButton from "@/components/BuyButton";
 import GuaranteeNote from "@/components/GuaranteeNote";
+import { AUDITORIA_ACTIVA } from "@/lib/flags";
 
 type Plan = {
   name: string;
@@ -22,8 +23,8 @@ type Plan = {
 
 const PricingSection = () => {
   // F2-5: tercer tier ancla (197 €), entrega manual de la auditoría.
-  // H-9: pendiente de aprobación de Álvaro (aprobar o retirar).
-  const plans: Plan[] = [
+  // 04/09/2026: pausado. Sigue aquí para poder reabrirlo con AUDITORIA_ACTIVA.
+  const allPlans: Plan[] = [
     {
       name: "F0. Empieza gratis",
       price: "0",
@@ -69,6 +70,11 @@ const PricingSection = () => {
     },
   ];
 
+  // Con la auditoría pausada la rejilla se queda en dos columnas centradas,
+  // no en tres con un hueco.
+  const plans = allPlans.filter((plan) => AUDITORIA_ACTIVA || plan.productType !== "curso-auditoria");
+  const gridCols = AUDITORIA_ACTIVA ? "md:grid-cols-3 max-w-5xl" : "md:grid-cols-2 max-w-3xl";
+
   return (
     <section id="precios" className="py-20 bg-muted/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,7 +91,7 @@ const PricingSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
+        <div className={`grid ${gridCols} gap-6 mx-auto items-start`}>
           {plans.map((plan, index) => (
             <div
               key={index}

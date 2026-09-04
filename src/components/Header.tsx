@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { AUDITORIA_ACTIVA } from "@/lib/flags";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,7 +25,9 @@ const Header = () => {
 
         <nav className="hidden md:flex items-center space-x-5">
           <Link to="/geo-score" className="text-sm font-semibold text-primary hover:text-accent transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded px-2 py-1">Audita tu web</Link>
-          <Link to="/auditoria" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded px-2 py-1">Auditoría</Link>
+          {AUDITORIA_ACTIVA && (
+            <Link to="/auditoria" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded px-2 py-1">Auditoría</Link>
+          )}
 
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center space-x-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent rounded px-2 py-1">
@@ -48,7 +51,9 @@ const Header = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem asChild><Link to="/curso" className="cursor-pointer">Curso Completo</Link></DropdownMenuItem>
-              <DropdownMenuItem asChild><Link to="/auditoria" className="cursor-pointer">Curso + auditoría: 197 €</Link></DropdownMenuItem>
+              {AUDITORIA_ACTIVA && (
+                <DropdownMenuItem asChild><Link to="/auditoria" className="cursor-pointer">Curso + auditoría: 197 €</Link></DropdownMenuItem>
+              )}
               <DropdownMenuItem asChild><Link to="/curso/f1" className="cursor-pointer">F1 - Fundamentos</Link></DropdownMenuItem>
               <DropdownMenuItem asChild><Link to="/curso/f2" className="cursor-pointer">F2 - Contexto Semántico</Link></DropdownMenuItem>
               <DropdownMenuItem asChild><Link to="/curso/f3" className="cursor-pointer">F3 - Autoridad Generativa</Link></DropdownMenuItem>
@@ -89,7 +94,9 @@ const Header = () => {
               </Button>
             </div>
             <Link to="/geo-score" className="block text-sm font-semibold text-primary hover:text-accent transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1" onClick={() => setIsMenuOpen(false)}>Audita tu web</Link>
-            <Link to="/auditoria" className="block text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1" onClick={() => setIsMenuOpen(false)}>Auditoría</Link>
+            {AUDITORIA_ACTIVA && (
+              <Link to="/auditoria" className="block text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1" onClick={() => setIsMenuOpen(false)}>Auditoría</Link>
+            )}
             <div className="pt-2 pb-1 text-xs uppercase tracking-wider text-muted-foreground/60 px-2">Aprende</div>
             <Link to="/machine-readability" className="block text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1" onClick={() => setIsMenuOpen(false)}>Machine Readability: guía</Link>
             <Link to="/habla" className="block text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1" onClick={() => setIsMenuOpen(false)}>El framework HABLA</Link>

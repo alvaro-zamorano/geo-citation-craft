@@ -14,6 +14,10 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import Stripe from "stripe";
 
+// Gemelo de AUDITORIA_ACTIVA en src/lib/flags.ts. Este es el que manda: aunque
+// se cuele un enlace viejo o alguien llame a la API a mano, sin esto no se cobra.
+const AUDITORIA_ACTIVA = false;
+
 const COMPLETE_PRICE_ID = "price_1TYM80LYFGrlrWdkKUIPIa7U"; // Curso GEO Completo €47
 // F2-5: tier "Curso + Auditoría personalizada" — 197 €, con price_data inline
 // (sin Price en el dashboard de Stripe). H-9: pendiente de aprobación de Álvaro.
@@ -78,6 +82,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         console.error("[checkout] no se pudo leer el precio para el tracking:", e);
       }
     } else if (productType === "curso-auditoria") {
+      if (!AUDITORIA_ACTIVA) {
+        return res.status(403).json({
+          error: "La auditoría no está disponible ahora mismo. Escríbeme a hola@esgeo.ai y te aviso en cuanto vuelva a abrirla.",
+        });
+      }
+
       // F2-5: tier ancla "Curso + Auditoría personalizada" — 197 €.
       // price_data inline para no depender de crear un Price en el dashboard de Stripe.
       // Entrega: los 5 PDFs los adjunta el webhook; la auditoría es manual (el webhook
