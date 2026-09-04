@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import EmailCapture from "@/components/EmailCapture";
 import { analyze, gradeCopy, type HablaResult } from "@/lib/habla";
+import { AUDITORIA_ACTIVA } from "@/lib/flags";
 
 interface HablaWidgetProps {
   /** Titular del bloque. */
@@ -218,10 +219,20 @@ export default function HablaWidget({
                 En modo escaneo las pone el ScanOffer de abajo, una sola vez. */}
             {!modoEscaneo && (
               <>
-                {/* CTA. La nota decide qué se ofrece primero: a quien saca menos de 60 no se le
-                    vende un PDF de deberes, se le vende que se lo arreglen. */}
+                {/* CTA. Con la auditoría pausada solo se ofrece el curso: mandar a
+                    /auditoria cuando no se puede comprar es un callejón sin salida.
+                    Con AUDITORIA_ACTIVA en true vuelve la bifurcación por nota: a
+                    quien saca menos de 60 no se le vende un PDF de deberes, se le
+                    vende que se lo arreglen. */}
                 <div className="mt-6 flex flex-col sm:flex-row gap-2">
-                  {result.total < 60 ? (
+                  {!AUDITORIA_ACTIVA ? (
+                    <Button asChild size="lg" className="flex-1">
+                      <Link to="/curso" onClick={() => onResultCtaClick?.("curso", result.grade)}>
+                        Arreglarlo yo mismo: el curso, 47 €
+                        <ArrowRight className="h-4 w-4 ml-2" />
+                      </Link>
+                    </Button>
+                  ) : result.total < 60 ? (
                     <>
                       <Button asChild size="lg" className="flex-1">
                         <Link to="/auditoria" onClick={() => onResultCtaClick?.("auditoria", result.grade)}>
