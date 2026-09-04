@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import DemoAuditoria from "@/components/DemoAuditoria";
 import { captureLead } from "@/lib/lead";
+import { AUDITORIA_ACTIVA } from "@/lib/flags";
 import type { HablaResult } from "@/lib/habla";
 
 /**
@@ -16,6 +18,9 @@ import type { HablaResult } from "@/lib/habla";
  *
  * El email se pide DESPUES de haber dado la nota gratis, no antes, y con el
  * dominio ya escrito: un solo campo en el pico de interes.
+ *
+ * Con AUDITORIA_ACTIVA en false el cierre no vende la auditoria: manda al curso.
+ * La demo de ficheros se queda, porque es el mejor argumento para el curso.
  */
 
 interface RepeatedIssue {
@@ -78,6 +83,8 @@ export default function ScanOffer({ result }: ScanOfferProps) {
     }
   }
 
+  // Sin uso mientras AUDITORIA_ACTIVA sea false: se conserva para que reabrir
+  // sea cambiar el flag y nada mas.
   async function comprarAuditoria() {
     setBuying(true);
     setError("");
@@ -171,22 +178,38 @@ export default function ScanOffer({ result }: ScanOfferProps) {
         <DemoAuditoria dominio={dominio} paginas={scan.pages_ok} />
 
         <div className="mt-6 border-t border-border pt-5">
-          <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
-            Desbloquéalo todo: los tres ficheros completos, el informe de tus {scan.pages_ok} páginas y el plan
-            priorizado. Llega a tu correo en menos de un minuto, y el curso F1-F5 va incluido.
-          </p>
-          <Button size="lg" onClick={comprarAuditoria} disabled={buying}>
-            {buying ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Abriendo el pago…
-              </>
-            ) : (
-              <>
-                Quiero la auditoría de mi sitio: 197 € <ArrowRight className="ml-2 h-4 w-4" />
-              </>
-            )}
-          </Button>
+          {!AUDITORIA_ACTIVA ? (
+            <>
+              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                Los ficheros completos van en la auditoría, que ahora mismo está cerrada mientras la
+                termino de afinar. Mientras tanto, el curso te enseña a escribirlos tú.
+              </p>
+              <Button asChild size="lg">
+                <Link to="/curso">
+                  Ver el curso: 47 € <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </>
+          ) : (
+            <>
+              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+                Desbloquéalo todo: los tres ficheros completos, el informe de tus {scan.pages_ok} páginas y el plan
+                priorizado. Llega a tu correo en menos de un minuto, y el curso F1-F5 va incluido.
+              </p>
+              <Button size="lg" onClick={comprarAuditoria} disabled={buying}>
+                {buying ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Abriendo el pago…
+                  </>
+                ) : (
+                  <>
+                    Quiero la auditoría de mi sitio: 197 € <ArrowRight className="ml-2 h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </>
+          )}
           {error && <p className="mt-3 text-sm text-destructive">{error}</p>}
         </div>
       </div>
